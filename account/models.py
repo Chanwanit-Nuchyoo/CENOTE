@@ -16,10 +16,6 @@ class MyAccountManager(BaseUserManager):
             raise ValueError("Email is require.")
         if not username:
             raise ValueError("Username is require.")
-        if not name:
-            raise ValueError("Name is require.")
-        if not last_name:
-            raise ValueError("Last Name is require.")
         user = self.model(
             email=self.normalize_email(email),
             username=username,
