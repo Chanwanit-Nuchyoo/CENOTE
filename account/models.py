@@ -1,3 +1,4 @@
+from ast import BinOp
 import telnetlib
 from unicodedata import name
 from unittest.util import _MAX_LENGTH
@@ -10,7 +11,7 @@ from django.forms import BooleanField, CharField
 
 class MyAccountManager(BaseUserManager):
 
-    def create_user(self, email, username, password, name, last_name):
+    def create_user(self, email, username, password):
         if not email:
             raise ValueError("Email is require.")
         if not username:
@@ -22,19 +23,15 @@ class MyAccountManager(BaseUserManager):
         user = self.model(
             email=self.normalize_email(email),
             username=username,
-            name=name,
-            last_name=last_name
         )
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self,email,username,password,name,last_name):
+    def create_superuser(self,email,username,password):
         user = self.create_user(
             email=self.normalize_email(email),
             username=username,
-            name=name,
-            last_name=last_name ,
             password=password,
         )
         user.set_password(password)
@@ -65,8 +62,7 @@ class Account(AbstractBaseUser):
     ######################################################################################
     profile_image       = models.ImageField(max_length=255, upload_to=get_profile_image_filepath,null=True, blank = True, default=get_default_profile_image)
     hide_email          = models.BooleanField(default=True)
-    name                = models.CharField(max_length=30, unique = True)
-    last_name           = models.CharField(max_length=30, unique = True)
+    bio                 = models.TextField(max_length=300,null=True, blank=True,default='-')
 
     objects = MyAccountManager()
 
@@ -74,7 +70,7 @@ class Account(AbstractBaseUser):
     USERNAME_FIELD      = 'email'
     ######################################################################################
 
-    REQUIRED_FIELDS       = ['username','name','last_name']
+    REQUIRED_FIELDS       = ['username']
     
     def __str__(self):
         return self.username
