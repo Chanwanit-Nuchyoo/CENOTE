@@ -9,7 +9,7 @@ class CaseInsensitiveModelBackend(ModelBackend):
             username = kwargs.get(UserModel.USERNAME_FEILD)
         
         try:
-            case_insensitive_username_field = '{}__inexact'.format(UserModel.USERNAME_FIELD)
+            case_insensitive_username_field = '{}__iexact'.format(UserModel.USERNAME_FIELD)
             user = UserModel._default_manager.get(**{case_insensitive_username_field: username})
         except UserModel.DoesNotExist:
             UserModel().set_password(password)
