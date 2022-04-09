@@ -14,7 +14,7 @@
     <button class="btn-1"><p1><b>Create Note</b></p></button>
 
 </div>
-<img class="loader-wrapper">
+<div class="loader-wrapper">
     <span class="loader">
         <span class="loader-inner" >
         </span>
@@ -23,7 +23,7 @@
 
 {% if request.user.is_authenticated %}
 <h1>HELLO {{ request.user.username }}</h1>
-<img src="{{ request.user.profile_image.url }}">
+<img src="{{request.user.profile_image.url}}" alt="">
 {% endif %}
 
 </div>
