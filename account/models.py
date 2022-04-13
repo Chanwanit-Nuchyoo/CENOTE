@@ -5,7 +5,6 @@ from unittest.util import _MAX_LENGTH
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.forms import BooleanField, CharField
-from django.utils.safestring import mark_safe
 
 # create a new user
 # create a superuser
@@ -57,7 +56,7 @@ class Account(AbstractBaseUser):
     is_staff            = models.BooleanField(default=False)
     is_superuser        = models.BooleanField(default=False)
     ######################################################################################
-    profile_image       = models.ImageField(max_length=255, upload_to=get_profile_image_filepath,null=True, blank = True, default=get_default_profile_image)
+    profile_image       = models.ImageField(max_length=255,upload_to=get_profile_image_filepath,null=True, blank = True, default=get_default_profile_image)
     hide_email          = models.BooleanField(default=True)
     bio                 = models.TextField(max_length=300,null=True, blank=True,default='-')
 
@@ -80,8 +79,3 @@ class Account(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
-
-    def admin_photo(self):
-        return mark_safe('<img src="{}" width="100" />'.format(self.get_profile_image_filename))
-    
-    admin_photo.allow_tags = True

@@ -22,8 +22,9 @@
     </span>
 
 {% if request.user.is_authenticated %}
-<h1>HELLO {{ request.user.username }}</h1>
-<img src="{{request.user.profile_image.url}}" alt="">
+<div>
+    <h1>HELLO {{ request.user.username }}</h1>
+</div>
 {% endif %}
 
 </div>
