@@ -101,82 +101,21 @@
         <div class="box-product">
             
             <!-- ลูปแต่ละ note จาก book view -->
-            {% for note in notes %}
-            <div class="product">
-                <div class="img-product-1"> 
-                    <h4>{{note.title}} : {{note.info}}</h4> 
-                    <h5>XEOJ</h5> 
-                     <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
-                     <div class = "heart-product"><i class="fa-regular fa-heart"></i></div>
-                     <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i></div>
-                 </div>
+            <div class="row">
+            {% for n in notes %}
+            <div class='col-lg-3 mt-1 mb-3'>
+                <div class="product">
+                    <h4>ชื่อสรุป : {{n.title}}</h4>
+                    <h5>{{n.user}}</h5> 
+                    <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
+                    <div class = "heart-product"><i class="fa-regular fa-heart"></i></div>
+                    <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i></div>
+                </div>
             </div>
             {% endfor %}
-            <!-- จบลูป -->
+            </div>
 
-            <div class="product">
-                <div class="img-product-2"> 
-                    <h4>ชื่อสรุป : ชื่อวิชา</h4>
-                    <h5>XEOJ</h5> 
-                    <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
-                    <div class = "heart-product"><i class="fa-regular fa-heart"></i></div>
-                    <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i></div>
-                 </div>
-            </div>
-            <div class="product">
-                <div class="img-product-3"> 
-                    <h4>ชื่อสรุป : ชื่อวิชา</h4> 
-                    <h5>XEOJ</h5> 
-                    <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
-                    <div class = "heart-product"><i class="fa-regular fa-heart"></i></div>
-                    <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i></div>
-                </div>
-            </div>
-            <div class="product">
-                <div class="img-product-4"> 
-                    <h4>ชื่อสรุป : ชื่อวิชา</h4>
-                    <h5>XEOJ</h5> 
-                    <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
-                    <div class = "heart-product"><i class="fa-regular fa-heart"></i></div>
-                    <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i></div>
-                </div>
-            </div>
-            <div class="product">
-                <div class="img-product-5"> 
-                    <h4>ชื่อสรุป : ชื่อวิชา</h4>
-                    <h5>XEOJ</h5> 
-                    <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
-                    <div class = "heart-product"><i class="fa-regular fa-heart"></i></div>
-                    <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i></div>
-                 </div>
-            </div>
-            <div class="product">
-                <div class="img-product-6"> 
-                    <h4>ชื่อสรุป : ชื่อวิชา</h4> 
-                    <h5>XEOJ</h5> 
-                    <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
-                    <div class = "heart-product"><i class="fa-regular fa-heart"></i></div>
-                    <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i></div>
-                </div>
-            </div>
-            <div class="product">
-                <div class="img-product-7"> 
-                    <h4>ชื่อสรุป : ชื่อวิชา</h4> 
-                    <h5>XEOJ</h5> 
-                    <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
-                    <div class = "heart-product"><i class="fa-regular fa-heart"></i></div>
-                    <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i></div>
-                </div>
-            </div>
-            <div class="product">
-                <div class="img-product-8"> 
-                    <h4>ชื่อสรุป : ชื่อวิชา</h4> 
-                    <h5>XEOJ</h5> 
-                    <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
-                    <div class = "heart-product"><i class="fa-regular fa-heart"></i></div>
-                    <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i></div>
-                </div>
-            </div>
+            
             <div class = "menu"></div>
             <button class ="btn-2"><div class = "icon"><i class="fa-solid fa-clock-rotate-left"></i></div><h1>Recent<h1></button>
             <button class ="btn-3"><div class = "icon"><i class="fa-regular fa-eye"></i></div><h2>View<h2></button>
