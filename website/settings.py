@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'base.apps.BaseConfig',
     'account.apps.AccountConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -108,6 +109,15 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+    {
+
+        'NAME': 'account.validators.MaximumLengthValidator',
+
+            'OPTIONS': {
+
+                'max_length': 20, }
+
+    },
 ]
 
 
@@ -131,6 +141,7 @@ STATIC_URL = 'static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+CRISPY_TEMPLATE_PACK = 'uni_form'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

@@ -1,5 +1,4 @@
 {% extends 'main.html' %}
-
 {% load static %}
 {% block content %}
 <nav class="navbar navbar-expand-custom navbar-mainbg">
@@ -35,38 +34,20 @@
             </li>
         </ul>
     </div>
-    <div class ="search-box">
-        <input class="search-txt" type = "text" name="" placeholder="Type to search">
-        <a class ="search-btn" href ="#">
-            <i class="fas fa-search"></i>
-        </a>
-        </div>
 </nav>
+<div class ="box-addnote">
+    <div class="addnote-col"></div>
+    <div class="addnote">
+        <form enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            <medium style="color: rgb(255, 255, 255);">{{formA.as_p}}</medium>
+            <medium style="color: rgb(255, 255, 255);">JPG file : <input required name="images" type="file" multiple ></medium>
+            <button class ="btn-addnote"><h1>Submit</h1></button>
+        </form>
+    <div>
 
-<div class="header">
-    <p><span id="typing" class="typing"></span></p> 
-    <a href="{% url 'open' %}"><button class="btn-1"><b>View Note</b></button></a>
-    <div class="targetElement">
-        <i class="far fa-clipboard"></i>
-    </div>
-    <div class="targetElement2">
-        <i class="fas fa-pencil-alt"></i>
-    </div>
-    <a href="{% url 'addnote' %}"><button class="btn-1"><p1><b>Create Note</b></p></button></a>
+
+ 
 </div>
 
-<div class="loader-wrapper">
-    <span class="loader">
-        <span class="loader-inner" >
-        </span>
-
-    </span>
-
-{% if request.user.is_authenticated %}
-<div>
-    <h1>HELLO {{ request.user.username }}</h1>
-</div>
-{% endif %}
-
-</div>
 {% endblock %}
