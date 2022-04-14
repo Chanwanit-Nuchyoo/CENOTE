@@ -1,0 +1,11 @@
+{% extends 'main.html' %}
+{% block content %}
+    <div class="header-book">
+    <form enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        {{formA.as_p}}
+        <input required name="images" type="file" multiple >
+        <button type="submit">Submit</button>
+    </form>
+    </div>
+{% endblock %}

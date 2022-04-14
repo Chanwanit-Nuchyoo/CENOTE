@@ -1,6 +1,180 @@
 {% extends 'main.html' %}
+{% load static %}
 {% block content %}
-    <div class="header-book">
-    
+<nav class="navbar navbar-expand-custom navbar-mainbg">
+    <a class="navbar-brand navbar-logo" href="{% url 'home' %}"><img class ='Logoo'src="{% static 'base/Logoo.png' %}"></a>
+    <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-bars text-white"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+            <li class="nav-item ">
+                <a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home"></i>HOME</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link " href="{% url 'open' %}"><i class="fas fa-th-large"></i>categories</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'book' %}"><i class="fas fa-book-open"></i></i>notebook</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0);"><i class="fas fa-question-circle"></i>Q & A</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0);"><i class="fas fa-history"></i>Timeline</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'loginview' %}"><i class="fas fa-user-alt"></i>Log In / Sign In</a>
+            </li>
+        </ul>
     </div>
+    <div class ="search-box">
+        <input class="search-txt" type = "text" name="" placeholder="Type to search">
+        <a class ="search-btn" href ="#">
+            <i class="fas fa-search"></i>
+        </a>
+        </div>
+</nav>
+<div class="header-book">
+    <div class="box-rank">
+        <p>Monthly Ranking</p> 
+        <div class="crown"></div>
+        <div class="box-peo">
+            <div class = "rainbow1"></div>
+            <div class = "rainbow2"></div>
+            <div class = "cloud1"></div>
+            <div class = "cloud2"></div>
+            <div class = "cloud3"></div>
+            <div class = "cloud4"></div>
+            <div class = "line"></div>
+            <div class="col-1">
+                <h1>ชื่อ Account</h1> 
+                <div class="rank2"></div>
+                <div class="img-col1"></div>
+                <h2>ชื่อสรุปวิชา : ชื่อวิชา</h2> 
+                <div class = "small1"></div>
+                <div class = "small2"></div>
+                <div class = "eye"></div>
+                <div class = "heart">
+                    <i class="fa-regular fa-heart"></i>
+                    //
+                </div>
+                <h3>999</h3> 
+                <h4>1.1k</h4> 
+            </div>
+
+            <div class="col-2">
+                <h1>ชื่อ Account</h1> 
+               <div class="rank1"></div>
+               <div class="img-col2"></div>
+               <h2>ชื่อสรุปวิชา : ชื่อวิชา</h2> 
+               <div class = "small1"></div>
+               <div class = "small2"></div>
+               <div class = "eye"></div>
+               <div class = "heart">
+                <i class="fa-regular fa-heart"></i>
+            </div>
+               <h3>999</h3> 
+               <h4>1.1k</h4> 
+            </div>
+
+            <div class="col-3">
+                <h1>ชื่อ Account</h1> 
+                <div class="rank3"></div>
+                <div class="img-col3"></div>
+                <h2>ชื่อสรุปวิชา : ชื่อวิชา</h2> 
+                <div class = "small1"></div>
+                <div class = "small2"></div>
+                <div class = "eye"></div>
+                <div class = "heart">
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+                <h3>999</h3> 
+                <h4>1.1k</h4> 
+            </div>
+        </div>
+
+        <div class="box-product">
+            <div class="product">
+                <div class="img-product-1"> 
+                    <h4>ชื่อสรุป : ชื่อวิชา</h4> 
+                    <h5>XEOJ</h5> 
+                     <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
+                     <div class = "heart-product"><i class="fa-regular fa-heart"></i></div>
+                     <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i></div>
+                 </div>
+            </div>
+            <div class="product">
+                <div class="img-product-2"> 
+                    <h4>ชื่อสรุป : ชื่อวิชา</h4>
+                    <h5>XEOJ</h5> 
+                    <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
+                    <div class = "heart-product"><i class="fa-regular fa-heart"></i></div>
+                    <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i></div>
+                 </div>
+            </div>
+            <div class="product">
+                <div class="img-product-3"> 
+                    <h4>ชื่อสรุป : ชื่อวิชา</h4> 
+                    <h5>XEOJ</h5> 
+                    <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
+                    <div class = "heart-product"><i class="fa-regular fa-heart"></i></div>
+                    <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i></div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="img-product-4"> 
+                    <h4>ชื่อสรุป : ชื่อวิชา</h4>
+                    <h5>XEOJ</h5> 
+                    <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
+                    <div class = "heart-product"><i class="fa-regular fa-heart"></i></div>
+                    <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i></div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="img-product-5"> 
+                    <h4>ชื่อสรุป : ชื่อวิชา</h4>
+                    <h5>XEOJ</h5> 
+                    <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
+                    <div class = "heart-product"><i class="fa-regular fa-heart"></i></div>
+                    <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i></div>
+                 </div>
+            </div>
+            <div class="product">
+                <div class="img-product-6"> 
+                    <h4>ชื่อสรุป : ชื่อวิชา</h4> 
+                    <h5>XEOJ</h5> 
+                    <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
+                    <div class = "heart-product"><i class="fa-regular fa-heart"></i></div>
+                    <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i></div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="img-product-7"> 
+                    <h4>ชื่อสรุป : ชื่อวิชา</h4> 
+                    <h5>XEOJ</h5> 
+                    <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
+                    <div class = "heart-product"><i class="fa-regular fa-heart"></i></div>
+                    <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i></div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="img-product-8"> 
+                    <h4>ชื่อสรุป : ชื่อวิชา</h4> 
+                    <h5>XEOJ</h5> 
+                    <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
+                    <div class = "heart-product"><i class="fa-regular fa-heart"></i></div>
+                    <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i></div>
+                </div>
+            </div>
+            <div class = "menu"></div>
+            <button class ="btn-2"><div class = "icon"><i class="fa-solid fa-clock-rotate-left"></i></div><h1>Recent<h1></button>
+            <button class ="btn-3"><div class = "icon"><i class="fa-regular fa-eye"></i></div><h2>View<h2></button>
+            <button class ="btn-4"><div class = "icon"><i class="fa-regular fa-heart"></i></div><h3>Like<h3></button>
+        </div>
+         
+    </div>
+    
+</div>  
 {% endblock %}
