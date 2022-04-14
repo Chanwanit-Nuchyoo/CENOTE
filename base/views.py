@@ -17,6 +17,13 @@ def open(request):
     context = {}
     return render(request, 'base/open.html',context)
 
+def preview(request):
+    notes = Note.objects.all()
+    context = {
+        'notes':notes
+    }
+    return render(request, 'base/previewnote.html',context)
+
 def book(request):
     notes = Note.objects.all()
 

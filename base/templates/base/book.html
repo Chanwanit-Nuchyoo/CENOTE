@@ -52,7 +52,7 @@
             <div class = "cloud4"></div>
             <div class="col-1">
                 <h1>ชื่อ Account</h1> 
-                <div class="img-col1"></div>
+                <a href="{% url 'preview' %}"><div class="img-col1_3"></div></a>
                 <h2>ชื่อสรุปวิชา : ชื่อวิชา</h2> 
                 <div class = "small1"></div>
                 <div class = "small2"></div>
@@ -67,8 +67,7 @@
 
             <div class="col-2">
                 <h1>ชื่อ Account</h1> 
-              
-               <div class="img-col2"></div>
+                <a href="{% url 'preview' %}"><div class="img-col1_3"></div></a>
                <h2>ชื่อสรุปวิชา : ชื่อวิชา</h2> 
                <div class = "small1"></div>
                <div class = "small2"></div>
@@ -84,7 +83,7 @@
             <div class="col-3">
                 <h1>ชื่อ Account</h1> 
                 <div class="rank3"></div>
-                <div class="img-col3"></div>
+                <a href="{% url 'preview' %}"><div class="img-col1_3"></div></a>
                 <h2>ชื่อสรุปวิชา : ชื่อวิชา</h2> 
                 <div class = "small1"></div>
                 <div class = "small2"></div>
@@ -104,13 +103,19 @@
             <div class="row">
             {% for n in notes %}
             <div class='col-lg-3 mt-1 mb-3'>
+                <a href="{% url 'preview' %}"><div class="img-box"></div></a>
                 <div class="product">
-                    <h4>ชื่อสรุป : {{n.title}}</h4>
-                    <h5>{{n.user}}</h5> 
+                    <h4>
+                            ชื่อสรุป : {{n.title}}  
+                    </h4>
+                    <h5>
+                            ชื่อผู้เขียน : {{n.user}}
+                    </h5>
                     <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
                     <div class = "heart-product"><i class="fa-regular fa-heart"></i></div>
                     <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i></div>
                 </div>
+                
             </div>
             {% endfor %}
             </div>
@@ -125,4 +130,5 @@
     </div>
     
 </div>  
+<div class="loader-wrapper"></div>
 {% endblock %}

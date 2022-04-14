@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Promt');
 @import url('https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css');
+@import url('https://fonts.googleapis.com/css?family=Kanit&subset=thai,latin');
 body {
-    font-family: 'Promt', sans-serif;
+    /* font-family: 'Promt', sans-serif; */
+    font-family: 'Kanit', sans-serif;
 }
 
 * {
@@ -479,7 +481,7 @@ button {
     margin: 10px;
 }
 
-.img-col1 {
+.img-col1_3 {
     position: absolute;
     width: 250px;
     height: 280px;
@@ -500,16 +502,6 @@ button {
     top: 10px;
 }
 
-.img-col2 {
-    position: absolute;
-    width: 250px;
-    height: 280px;
-    background-color: white;
-    border-radius: 15px;
-    top: 20px;
-    left: 25px;
-}
-
 .col-3 {
     width: 150px;
     height: 450px;
@@ -519,16 +511,6 @@ button {
     border-radius: 15px;
     padding: 150px;
     margin: 10px;
-}
-
-.img-col3 {
-    position: absolute;
-    width: 250px;
-    height: 280px;
-    background-color: white;
-    border-radius: 15px;
-    top: 20px;
-    left: 25px;
 }
 
 .small1 {
@@ -712,6 +694,18 @@ button {
     width: 1400px;
 }
 
+.img-box {
+    /*เอาไว้ใส่รูปหน้าปกโน้ต*/
+    cursor: pointer;
+    position: absolute;
+    width: 250px;
+    height: 265px;
+    background-color: white;
+    border-radius: 15px;
+    top: 45px;
+    left: 60px;
+}
+
 .box-product h1 {
     position: absolute;
     top: 15px;
@@ -734,20 +728,19 @@ button {
 }
 
 .box-product h4 {
-    color: rgb(0, 0, 0);
+    color: #FFE65B;
     position: absolute;
-    top: 300px;
-    left: 40px;
+    top: 320px;
+    left: 70px;
     font-size: 1.5em;
 }
 
 .box-product h5 {
     color: #FFE65B;
     position: absolute;
-    top: 340px;
-    left: 55px;
-    font-size: 1.1em;
-    font-weight: bold;
+    top: 350px;
+    left: 70px;
+    font-size: 1.5em;
 }
 
 .menu {
@@ -817,11 +810,9 @@ button {
     width: 70px;
     height: 420px;
     background-color: #9a97f0;
-    float: left;
     border-radius: 15px;
     padding: 140px;
     margin: 30px;
-    top: -100px;
 }
 
 .img-product-1 {
@@ -906,22 +897,25 @@ button {
 
 .eye-product {
     position: absolute;
-    top: 365px;
-    left: 120px;
+    top: 400px;
+    left: 140px;
     font-size: 1.2rem;
+    cursor: pointer;
 }
 
 .heart-product {
+    cursor: pointer;
     position: absolute;
-    top: 365px;
-    left: 162px;
+    top: 400px;
+    left: 182px;
     font-size: 1.2rem;
 }
 
 .chat-product {
+    cursor: pointer;
     position: absolute;
-    top: 365px;
-    left: 205px;
+    top: 400px;
+    left: 225px;
     font-size: 1.2rem;
 }
 
@@ -941,7 +935,6 @@ button {
     top: 10px;
     left: 90px;
     font-size: 1rem;
-    font-weight: bold;
     color: #FFFFFF;
 }
 
@@ -950,7 +943,6 @@ button {
     top: -45px;
     left: -100px;
     font-size: 1.5rem;
-    font-weight: bold;
     color: #ffffff;
 }
 
@@ -1022,8 +1014,8 @@ button {
 
 .addnote-col {
     position: absolute;
-    width: 300px;
-    height: 550px;
+    width: 600px;
+    height: 650px;
     top: -10px;
     left: 360px;
     background-color: #444444;
@@ -1097,6 +1089,14 @@ button {
     transition: 0.4s;
     line-height: 40px;
     width: 0px;
+}
+
+
+/*================================================================= PreviewNotePage ====================================================*/
+
+.header-preview-note {
+    text-align: center;
+    font-size: 30px;
 }
 
 @keyframes Bot {
