@@ -13,4 +13,7 @@ class AccountAdmin(UserAdmin):
     list_filter = ()
     fieldsets =  ()
 
+    class Meta:
+        ordering = ['-date_joined']
+
 admin.site.register(Account, AccountAdmin)
