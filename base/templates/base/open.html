@@ -61,7 +61,7 @@
         <input type="radio" name="card" id="card_three">
         <!-- they should all have the same name attr but different ids -->
       <label  for="card_one">
-        <a class="card" href="{% url 'book' %}">
+        <a class="card" href="{% url 'cate' cate='COMPUTER_HARDWARE' %}">
                 <span class="check_btn"><i class="fas fa-check"></i></span>
                 <div class="img">
                     <img src="https://media.giphy.com/media/OTS4tXJlzyPZK/giphy.gif">
@@ -70,7 +70,7 @@
             </a>
         </label>
         <label for="card_two">
-            <a class="card" href="{% url 'book' %}">
+            <a class="card" href="{% url 'cate' cate='COMPUTER_SOFTWARE' %}">
                 <span class="check_btn"><i class="fas fa-check"></i></span>
                 <div class="img">
                     <img src="https://img.etimg.com/thumb/msid-84146083,width-1015,height-761,imgsize-638053,resizemode-8,quality-100/prime/technology-and-startups/booting-up-developer-economy-how-tech-startups-are-helping-coders-build-and-test-software-faster.jpg">
@@ -79,7 +79,7 @@
             </a>
         </label>
         <label for="card_three">
-            <a class="card" href="{% url 'book' %}">
+            <a class="card" href="{% url 'cate' cate='COMPUTER_NETWORK' %}">
                 <span class="check_btn"><i class="fas fa-check"></i></span>
                 <div class="img">
                     <img src="https://thumbs.gfycat.com/IdealCookedHaddock-size_restricted.gif">

@@ -1,4 +1,5 @@
 from ast import BinOp
+from email.policy import default
 import telnetlib
 from unicodedata import name
 from unittest.util import _MAX_LENGTH
@@ -46,6 +47,11 @@ def get_default_profile_image():
 
 class Account(AbstractBaseUser):
 
+    # username(unique=True)
+    # profile_image = ImageField(FileInput())
+    # email = EmailField(EmailInput())
+    # bio = TextField(Textarea)
+
     ############# Require Fields from AbstractBaseUser ##################################
     email               = models.EmailField(verbose_name='email', max_length=60, unique=True)
     username            = models.CharField(max_length=10, unique = True)
@@ -59,6 +65,8 @@ class Account(AbstractBaseUser):
     profile_image       = models.ImageField(max_length=255,upload_to=get_profile_image_filepath,null=True, blank = True, default=get_default_profile_image)
     hide_email          = models.BooleanField(default=True)
     bio                 = models.TextField(max_length=300,null=True, blank=True,default='-')
+    like_count          = models.IntegerField(default=0, null=True, blank=True)
+    view_count          = models.IntegerField(default=0, null=True, blank=True)
 
     objects = MyAccountManager()
 

@@ -58,6 +58,10 @@ i {
     position: relative;
 }
 
+nav ul li a{
+    color:#EC0033;
+}
+
 #navbarSupportedContent>ul>li.active>a {
     color: #5161ce;
     background-color: transparent;
@@ -660,7 +664,7 @@ button {
     background-size: cover;
 }
 
-.line {
+.box-rank .line {
     position: absolute;
     top: 540px;
     left: -20px;
@@ -732,7 +736,7 @@ button {
     position: absolute;
     top: 320px;
     left: 70px;
-    font-size: 1.5em;
+    font-size:25px;
 }
 
 .box-product h5 {
@@ -740,16 +744,16 @@ button {
     position: absolute;
     top: 350px;
     left: 70px;
-    font-size: 1.5em;
+    font-size: 25px;
 }
 
-.menu {
+.box-product .menu{
     position: absolute;
     width: 650px;
     height: 70px;
     background-color: white;
     border-radius: 35px;
-    border: 3px solid #e4e3e3;
+    border: 3px solid #9a97f0;
     top: -62px;
     left: 350px;
 }
@@ -1098,7 +1102,208 @@ button {
     text-align: center;
     font-size: 30px;
 }
+.box-preview{
+    position: relative;
+    left: 50%;
+    height: 800px;
+    width: 1600px;
+    margin-left: -750px;
+    margin-top: 15px;
+    border:2px solid red;
+}
 
+.preview {
+    height: 380px;
+    background-color: #9a97f0;
+    border-radius: 15px;
+    padding: 130px;
+    margin: 10px;
+    float:left;
+    cursor: pointer;
+  
+
+}
+
+.btn-dow {
+    position: absolute;
+    border-radius: 30px;
+    height: 50px;
+    width: 190px;
+    top: -73px;
+    left: 1290px;
+    background-color:#E6EEF9;
+   
+}
+/*================================================================= Chat Preview ====================================================*/
+.box-preview-chat{
+    position: relative;
+    top:15px;
+    left:50%;
+    height: 500px;
+    width: 1400px;
+    margin-left: -700px;
+    margin-top: 15px;
+    border:3px solid red;
+}
+.box-preview-chat h1{
+    position: absolute;
+   font-size: 30px;
+   color: rgb(0, 0, 0);
+   top: 215px;
+   left:630px;
+}
+
+
+.line-pre {
+    position: absolute;
+    top: 185px;
+    left: 30px;
+    height: 2.5px;
+    width: 1300px;
+    background-color: #a7a7a7;
+}
+.prechat {
+    position: absolute;
+    top:210px;
+    left:580px;
+    height: 40px;
+    width: 40px;
+    background: url(https://scontent.fbkk8-4.fna.fbcdn.net/v/t1.15752-9/277688713_969551000394031_3584638488196745563_n.png?_nc_cat=100&ccb=1-5&_nc_sid=ae9488&_nc_ohc=6j-gD7fxK20AX--hjsD&_nc_ht=scontent.fbkk8-4.fna&oh=03_AVKQHDLo82uc90qvv6CNuWPfphrba3i5AVStBj8vgEflDw&oe=627FBAF4) no-repeat;
+    background-size: cover;
+}
+/* ================================= Drop Down Hover =============================== */
+.btn-drop {
+    position: absolute;
+    border-radius: 30px;
+    height: 40px;
+    top:-10px;
+    width: 122px;
+    border:2px solid red;
+}
+.dropdown-menu{
+    display:none;
+}
+
+
+
+/* =================================My page=============================== */
+
+.mypage-header {
+    text-align: center;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 571px;
+    top: 97px;
+}
+.mypage-header .img-box {
+    /*เอาไว้ใส่รูปหน้าปกโน้ต*/
+    cursor: pointer;
+    position: absolute;
+    width: 250px;
+    height: 265px;
+    background-color: white;
+    border-radius: 15px;
+    top: 35px;
+    left: 60px;
+}
+.mypage-header img {
+    align-content: center;
+    width: 100%;
+}
+
+.mypage-header #profile-pic {
+    background-color: #6E62FF;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.mypage-header p {
+    font-size: 30px;
+    color: #6E62FF;
+}
+
+.mypage-header .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 0px 0px 10px;
+}
+
+.mypage-header #reddot {
+    background-color: #F8574F;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.mypage-header .container {
+    width: 633px;
+    height: 76px;
+    border-radius: 30px;
+    /*background-color: #b8cfee;*/
+}
+
+.mypage-header .recent {
+    border-radius: 30px;
+    /*background-color: #b8cfee;*/
+}
+
+.mypage-header .recent:hover {
+    /*background-color: #b8cfee;*/
+    color: #185EE0;
+    border-radius: 30px;
+    border-color: #89CFF0;
+}
+
+.mypage-header .view {
+    border-radius: 30px;
+    /*background-color: #b8cfee;*/
+}
+
+.mypage-header .view:hover {
+    /*background-color: #b8cfee;*/
+    color: #185EE0;
+    border-radius: 30px;
+    border-color: #89CFF0;
+}
+
+.mypage-header .like {
+    border-radius: 30px;
+    /*background-color: #b8cfee;*/
+}
+
+.mypage-header .like:hover {
+    /*background-color: #b8cfee;*/
+    color: #185EE0;
+    border-radius: 30px;
+    border-color: #89CFF0;
+}
+
+.mypage-header #sort-bar{
+    position: absolute;
+    width: 650px;
+    height: 70px;
+    background-color: transparent;
+    border-radius: 35px;
+    /* border: 3px solid #9a97f0; */
+    top: 50%;
+    left: 50%;
+}
+
+.mypage-header .line {
+    /* position: absolute; */
+    /* top: 540px;
+    left: -20px; */
+    text-align: center;
+    margin-left:50px; 
+    margin-right: 50px;
+    margin-top: 10px; margin-bottom: 10px;
+    height: 2.5px;
+    width: 1700;
+    background-color: #a7a7a7;
+}
 @keyframes Bot {
     0.0% {
         text-shadow: 4px 4px 4px rgb(253, 253, 255);

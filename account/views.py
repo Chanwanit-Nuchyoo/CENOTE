@@ -6,6 +6,8 @@ from django.contrib import messages
 from account.models import Account
 from account.backends import CaseInsensitiveModelBackend
 
+
+
 def loginview(request):
     context = {}
     user = request.user
@@ -35,6 +37,8 @@ def loginview(request):
 
 def signupview(request):
     context = {}
+    if request.user.is_authenticated:
+        return redirect('home')
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():

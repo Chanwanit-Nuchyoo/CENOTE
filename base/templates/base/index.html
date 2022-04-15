@@ -25,13 +25,15 @@
             <li class="nav-item">
                 <a class="nav-link" href="javascript:void(0);"><i class="fas fa-history"></i>Timeline</a>
             </li>
+          
             <li class="nav-item">
+
                 {% if not request.user.is_authenticated %}
-                <a class="nav-link" href="{% url 'loginview' %}"><i class="fas fa-user-alt"></i>Log In / Sign In</a>
+                <a class="nav-link" href="{% url 'loginview' %}"><i class="fas fa-user-alt"></i>Log In / Sign In<i class="fa fa-caret-down"></i></a>
                 {% else %}
-                <a class="nav-link" href="{% url 'logoutview' %}"><i class="fas fa-user-alt"></i>{{request.user.username}}</a>
+                <a class="nav-link" ><i class="fas fa-user-alt"></i>{{request.user.username}}</a>
                 {% endif %}
-                
+                </div>
             </li>
         </ul>
     </div>
@@ -45,7 +47,7 @@
 
 <div class="header">
     <p><span id="typing" class="typing"></span></p> 
-    <a href="{% url 'open' %}"><button class="btn-1"><b>View Note</b></button></a>
+    <a href="{% url 'all' %}"><button class="btn-1"><b>View Note</b></button></a>
     <div class="targetElement">
         <i class="far fa-clipboard"></i>
     </div>
@@ -54,7 +56,6 @@
     </div>
     <a href="{% url 'addnote' %}"><button class="btn-1"><p1><b>Create Note</b></p></button></a>
 </div>
-
 <div class="loader-wrapper">
     <span class="loader">
         <span class="loader-inner" >
