@@ -38,12 +38,9 @@
 </nav>
 <div class = "header-preview-note">
     this is an undone preview note page
-    {% comment %} ติดตรงนี้ งงว่าดึงข้อมูลจำนวนรูปออกมาจากdatabaseยังไง {% endcomment %}
-    {% for n in notes %}
     <div class = "title-category">
-        {{n.title}}  : {{n.category}} 
+        {{note.title}}  : {{note.category}} 
     </div>
-    {% endfor %} 
     <div class "img-to-preview">
         <img src="https://engineer.kmitl.ac.th/wp-content/uploads/2020/11/go-300x212.png" alt="KMITL" style="width:20%; cursor: pointer;" >
         <div class = "row"> 

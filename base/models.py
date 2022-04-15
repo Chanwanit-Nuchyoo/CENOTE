@@ -1,6 +1,8 @@
 from distutils.log import info
+from email.policy import default
 from msilib import CreateRecord
 from multiprocessing import AuthenticationError
+from trace import CoverageResults
 from turtle import ondrag
 from unicodedata import category
 from django.db import models
@@ -18,13 +20,22 @@ def image_path(instance, filename):
     basefilename, file_extension= os.path.splitext(filename)
     chars= 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890'
     randomstr= ''.join((random.choice(chars)) for x in range(10))
-    return 'media/images/userimages/{userid}/{basename}{randomstring}{ext}'.format(userid= instance.note.user.id, basename= basefilename, randomstring= randomstr, ext= file_extension)
+    return 'images/{username}/{basename}{randomstring}{ext}'.format(username= instance.note.user.username, basename= basefilename, randomstring= randomstr, ext= file_extension)
 
 def pdf_path(instance, filename):
     basefilename, file_extension= os.path.splitext(filename)
     chars= 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890'
     randomstr= ''.join((random.choice(chars)) for x in range(10))
-    return 'media/pdf/userpdf/{userid}/{basename}{randomstring}{ext}'.format(userid= instance.user.id, basename= basefilename, randomstring= randomstr, ext= file_extension)
+    return 'pdf/{username}/{basename}{randomstring}{ext}'.format(username= instance.user.username, basename= basefilename, randomstring= randomstr, ext= file_extension)
+
+def cover_path(instance, filename):
+    basefilename, file_extension= os.path.splitext(filename)
+    chars= 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890'
+    randomstr= ''.join((random.choice(chars)) for x in range(10))
+    return 'cover/{username}/{basename}{randomstring}{ext}'.format(username= instance.user.username, basename= basefilename, randomstring= randomstr, ext= file_extension)
+
+def default_cover():
+    return 'account/{filename}{randomint}{ext}'.format(filename='defaultcover' , randomint=random.randint(1,7) ,ext='.jpg')
 
 class Category(models.Model):
     name = models.CharField(max_length=60)
@@ -38,6 +49,7 @@ class Note(models.Model):
     user                = models.ForeignKey(Account,on_delete=models.CASCADE)
     price               = models.IntegerField(validators=[MinValueValidator(0)])
     category            = models.ForeignKey(Category,on_delete=models.CASCADE)
+    cover               = models.ImageField(upload_to=cover_path,blank=True,null=True,default=default_cover)
     pdf_file            = models.FileField(upload_to=pdf_path)
     date_created        = models.DateTimeField(auto_now_add = True)
     last_edit           = models.DateTimeField(auto_now=True)

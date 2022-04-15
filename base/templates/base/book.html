@@ -52,7 +52,7 @@
             <div class = "cloud4"></div>
             <div class="col-1">
                 <h1>ชื่อ Account</h1> 
-                <a href="{% url 'preview' %}"><div class="img-col1_3"></div></a>
+                <a href=""><div class="img-col1_3"></div></a>
                 <h2>ชื่อสรุปวิชา : ชื่อวิชา</h2> 
                 <div class = "small1"></div>
                 <div class = "small2"></div>
@@ -67,7 +67,7 @@
 
             <div class="col-2">
                 <h1>ชื่อ Account</h1> 
-                <a href="{% url 'preview' %}"><div class="img-col1_3"></div></a>
+                <a href=""><div class="img-col1_3"></div></a>
                <h2>ชื่อสรุปวิชา : ชื่อวิชา</h2> 
                <div class = "small1"></div>
                <div class = "small2"></div>
@@ -83,7 +83,7 @@
             <div class="col-3">
                 <h1>ชื่อ Account</h1> 
                 <div class="rank3"></div>
-                <a href="{% url 'preview' %}"><div class="img-col1_3"></div></a>
+                <a href=""><div class="img-col1_3"></div></a>
                 <h2>ชื่อสรุปวิชา : ชื่อวิชา</h2> 
                 <div class = "small1"></div>
                 <div class = "small2"></div>
@@ -103,7 +103,7 @@
             <div class="row">
             {% for n in notes %}
             <div class='col-lg-3 mt-1 mb-3'>
-                <a href="{% url 'preview' %}"><div class="img-box"></div></a>
+                <a href="{% url 'note_view' id=n.pk %}"><div class="img-box"><img src="{{n.cover.url}}" width="250" height="270" style="border-radius: 10px;"></div></a>
                 <div class="product">
                     <h4>
                             ชื่อสรุป : {{n.title}}  

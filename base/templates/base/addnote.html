@@ -41,7 +41,11 @@
         <form enctype="multipart/form-data" method="POST">
             {% csrf_token %}
             <medium style="color: rgb(255, 255, 255);">{{formA.as_p}}</medium>
-            <medium style="color: rgb(255, 255, 255);">JPG file(s) to preview : <input required name="images" type="file" multiple ></medium>
+            <div>
+            <medium style="color: rgb(255, 255, 255);">pdf file (required) : <input name="pdf" type="file" accept=".pdf"></medium>
+            <medium style="color: rgb(255, 255, 255);">Image file for note's cover(not required) : <input name="cover" type="file" accept="image/*"></medium>
+            <medium style="color: rgb(255, 255, 255);">Image file(s) to preview(required) : <input required name="images" type="file" multiple accept="image/*"></medium>
+            </div>
             <button class ="btn-addnote"><h1>Submit</h1></button>
         </form>
     <div>
