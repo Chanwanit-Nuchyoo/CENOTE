@@ -73,5 +73,5 @@ class Images(models.Model):
     image           = models.ImageField(upload_to=image_path,null = True ,blank= True )
 
     def __str__(self):
-        return str(self.image.url)
+        return str(self.image.url) or None
 

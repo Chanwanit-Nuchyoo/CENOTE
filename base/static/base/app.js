@@ -1,89 +1,89 @@
 // ---------Responsive-navbar-active-animation-----------
-function test(){
-	var tabsNewAnim = $('#navbarSupportedContent');
-	var selectorNewAnim = $('#navbarSupportedContent').find('li').length;
-	var activeItemNewAnim = tabsNewAnim.find('.active');
-	var activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
-	var activeWidthNewAnimWidth = activeItemNewAnim.innerWidth();
-	var itemPosNewAnimTop = activeItemNewAnim.position();
-	var itemPosNewAnimLeft = activeItemNewAnim.position();
-	$(".hori-selector").css({
-		"top":itemPosNewAnimTop.top + "px", 
-		"left":itemPosNewAnimLeft.left + "px",
-		"height": activeWidthNewAnimHeight + "px",
-		"width": activeWidthNewAnimWidth + "px"
-	});
-	$("#navbarSupportedContent").on("click","li",function(e){
-		$('#navbarSupportedContent ul li').removeClass("active");
-		$(this).addClass('active');
-		var activeWidthNewAnimHeight = $(this).innerHeight();
-		var activeWidthNewAnimWidth = $(this).innerWidth();
-		var itemPosNewAnimTop = $(this).position();
-		var itemPosNewAnimLeft = $(this).position();
-		$(".hori-selector").css({
-			"top":itemPosNewAnimTop.top + "px", 
-			"left":itemPosNewAnimLeft.left + "px",
-			"height": activeWidthNewAnimHeight + "px",
-			"width": activeWidthNewAnimWidth + "px"
-		});
-	});
+function test() {
+    var tabsNewAnim = $('#navbarSupportedContent');
+    var selectorNewAnim = $('#navbarSupportedContent').find('li').length;
+    var activeItemNewAnim = tabsNewAnim.find('.active');
+    var activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
+    var activeWidthNewAnimWidth = activeItemNewAnim.innerWidth();
+    var itemPosNewAnimTop = activeItemNewAnim.position();
+    var itemPosNewAnimLeft = activeItemNewAnim.position();
+    $(".hori-selector").css({
+        "top": itemPosNewAnimTop.top + "px",
+        "left": itemPosNewAnimLeft.left + "px",
+        "height": activeWidthNewAnimHeight + "px",
+        "width": activeWidthNewAnimWidth + "px"
+    });
+    $("#navbarSupportedContent").on("click", "li", function(e) {
+        $('#navbarSupportedContent ul li').removeClass("active");
+        $(this).addClass('active');
+        var activeWidthNewAnimHeight = $(this).innerHeight();
+        var activeWidthNewAnimWidth = $(this).innerWidth();
+        var itemPosNewAnimTop = $(this).position();
+        var itemPosNewAnimLeft = $(this).position();
+        $(".hori-selector").css({
+            "top": itemPosNewAnimTop.top + "px",
+            "left": itemPosNewAnimLeft.left + "px",
+            "height": activeWidthNewAnimHeight + "px",
+            "width": activeWidthNewAnimWidth + "px"
+        });
+    });
 }
-$(document).ready(function(){
-	setTimeout(function(){ test(); });
+$(document).ready(function() {
+    setTimeout(function() { test(); });
 });
-$(window).on('resize', function(){
-	setTimeout(function(){ test(); }, 500);
+$(window).on('resize', function() {
+    setTimeout(function() { test(); }, 500);
 });
-$(".navbar-toggler").click(function(){
-	$(".navbar-collapse").slideToggle(300);
-	$(".header p").slideToggle(300);
-	$(".targetElement").slideToggle(10);
-	$(".targetElement2").slideToggle(10);
-	setTimeout(function(){ test(); });
+$(".navbar-toggler").click(function() {
+    $(".navbar-collapse").slideToggle(300);
+    $(".header p").slideToggle(300);
+    $(".targetElement").slideToggle(10);
+    $(".targetElement2").slideToggle(10);
+    setTimeout(function() { test(); });
 });
 
 
 
 // --------------add active class-on another-page move----------
-jQuery(document).ready(function($){
-	// Get current path and find target link
-	var path = window.location.pathname.split("/").pop();
+jQuery(document).ready(function($) {
+    // Get current path and find target link
+    var path = window.location.pathname.split("/").pop();
 
-	// Account for home page with empty path
-	if ( path == '' ) {
-		path = 'index.html';
-	}
+    // Account for home page with empty path
+    if (path == '') {
+        path = 'index.html';
+    }
 
-	var target = $('#navbarSupportedContent ul li a[href="'+path+'"]');
-	// Add active class to target link
-	target.parent().addClass('active');
+    var target = $('#navbarSupportedContent ul li a[href="' + path + '"]');
+    // Add active class to target link
+    target.parent().addClass('active');
 });
 
-let typeString = ["Welcome to Clearnote !              "];
+let typeString = ["Welcome to CE NOTE !              "];
 let i = 0;
-let count =0;
+let count = 0;
 let SelectedText = '';
-let text ='';
+let text = '';
 
-(function type(){
-    if(count == typeString.length){
+(function type() {
+    if (count == typeString.length) {
         count = 0;
     }
     SelectedText = typeString[count];
-    text = SelectedText.slice(0,++i);
+    text = SelectedText.slice(0, ++i);
     document.getElementById("typing").innerHTML = text;
-    if(text.length === SelectedText.length){
+    if (text.length === SelectedText.length) {
         count++;
-        i=0;
+        i = 0;
     }
-    setTimeout(type,190);
+    setTimeout(type, 190);
 
 }());
 
 let mainNav = document.getElementById('js-menu');
 let navBarToggle = document.getElementById('js-nav-toggle');
 
-navBarToggle.addEventListener("click",function(){
+navBarToggle.addEventListener("click", function() {
     mainNav.classList.toggle('active')
 })
 

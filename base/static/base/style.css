@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Promt');
 @import url('https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css');
+@import url('https://fonts.googleapis.com/css?family=Kanit&subset=thai,latin');
 body {
-    font-family: 'Promt', sans-serif;
+    /* font-family: 'Promt', sans-serif; */
+    font-family: 'Kanit', sans-serif;
 }
 
 * {
@@ -167,6 +169,16 @@ i {
     animation: Bot 3s ease 0s infinite normal none;
 }
 
+.header-addnote {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: url(https://wallpaperxyz.com/wp-content/uploads/Chill-Lofi-Background-Wallpaper-Full-HD-Free-Download-for-PC-Laptop-Macbook-231121-Wallpaperxyz.com-1.gif) no-repeat;
+    background-size: cover;
+}
+
 .header-book {
     display: flex;
     display: flex;
@@ -249,13 +261,15 @@ i {
         height: 0%;
     }
 }
-.container-tbn{
-	height:100%;
-   position: absolute;
-	  top: 100%;
-	  left: 35%;
-	  transform: translate(-50%, -50%);
-  }
+
+.container-tbn {
+    height: 100%;
+    position: absolute;
+    top: 100%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+}
+
 .tbn {
     margin-top: calc(50% + 25px);
     position: relative;
@@ -427,7 +441,7 @@ button {
 .box-peo h1 {
     color: rgb(0, 0, 0);
     position: absolute;
-    top: 15px;
+    top: 310px;
     left: 90px;
     font-size: 1.5em;
 }
@@ -435,7 +449,7 @@ button {
 .box-peo h2 {
     color: rgb(0, 0, 0);
     position: absolute;
-    top: 250px;
+    top: 348px;
     left: 52px;
     font-size: 1.5em;
 }
@@ -443,7 +457,7 @@ button {
 .box-peo h3 {
     color: rgb(0, 0, 0);
     position: absolute;
-    top: 296px;
+    top: 396px;
     left: 95px;
     font-size: 1.2em;
 }
@@ -451,14 +465,14 @@ button {
 .box-peo h4 {
     color: rgb(0, 0, 0);
     position: absolute;
-    top: 296px;
+    top: 396px;
     left: 197px;
     font-size: 1.2em;
 }
 
 .col-1 {
     width: 150px;
-    height: 350px;
+    height: 450px;
     top: 50px;
     background-color: #9BD1AC;
     float: left;
@@ -467,19 +481,19 @@ button {
     margin: 10px;
 }
 
-.img-col1 {
+.img-col1_3 {
     position: absolute;
     width: 250px;
-    height: 180px;
+    height: 280px;
     background-color: white;
     border-radius: 15px;
-    top: 50px;
+    top: 20px;
     left: 25px;
 }
 
 .col-2 {
     width: 150px;
-    height: 350px;
+    height: 450px;
     background-color: #FF928C;
     float: left;
     border-radius: 15px;
@@ -488,19 +502,9 @@ button {
     top: 10px;
 }
 
-.img-col2 {
-    position: absolute;
-    width: 250px;
-    height: 180px;
-    background-color: white;
-    border-radius: 15px;
-    top: 50px;
-    left: 25px;
-}
-
 .col-3 {
     width: 150px;
-    height: 350px;
+    height: 450px;
     top: 50px;
     background-color: #89CFF0;
     float: left;
@@ -509,23 +513,13 @@ button {
     margin: 10px;
 }
 
-.img-col3 {
-    position: absolute;
-    width: 250px;
-    height: 180px;
-    background-color: white;
-    border-radius: 15px;
-    top: 50px;
-    left: 25px;
-}
-
 .small1 {
     position: absolute;
     width: 90px;
     height: 35px;
     background-color: #F8E684;
     border-radius: 15px;
-    top: 290px;
+    top: 390px;
     left: 50px;
 }
 
@@ -535,7 +529,7 @@ button {
     height: 35px;
     background-color: #F8E684;
     border-radius: 15px;
-    top: 290px;
+    top: 390px;
     left: 160px;
 }
 
@@ -543,7 +537,7 @@ button {
     position: absolute;
     width: 35px;
     height: 26px;
-    top: 295px;
+    top: 395px;
     left: 55px;
     background: url(https://bootstrapfriendly.com/static/images/eyes.gif) no-repeat;
     background-size: cover;
@@ -552,7 +546,7 @@ button {
 .heart {
     position: absolute;
     font-size: 1.4rem;
-    top: 291px;
+    top: 392px;
     left: 170px;
 }
 
@@ -586,9 +580,29 @@ button {
     background-size: cover;
 }
 
+.rainbow1 {
+    position: absolute;
+    top: 430px;
+    left: -230px;
+    height: 100px;
+    width: 250px;
+    background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Rainbow-diagram-ROYGBIV.svg/1200px-Rainbow-diagram-ROYGBIV.svg.png) no-repeat;
+    background-size: cover;
+}
+
+.rainbow2 {
+    position: absolute;
+    top: 430px;
+    left: 940px;
+    height: 100px;
+    width: 250px;
+    background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Rainbow-diagram-ROYGBIV.svg/1200px-Rainbow-diagram-ROYGBIV.svg.png) no-repeat;
+    background-size: cover;
+}
+
 .cloud1 {
     position: absolute;
-    top: 420px;
+    top: 505px;
     left: -50px;
     height: 60px;
     width: 100px;
@@ -598,7 +612,7 @@ button {
 
 .cloud2 {
     position: absolute;
-    top: 420px;
+    top: 505px;
     left: -270px;
     height: 60px;
     width: 100px;
@@ -606,19 +620,9 @@ button {
     background-size: cover;
 }
 
-.rainbow1 {
-    position: absolute;
-    top: 350px;
-    left: -230px;
-    height: 100px;
-    width: 250px;
-    background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Rainbow-diagram-ROYGBIV.svg/1200px-Rainbow-diagram-ROYGBIV.svg.png) no-repeat;
-    background-size: cover;
-}
-
 .cloud3 {
     position: absolute;
-    top: 420px;
+    top: 505px;
     left: 900px;
     height: 60px;
     width: 100px;
@@ -628,7 +632,7 @@ button {
 
 .cloud4 {
     position: absolute;
-    top: 420px;
+    top: 505px;
     left: 1130px;
     height: 60px;
     width: 100px;
@@ -636,19 +640,29 @@ button {
     background-size: cover;
 }
 
-.rainbow2 {
+.pu1 {
     position: absolute;
-    top: 350px;
-    left: 940px;
-    height: 100px;
-    width: 250px;
-    background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Rainbow-diagram-ROYGBIV.svg/1200px-Rainbow-diagram-ROYGBIV.svg.png) no-repeat;
+    top: -60px;
+    left: -270px;
+    height: 160px;
+    width: 200px;
+    background: url(https://f.ptcdn.info/771/002/000/1362331152-1361452452-o.gif) no-repeat;
+    background-size: cover;
+}
+
+.pu2 {
+    position: absolute;
+    top: -60px;
+    left: 990px;
+    height: 160px;
+    width: 200px;
+    background: url(https://f.ptcdn.info/771/002/000/1362331152-1361452452-o.gif) no-repeat;
     background-size: cover;
 }
 
 .line {
     position: absolute;
-    top: 490px;
+    top: 540px;
     left: -20px;
     height: 2.5px;
     width: 1000px;
@@ -674,10 +688,22 @@ button {
 
 .box-product {
     position: relative;
-    top: 170px;
+    top: 220px;
     left: -500px;
     height: 500px;
     width: 1400px;
+}
+
+.img-box {
+    /*เอาไว้ใส่รูปหน้าปกโน้ต*/
+    cursor: pointer;
+    position: absolute;
+    width: 250px;
+    height: 265px;
+    background-color: white;
+    border-radius: 15px;
+    top: 45px;
+    left: 60px;
 }
 
 .box-product h1 {
@@ -702,20 +728,19 @@ button {
 }
 
 .box-product h4 {
-    color: rgb(0, 0, 0);
+    color: #FFE65B;
     position: absolute;
-    top: 300px;
-    left: 40px;
+    top: 320px;
+    left: 70px;
     font-size: 1.5em;
 }
 
 .box-product h5 {
     color: #FFE65B;
     position: absolute;
-    top: 340px;
-    left: 55px;
-    font-size: 1.1em;
-    font-weight: bold;
+    top: 350px;
+    left: 70px;
+    font-size: 1.5em;
 }
 
 .menu {
@@ -785,11 +810,9 @@ button {
     width: 70px;
     height: 420px;
     background-color: #9a97f0;
-    float: left;
     border-radius: 15px;
     padding: 140px;
     margin: 30px;
-    top: -100px;
 }
 
 .img-product-1 {
@@ -874,22 +897,25 @@ button {
 
 .eye-product {
     position: absolute;
-    top: 365px;
-    left: 120px;
+    top: 400px;
+    left: 140px;
     font-size: 1.2rem;
+    cursor: pointer;
 }
 
 .heart-product {
+    cursor: pointer;
     position: absolute;
-    top: 365px;
-    left: 162px;
+    top: 400px;
+    left: 182px;
     font-size: 1.2rem;
 }
 
 .chat-product {
+    cursor: pointer;
     position: absolute;
-    top: 365px;
-    left: 205px;
+    top: 400px;
+    left: 225px;
     font-size: 1.2rem;
 }
 
@@ -909,7 +935,6 @@ button {
     top: 10px;
     left: 90px;
     font-size: 1rem;
-    font-weight: bold;
     color: #FFFFFF;
 }
 
@@ -918,7 +943,6 @@ button {
     top: -45px;
     left: -100px;
     font-size: 1.5rem;
-    font-weight: bold;
     color: #ffffff;
 }
 
@@ -969,6 +993,62 @@ button {
 }
 
 
+/* ================================================================ Add Note ==================================================*/
+
+.box-addnote {
+    position: relative;
+    top: 40px;
+    left: 130px;
+    height: 500px;
+    width: 1200px;
+}
+
+.box-addnote h1 {
+    position: absolute;
+    top: 10px;
+    left: 29px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.addnote-col {
+    position: absolute;
+    width: 600px;
+    height: 650px;
+    top: -10px;
+    left: 360px;
+    background-color: #444444;
+    border-radius: 15px;
+    padding: 300px;
+    margin: 10px;
+}
+
+.addnote {
+    position: absolute;
+    width: 380px;
+    border-radius: 15px;
+    padding: 1px;
+    margin-top: -9px;
+    top: 35px;
+    left: 500px;
+}
+
+.btn-addnote {
+    position: absolute;
+    border-radius: 7px;
+    background-color: #6f62ff;
+    height: 20px;
+    width: 110px;
+    top: 500px;
+    left: 310px;
+}
+
+.btn-addnote:hover {
+    background-color: #7e73ff;
+}
+
+
 /*================================================================= search ====================================================*/
 
 .search-box {
@@ -1009,6 +1089,14 @@ button {
     transition: 0.4s;
     line-height: 40px;
     width: 0px;
+}
+
+
+/*================================================================= PreviewNotePage ====================================================*/
+
+.header-preview-note {
+    text-align: center;
+    font-size: 30px;
 }
 
 @keyframes Bot {
