@@ -3,7 +3,7 @@
 {% block head %}
 	<title>Sign up</title>
     <nav class="navbar navbar-expand-custom navbar-mainbg">
-		<a class="navbar-brand navbar-logo" href="{% url 'home' %}"><div class ="Logoo"></div></a>
+		{% comment %} <a href="{% url 'home' %}"><img src="Logoo.png"></a> {% endcomment %}
 		<button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<i class="fas fa-bars text-white"></i>
 		</button>
@@ -14,19 +14,13 @@
 					<a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home"></i>HOME</a>
 				</li>
 				<li class="nav-item ">
-					<a class="nav-link " href="{% url 'open' %}"><i class="fas fa-th-large"></i>categories</a>
+					<a class="nav-link " href="{% url 'open' %}"><i class="fas fa-th-large"></i>CATEGORIES</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="{% url 'book' %}"><i class="fas fa-book-open"></i></i>notebook</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="javascript:void(0);"><i class="fas fa-question-circle"></i>Q & A</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="javascript:void(0);"><i class="fas fa-history"></i>Timeline</a>
-				</li>
+					<a class="nav-link" href="{% url 'book' %}"><i class="fas fa-book-open"></i></i>NOTEBOOK</a>
+				</li>	
 				<li class="nav-ite active">
-					<a class="nav-link" href="{% url 'loginview' %}"><i class="fas fa-user-alt"></i>Log In / Sign In</a>
+					<a class="nav-link"><i class="fas fa-user-alt"></i>SIGN UP</a>
 				</li>
               
 			</ul>
