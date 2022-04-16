@@ -1393,6 +1393,26 @@ button {
     font-size: 1.2rem;
 }
 
+.mypage-header #pencil {
+    cursor: pointer;
+    position: absolute;
+    color: #d7534c;
+    background-color: #9BD1AC;
+    border-radius: 50%;
+    padding: 10px;
+    top: 290px;
+    left: 275px;
+}
+
+#pencil i {
+    font-size: large;
+    margin: 0;
+}
+
+.mypage-header #pencil:hover {
+    box-shadow: 2px 2px 2px #000000;
+}
+
 .mypage-header #edit-profile,
 .edit-profile #save {
     width: 200px;
