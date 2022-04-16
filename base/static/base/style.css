@@ -1193,12 +1193,10 @@ button {
     /*เอาไว้ใส่รูปหน้าปกโน้ต*/
     cursor: pointer;
     position: absolute;
-    width: 250px;
+    width: 248px;
     height: 265px;
     background-color: white;
     border-radius: 15px;
-    top: 25px;
-    left: 60px;
 }
 
 .mypage-header img {
@@ -1285,7 +1283,7 @@ button {
 .mypage-header .product h4 {
     color: #FFE65B;
     position: absolute;
-    top: 310px;
+    top: 320px;
     left: 70px;
     font-size: 25px;
 }
@@ -1293,14 +1291,14 @@ button {
 .mypage-header .product h5 {
     color: #FFE65B;
     position: absolute;
-    top: 340px;
+    top: 360px;
     left: 70px;
     font-size: 25px;
 }
 
 .mypage-header .eye-product {
     position: absolute;
-    top: 375px;
+    top: 395px;
     left: 70px;
     font-size: 1.2rem;
     cursor: pointer;
@@ -1309,7 +1307,7 @@ button {
 .mypage-header .heart-product {
     cursor: pointer;
     position: absolute;
-    top: 375px;
+    top: 395px;
     left: 160px;
     font-size: 1.2rem;
 }
@@ -1317,7 +1315,7 @@ button {
 .mypage-header .chat-product {
     cursor: pointer;
     position: absolute;
-    top: 375px;
+    top: 395px;
     left: 250px;
     font-size: 1.2rem;
 }
