@@ -12,9 +12,10 @@ import random
 from django.contrib import messages
 from django.core.paginator import Paginator
 from .models import Category, Note
-from account.forms import AccountEditForm
+from django.views.generic import ListView
+from django.shortcuts import render
 
-# Create your views here.
+
 def home(request):
     context = {}
     return render(request,'base/index.html',context)
@@ -129,9 +130,8 @@ def note_edit_view(request,id):
     note = get_object_or_404(Note,pk=id)
     note_owner = note.user
 
-    if not user.is_admin:
-        if user is not note_owner:
-            return redirect(reverse('book'))
+    if request.user.id != note.user.id:
+        return redirect(reverse('profile'))
 
     # Populate the fields
     form = NoteEditForm(instance=note)
@@ -185,13 +185,6 @@ def note_view(request,id):
     }
     # รอ html สำหรับหน้า Note Detail
     return render(request,'base/noteview.html',context)
-
-def mypage(request):
-    notes = Note.objects.filter(user=request.user.id)
-    context = {
-        'notes':notes,
-    }
-    return render(request, 'base/mypage.html',context)
 
 def cateview(request,cate):
     request.session['category'] = cate

@@ -1,8 +1,7 @@
 {% extends 'main.html' %}
-
 {% load static %}
 {% block content %}
-<nav class="navbar navbar-expand-custom navbar-mainbg">
+<nav class="navbar navbar-expand-custom navbar-mainbg" style = "overflow: visible !important;">
     <a class="navbar-brand navbar-logo" href="{% url 'home' %}"><img class ='Logoo'src="{% static 'base/Logoo.png' %}"></a>
     <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <i class="fas fa-bars text-white"></i>
@@ -10,28 +9,37 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
             <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home"></i>HOME</a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="{% url 'open' %}"><i class="fas fa-th-large"></i>categories</a>
+                <a class="nav-link" href="{% url 'open' %}"><i class="fas fa-th-large"></i>CATEGORIES</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'book' %}"><i class="fas fa-book-open"></i></i>notebook</a>
+                <a class="nav-link" href="{% url 'book' %}"><i class="fas fa-book-open"></i></i>NOTEBOOK</a>
             </li>
-            <li class="nav-item">
+            {% comment %} <li class="nav-item">
                 <a class="nav-link" href="javascript:void(0);"><i class="fas fa-question-circle"></i>Q & A</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="javascript:void(0);"><i class="fas fa-history"></i>Timeline</a>
-            </li>
-            <li class="nav-item">
+            </li> {% endcomment %}
+          
+            <li class="nav-item" style ="cursor: pointer;">
                 {% if not request.user.is_authenticated %}
-                <a class="nav-link" href="{% url 'loginview' %}"><i class="fas fa-user-alt"></i>Log In / Sign In</a>
+                <a class="nav-link" href="{% url 'loginview' %}"><i class="fas fa-user-alt"></i>Sign In</a>
                 {% else %}
-                <a class="nav-link" href="{% url 'logoutview' %}"><i class="fas fa-user-alt"></i>{{request.user.username}}</a>
+                <a class="nav-link"><i class="fas fa-user-alt"></i>{{request.user.username}}</a>
+                <ul>
+                    {% comment %} <li class="nav-item" >
+                        <a class="nav-link" href = "{% url 'profile' %}">Profile</a>
+                    </li> {% endcomment %}
+                    <li class="nav-item" >
+                        <a id = "logout-button" href="{% url 'logoutview' %}">Sign Out</a>
+                    </li>
+                </ul> 
                 {% endif %}
-                
+                   
             </li>
         </ul>
     </div>
@@ -42,20 +50,14 @@
         </a>
         </div>
 </nav>
-
 <div class = "mypage-header">
-    <button id = "profile-pic">
-        <img src = {{ request.user.profile_image.url }}>
-    </button>
-    <p>
+    <button id = "profile-pic"><img src = {{ request.user.profile_image.url }}></button>
+    <p style = "margin: 20px; font-size: px;">
         {{ request.user.username }}
     </p>
-<<<<<<< Updated upstream
-=======
     <p style = "margin: 40px; color: black; font-size: 1.3em;">
-        {{ request.user.bio }}
+        {{request.user.info}}
     </p>
->>>>>>> Stashed changes
     <p>
         <div class = "row">
             <b>Likes {{request.user.like_count}}</b>
@@ -63,47 +65,42 @@
             <b>Views {{request.user.view_count}}</b>
         </div>
     </p>
+    <p style = "font-size:1.8em; color: orange; font-weight: bold; letter-spacing: 5px;" > CONTACT </p>
     <div class = "row">
             <button id = "reddot">
-<<<<<<< Updated upstream
                 <i class="fi fi-rr-envelope"></i>
-=======
                 <a href = "{{request.user.email}}"> <img class = "reddot-pic" src={% static 'base/envelope.png' %}></a>
->>>>>>> Stashed changes
             </button>
 
             <button id = "reddot">
-<<<<<<< Updated upstream
                 <i class="fi fi-brands-github"></i>
-=======
-                <a href = "{{request.user.github}}"> <img class = "reddot-pic" src={% static 'base/github.png' %}></a>
->>>>>>> Stashed changes
+                <a href = "{% if request.user.github %}{{ request.user.github }}{% endif %}"> <img class = "reddot-pic" src={% static 'base/github.png' %}></a>
+                <p>GIT HUB</p>    
             </button>
             
             <button id = "reddot">
-<<<<<<< Updated upstream
-                <i class="fi fi-brands-youtube"></i>
-=======
                 <a href = "{{request.user.youtube}}"> <img class = "reddot-pic" src={% static 'base/youtube.png' %}></a>
->>>>>>> Stashed changes
+                <a href = "{% if request.user.youtube %}{{ request.user.youtube }}{% endif %}"> <img class = "reddot-pic" src={% static 'base/youtube.png' %}></a>
+                <p >YOUTUBE</p>    
             </button>
     </div> 
+    <a href="{% url 'editprofile' %}"><button id = "edit-profile" style ="left: 0;"> EDIT PROFILE</button></a> 
     <div class = "line"></div>
-        <div class = "row">
-        <button class ="recent">
+    <div class = "row">
+        <button class ="sort">
             <span><i class="fa-solid fa-clock-rotate-left"></i></span>
                 <span>Recent</span>
         </button>
-        <button class ="view">
+        <button class ="sort">
                 <span><i class="fa-regular fa-eye"></i></span><span>View</span>
             
         </button>
-        <button class ="like">
+        <button class ="sort">
             <span><i class="fa-regular fa-heart"></i></span>
                 <span>Like</span>
         </button>
     </div>
-   
+    <div class = "row">
     <!-- ลูปแต่ละ note จาก book view -->
         {% for n in notes %}
         <div class='col-lg-3 mt-1 mb-3'>
@@ -118,29 +115,19 @@
                 <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
                 <div class = "heart-product"><i class="fa-regular fa-heart"></i></div>
                 <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i></div>
+                <div id = "pencil">
+                    <a href = "{% url 'editnote' id=n.pk %}"><i class="fi fi-rr-edit"></i></a>
+                </div>
+                
             </div>
             
         </div>
         {% endfor %}
-    
-    
-    <!-- <div id = "sort-bar"></div>  -->
-
-    
+    </div>
 </div>
 
 <div class="loader-wrapper">
-    <span class="loader">
-        <span class="loader-inner" >
-        </span>
-
-    </span>
-
-{% if request.user.is_authenticated %}
-<div>
-    <h1>HELLO {{ request.user.username }}</h1>
-</div>
-{% endif %}
 
 </div>
+
 {% endblock %}

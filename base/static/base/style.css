@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Promt');
 @import url('https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css');
 @import url('https://fonts.googleapis.com/css?family=Kanit&subset=thai,latin');
 body {
-    /* font-family: 'Promt', sans-serif; */
     font-family: 'Kanit', sans-serif;
 }
 
@@ -19,7 +17,8 @@ i {
 /*----------bootstrap-navbar-css------------*/
 
 .navbar-logo {
-    padding: 15px;
+    width: 150px;
+    /* padding: 15px; */
     color: #fff;
 }
 
@@ -29,7 +28,7 @@ i {
 }
 
 #navbarSupportedContent {
-    overflow: hidden;
+    overflow: visible;
     position: relative;
 }
 
@@ -53,19 +52,31 @@ i {
     font-size: 15px;
     display: block;
     padding: 20px 20px;
-    transition-duration: 0.6s;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     position: relative;
 }
 
-nav ul li a{
-    color:#EC0033;
-}
-
 #navbarSupportedContent>ul>li.active>a {
     color: #5161ce;
-    background-color: transparent;
-    transition: all 0.7s;
+    background-color: white;
+}
+
+#navbarSupportedContent ul ul {
+    display: none;
+}
+
+#navbarSupportedContent>ul>li:hover>ul {
+    cursor: auto;
+    position: absolute;
+    top: 62.5px;
+    display: block;
+    background-color: #000;
+    color: #E6EEF9;
+}
+
+#logout-button {
+    background-color: #F8574F;
+    width: 300px;
 }
 
 #navbarSupportedContent a:not(:only-child):after {
@@ -79,14 +90,14 @@ nav ul li a{
     padding-right: 3px;
     vertical-align: middle;
     font-weight: 900;
-    transition: 0.5s;
 }
 
 #navbarSupportedContent .active>a:not(:only-child):after {
     transform: rotate(90deg);
 }
 
-.hori-selector {
+
+/* .hori-selector {
     display: inline-block;
     position: absolute;
     height: 100%;
@@ -135,12 +146,12 @@ nav ul li a{
 .hori-selector .left:before {
     bottom: 0;
     left: -25px;
-}
+} */
 
 .Logoo {
     max-width: 1000px;
     width: 150px;
-    height: 150px;
+    height: auto;
     position: absolute;
     top: -55%;
     left: 1px;
@@ -183,6 +194,9 @@ nav ul li a{
     background-size: cover;
 }
 
+
+/* =================book=================== */
+
 .header-book {
     display: flex;
     display: flex;
@@ -195,7 +209,7 @@ nav ul li a{
     background-size: cover;
 }
 
-.header-book p {
+.header-book #MR {
     color: rgb(0, 0, 0);
     position: absolute;
     top: -5px;
@@ -205,9 +219,134 @@ nav ul li a{
     animation: rank 3s ease 0s infinite normal none;
 }
 
+.header-book .box-peo h1 {
+    color: #000000;
+    position: absolute;
+    top: 340px;
+    left: 30px;
+    font-size: 25px;
+}
+
+.header-book .box-peo h2 {
+    color: #000000;
+    position: absolute;
+    top: 300px;
+    left: 30px;
+    font-size: 25px;
+}
+
+.header-book .box-peo h3 {
+    color: #000000;
+    position: absolute;
+    top: 392px;
+    left: 100px;
+    font-size: 25px;
+}
+
+.header-book .box-peo h4 {
+    color: #000000;
+    position: absolute;
+    top: 392px;
+    left: 202px;
+    font-size: 25px;
+}
+
+.header-book .box-peo h5 {
+    color: #000000;
+    position: absolute;
+    top: 330px;
+    left: 30px;
+    font-size: 25px;
+}
+
+.header-book #sort-bar {
+    position: absolute;
+    width: 650px;
+    height: 70px;
+    background-color: white;
+    border-radius: 35px;
+    border: 3px solid #9a97f0;
+    top: 650px;
+    left: -125px;
+    padding: auto;
+}
+
+.header-book #sort-bar .btn-2 {
+    position: absolute;
+    border-radius: 30px;
+    height: 50px;
+    width: 160px;
+    margin: 0;
+    /* top: -73px;
+    left: 350px; */
+}
+
+.header-book #sort-bar .btn-2:focus {
+    color: #185EE0;
+    border-radius: 30px;
+}
+
+.header-book #sort-bar .btn-2 .icon {
+    position: absolute;
+    top: 10px;
+    left: 25px;
+    font-size: 2rem;
+}
+
+.header-book #sort-bar .btn-3 .icon {
+    position: absolute;
+    top: 18px;
+    left: 0;
+    font-size: 2rem;
+}
+
+.header-book #sort-bar .btn-4 .icon {
+    position: absolute;
+    top: 13px;
+    left: 0px;
+    font-size: 2rem;
+}
+
+.header-book #sort-bar h1 {
+    position: absolute;
+    top: 10px;
+    left: 70px;
+    font-size: 2rem;
+}
+
+.header-book #sort-bar .btn-3 {
+    position: absolute;
+    border-radius: 30px;
+    height: 50px;
+    width: 160px;
+    top: -10px;
+    left: 250px;
+    margin: 0;
+}
+
+.header-book #sort-bar .btn-3:focus {
+    color: #185EE0;
+    border-radius: 30px;
+}
+
+.header-book #sort-bar .btn-4 {
+    position: absolute;
+    border-radius: 30px;
+    height: 50px;
+    width: 160px;
+    top: -8px;
+    left: 480px;
+    margin: 0;
+}
+
+.header-book #sort-bar .btn-4:focus {
+    color: #185EE0;
+    border-radius: 30px;
+}
+
 .loader-wrapper {
     width: 100%;
-    height: 107%;
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
@@ -442,38 +581,6 @@ button {
     width: 1000px;
 }
 
-.box-peo h1 {
-    color: rgb(0, 0, 0);
-    position: absolute;
-    top: 310px;
-    left: 90px;
-    font-size: 1.5em;
-}
-
-.box-peo h2 {
-    color: rgb(0, 0, 0);
-    position: absolute;
-    top: 348px;
-    left: 52px;
-    font-size: 1.5em;
-}
-
-.box-peo h3 {
-    color: rgb(0, 0, 0);
-    position: absolute;
-    top: 396px;
-    left: 95px;
-    font-size: 1.2em;
-}
-
-.box-peo h4 {
-    color: rgb(0, 0, 0);
-    position: absolute;
-    top: 396px;
-    left: 197px;
-    font-size: 1.2em;
-}
-
 .col-1 {
     width: 150px;
     height: 450px;
@@ -515,6 +622,14 @@ button {
     border-radius: 15px;
     padding: 150px;
     margin: 10px;
+}
+
+#title-name p {
+    color: #000;
+    position: absolute;
+    top: 320px;
+    left: 70px;
+    font-size: 25px;
 }
 
 .small1 {
@@ -734,43 +849,17 @@ button {
 .box-product h4 {
     color: #FFE65B;
     position: absolute;
-    top: 320px;
+    top: 330px;
     left: 70px;
-    font-size:25px;
+    font-size: 25px;
 }
 
 .box-product h5 {
     color: #FFE65B;
     position: absolute;
-    top: 350px;
+    top: 365px;
     left: 70px;
     font-size: 25px;
-}
-
-.box-product .menu{
-    position: absolute;
-    width: 650px;
-    height: 70px;
-    background-color: white;
-    border-radius: 35px;
-    border: 3px solid #9a97f0;
-    top: -62px;
-    left: 350px;
-}
-
-.btn-2 {
-    position: absolute;
-    border-radius: 30px;
-    height: 50px;
-    width: 160px;
-    top: -73px;
-    left: 350px;
-}
-
-.btn-2:focus {
-    background-color: #E6EEF9;
-    color: #185EE0;
-    border-radius: 30px;
 }
 
 .icon {
@@ -778,36 +867,6 @@ button {
     top: 3px;
     left: 25px;
     font-size: 2rem;
-}
-
-.btn-3 {
-    position: absolute;
-    border-radius: 30px;
-    height: 50px;
-    width: 160px;
-    top: -73px;
-    left: 568px;
-}
-
-.btn-3:focus {
-    background-color: #E6EEF9;
-    color: #185EE0;
-    border-radius: 30px;
-}
-
-.btn-4 {
-    position: absolute;
-    border-radius: 30px;
-    height: 50px;
-    width: 160px;
-    top: -73px;
-    left: 800px;
-}
-
-.btn-4:focus {
-    background-color: #E6EEF9;
-    color: #185EE0;
-    border-radius: 30px;
 }
 
 .product {
@@ -899,27 +958,27 @@ button {
     left: 1070px;
 }
 
-.eye-product {
+.header-book .eye-product {
     position: absolute;
     top: 400px;
-    left: 140px;
+    left: 70px;
     font-size: 1.2rem;
     cursor: pointer;
 }
 
-.heart-product {
+.header-book .heart-product {
     cursor: pointer;
     position: absolute;
     top: 400px;
-    left: 182px;
+    left: 160px;
     font-size: 1.2rem;
 }
 
-.chat-product {
+.header-book .chat-product {
     cursor: pointer;
     position: absolute;
     top: 400px;
-    left: 225px;
+    left: 250px;
     font-size: 1.2rem;
 }
 
@@ -1066,7 +1125,7 @@ button {
 }
 
 .search-box:hover>.search-txt {
-    width: 600px;
+    width: 400px;
     padding: 0 6px;
 }
 
@@ -1102,14 +1161,15 @@ button {
     text-align: center;
     font-size: 30px;
 }
-.box-preview{
+
+.box-preview {
     position: relative;
     left: 50%;
     height: 800px;
     width: 1600px;
     margin-left: -750px;
     margin-top: 15px;
-    border:2px solid red;
+    border: 2px solid red;
 }
 
 .preview {
@@ -1118,10 +1178,8 @@ button {
     border-radius: 15px;
     padding: 130px;
     margin: 10px;
-    float:left;
+    float: left;
     cursor: pointer;
-  
-
 }
 
 .btn-dow {
@@ -1131,28 +1189,30 @@ button {
     width: 190px;
     top: -73px;
     left: 1290px;
-    background-color:#E6EEF9;
-   
+    background-color: #E6EEF9;
 }
+
+
 /*================================================================= Chat Preview ====================================================*/
-.box-preview-chat{
+
+.box-preview-chat {
     position: relative;
-    top:15px;
-    left:50%;
+    top: 15px;
+    left: 50%;
     height: 500px;
     width: 1400px;
     margin-left: -700px;
     margin-top: 15px;
-    border:3px solid red;
-}
-.box-preview-chat h1{
-    position: absolute;
-   font-size: 30px;
-   color: rgb(0, 0, 0);
-   top: 215px;
-   left:630px;
+    border: 3px solid red;
 }
 
+.box-preview-chat h1 {
+    position: absolute;
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    top: 215px;
+    left: 630px;
+}
 
 .line-pre {
     position: absolute;
@@ -1162,28 +1222,32 @@ button {
     width: 1300px;
     background-color: #a7a7a7;
 }
+
 .prechat {
     position: absolute;
-    top:210px;
-    left:580px;
+    top: 210px;
+    left: 580px;
     height: 40px;
     width: 40px;
     background: url(https://scontent.fbkk8-4.fna.fbcdn.net/v/t1.15752-9/277688713_969551000394031_3584638488196745563_n.png?_nc_cat=100&ccb=1-5&_nc_sid=ae9488&_nc_ohc=6j-gD7fxK20AX--hjsD&_nc_ht=scontent.fbkk8-4.fna&oh=03_AVKQHDLo82uc90qvv6CNuWPfphrba3i5AVStBj8vgEflDw&oe=627FBAF4) no-repeat;
     background-size: cover;
 }
+
+
 /* ================================= Drop Down Hover =============================== */
+
 .btn-drop {
     position: absolute;
     border-radius: 30px;
     height: 40px;
-    top:-10px;
+    top: -10px;
     width: 122px;
-    border:2px solid red;
-}
-.dropdown-menu{
-    display:none;
+    border: 2px solid red;
 }
 
+.dropdown-menu {
+    display: none;
+}
 
 
 /* =================================My page=============================== */
@@ -1197,27 +1261,36 @@ button {
     height: 571px;
     top: 97px;
 }
+
 .mypage-header .img-box {
     /*เอาไว้ใส่รูปหน้าปกโน้ต*/
     cursor: pointer;
     position: absolute;
-    width: 250px;
+    width: 248px;
     height: 265px;
     background-color: white;
     border-radius: 15px;
-    top: 35px;
-    left: 60px;
 }
+
 .mypage-header img {
     align-content: center;
     width: 100%;
 }
 
-.mypage-header #profile-pic {
-    background-color: #6E62FF;
+
+/* .mypage-header #profile-pic {
     width: 200px;
     height: 200px;
+    background-color: #6E62FF;
     border-radius: 50%;
+} */
+
+.mypage-header #profile-pic img,
+.edit-profile #container img {
+    position: relative;
+    width: 200px;
+    background-color: #6E62FF;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .mypage-header p {
@@ -1233,9 +1306,37 @@ button {
 }
 
 .mypage-header #reddot {
+    /* display: flex; */
+    position: relative;
     background-color: #F8574F;
-    width: 50px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
+}
+
+.mypage-header #reddot p {
+    position: absolute;
+    color: black;
+    font-size: medium;
+    bottom: -50px;
+    left: 22px;
+    display: none;
+}
+
+.mypage-header #reddot:hover {
+    box-shadow: 5px 5px rgb(120, 19, 19);
+}
+
+.mypage-header #reddot:hover p {
+    display: inline-block;
+}
+
+.mypage-header #reddot .reddot-pic {
+    position: absolute;
+    top: 26px;
+    left: 26px;
+    width: 50px;
+    height: 50px;
 }
 
 .mypage-header .container {
@@ -1245,51 +1346,23 @@ button {
     /*background-color: #b8cfee;*/
 }
 
-.mypage-header .recent {
+.mypage-header .sort {
     border-radius: 30px;
     /*background-color: #b8cfee;*/
 }
 
-.mypage-header .recent:hover {
-    /*background-color: #b8cfee;*/
-    color: #185EE0;
-    border-radius: 30px;
-    border-color: #89CFF0;
-}
-
-.mypage-header .view {
-    border-radius: 30px;
-    /*background-color: #b8cfee;*/
-}
-
-.mypage-header .view:hover {
+.mypage-header .sort:hover {
     /*background-color: #b8cfee;*/
     color: #185EE0;
     border-radius: 30px;
     border-color: #89CFF0;
 }
 
-.mypage-header .like {
-    border-radius: 30px;
-    /*background-color: #b8cfee;*/
-}
-
-.mypage-header .like:hover {
-    /*background-color: #b8cfee;*/
+.mypage-header .sort:focus {
+    background-color: #b8cfee;
     color: #185EE0;
     border-radius: 30px;
     border-color: #89CFF0;
-}
-
-.mypage-header #sort-bar{
-    position: absolute;
-    width: 650px;
-    height: 70px;
-    background-color: transparent;
-    border-radius: 35px;
-    /* border: 3px solid #9a97f0; */
-    top: 50%;
-    left: 50%;
 }
 
 .mypage-header .line {
@@ -1297,13 +1370,156 @@ button {
     /* top: 540px;
     left: -20px; */
     text-align: center;
-    margin-left:50px; 
+    margin-left: 50px;
     margin-right: 50px;
-    margin-top: 10px; margin-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     height: 2.5px;
     width: 1700;
     background-color: #a7a7a7;
 }
+
+.mypage-header .product h4 {
+    color: #FFE65B;
+    position: absolute;
+    top: 320px;
+    left: 70px;
+    font-size: 25px;
+}
+
+.mypage-header .product h5 {
+    color: #FFE65B;
+    position: absolute;
+    top: 360px;
+    left: 70px;
+    font-size: 25px;
+}
+
+.mypage-header .eye-product {
+    position: absolute;
+    top: 395px;
+    left: 70px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.mypage-header .heart-product {
+    cursor: pointer;
+    position: absolute;
+    top: 395px;
+    left: 160px;
+    font-size: 1.2rem;
+}
+
+.mypage-header .chat-product {
+    cursor: pointer;
+    position: absolute;
+    top: 395px;
+    left: 250px;
+    font-size: 1.2rem;
+}
+
+.mypage-header #pencil {
+    cursor: pointer;
+    position: absolute;
+    color: #d7534c;
+    background-color: #9BD1AC;
+    border-radius: 50%;
+    padding: 10px;
+    top: 290px;
+    left: 275px;
+}
+
+#pencil i {
+    font-size: large;
+    margin: 0;
+}
+
+.mypage-header #pencil:hover {
+    box-shadow: 2px 2px 2px #000000;
+}
+
+.mypage-header #edit-profile,
+.edit-profile #save {
+    width: 200px;
+    height: 100px;
+    background-color: #6E62FF;
+    border-radius: 20px;
+    left: 135px;
+    font-size: medium;
+    color: white;
+}
+
+.edit-profile #save:hover {
+    width: 200px;
+    /* height: 100px; */
+    background-color: #4b3bfc;
+    color: wheat;
+    font-size: medium;
+}
+
+.mypage-header #edit-profile a,
+.edit-profile #save a {
+    text-decoration: none;
+    color: wheat;
+    font-size: medium;
+}
+
+.mypage-header #edit-profile:hover {
+    width: 200px;
+    height: 100px;
+    background-color: #6E62FF;
+    box-shadow: 5px 10px #5161ce;
+    border-radius: 10%;
+    color: wheat;
+    font-size: medium;
+}
+
+
+/* =======================EDIT PROFILE====================== */
+
+.edit-profile #container {
+    position: absolute;
+    width: 915px;
+    height: 1000px;
+    left: 480px;
+    top: 100px;
+    background: #444444;
+    border-radius: 30px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-basis: auto;
+}
+
+.edit-profile h1 {
+    position: absolute;
+    width: 187px;
+    height: 54px;
+    left: 530px;
+    top: 130px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    color: white;
+}
+
+.edit-profile form {
+    display: flex;
+    margin: 30px 30px;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 500px;
+    height: 1000px;
+    border-radius: 20%;
+}
+
+.edit-profile form input {
+    border-radius: 10%;
+}
+
 @keyframes Bot {
     0.0% {
         text-shadow: 4px 4px 4px rgb(253, 253, 255);

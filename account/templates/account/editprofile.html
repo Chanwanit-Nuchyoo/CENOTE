@@ -1,4 +1,5 @@
 {% extends 'main.html' %}
+
 {% load static %}
 {% block content %}
 <nav class="navbar navbar-expand-custom navbar-mainbg" style = "overflow: visible !important;">
@@ -18,18 +19,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'book' %}"><i class="fas fa-book-open"></i></i>NOTEBOOK</a>
             </li>
-            {% comment %} <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);"><i class="fas fa-question-circle"></i>Q & A</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);"><i class="fas fa-history"></i>Timeline</a>
-            </li> {% endcomment %}
-          
             <li class="nav-item" style ="cursor: pointer;">
                 {% if not request.user.is_authenticated %}
                 <a class="nav-link" href="{% url 'loginview' %}"><i class="fas fa-user-alt"></i>Sign In</a>
                 {% else %}
-                {% comment %} <a class="nav-link" href="{% url 'logoutview' %}"><i class="fas fa-user-alt"></i>{{request.user.username}}</a> {% endcomment %}
                 <a class="nav-link"><i class="fas fa-user-alt"></i>{{request.user.username}}</a>
                 <ul>
                     <li class="nav-item" >
@@ -51,23 +44,33 @@
         </a>
         </div>
 </nav>
-<div class ="box-addnote">
-    <div class="addnote-col"></div>
-    <div class="addnote">
-        <form enctype="multipart/form-data" method="POST">
+
+<div class="edit-profile">
+    
+    <div id = "container" >
+        <img src = "{% if request.user.profile_image %}{{ request.user.profile_image.url }}{% endif %}" style = "height: 200px;width: auto;">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <medium style="color: rgb(255, 255, 255);">{{formA.as_p}}</medium>
-            <div>
-            <medium style="color: rgb(255, 255, 255);">pdf file (required) : <input name="pdf" type="file" accept=".pdf"></medium>
-            <medium style="color: rgb(255, 255, 255);">Image file for note's cover(not required) : <input name="cover" type="file" accept="image/*"></medium>
-            <medium style="color: rgb(255, 255, 255);">Image file(s) to preview(required) : <input required name="images" type="file" multiple accept="image/*"></medium>
-            </div>
-            <button class ="btn-addnote"><h1>Submit</h1></button>
+                <medium style="color: rgba(255, 255, 255,0.8); font-size: 13px;" >file must not exceed 1 MB <input name="profilePic" type="file" accept="image/*"></medium>
+                <br>
+                <div style="align-content: center;">
+                <div style="color: white;">Name   :   <input name="name" type = "text" value="{% if request.user.name %}{{request.user.name}}{% endif %}"></div>
+                <br>
+                <div style="color: white;">Info</div><textarea name="info" id="" cols="50" rows="10">{% if request.user.info %}{{request.user.info}}{% endif %}</textarea>
+                <br><br>
+                <div style="color: white;">Github :   <input name="github" type = "url" value="{% if request.user.github %}{{request.user.github}}{% endif %}"></div>
+                <br>
+                <div style="color: white;">Email  :   <input type = "email" name="contact_email" value="{% if request.user.contact_email %}{{request.user.contact_email}}{% endif %}"></div>
+                <br>
+                <div style="color: white;">Youtube:   <input type = "url" name="youtube" value="{% if request.user.youtube %}{{request.user.youtube}}{% endif %}"></div>
+                </div>
+                <button id = "save" type="submit">
+                    <a href="">SAVE</a> 
+                </button>
         </form>
-    <div>
-
-
- 
+    </div>
+    <h1>Edit profile</h1>
 </div>
+<div class="loader-wrapper"></div>
 
 {% endblock %}

@@ -17,7 +17,7 @@ class SignUpForm(UserCreationForm):
 class AccountEditForm(forms.ModelForm):
     class Meta:
         model = Account
-        fields = ['username','bio','profile_image','github','email','youtube']
+        fields = ['username','info','profile_image','github','contact_email','youtube']
 
         widgets = {
             'username': forms.TextInput(attrs={
@@ -25,14 +25,14 @@ class AccountEditForm(forms.ModelForm):
                 'placeholder':'Username...',
                 'required':'',
             }),
-            'bio':forms.TextInput(attrs={
+            'info':forms.Textarea(attrs={
                 'type':'text',
                 'placeholder':'Info...',
             }),
 
-            'email':forms.TextInput(attrs={
+            'contact_email':forms.TextInput(attrs={
                 'type':'email',
-                'placeholder':'Email...',
+                'placeholder':'Contact Email...',
             }),
 
             'github':forms.TextInput(attrs={

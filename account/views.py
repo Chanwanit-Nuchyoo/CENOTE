@@ -5,8 +5,10 @@ from django.urls import reverse
 from django.contrib import messages
 from account.models import Account
 from account.backends import CaseInsensitiveModelBackend
+from django.contrib.auth.decorators import login_required
+from base.models import Note
+from django.shortcuts import get_object_or_404
 from account.forms import AccountEditForm
-
 
 def loginview(request):
     context = {}
@@ -60,21 +62,10 @@ def logout_view(request):
     logout(request)
     return redirect('home')
 
+def profile(request):
+    notes = Note.objects.filter(user=request.user.id)
+    context = {
+        'notes':notes,
+    }
+    return render(request, 'account/profile.html',context)
 
-
-# @login_required(login_url='/login/')
-# def edit_view(request):
-#     form = AccountEditForm(instance=request.user)
-
-#     if request.method == 'POST':
-#         form = AccountEditForm(request.POST,request.FILES,instance=request.user)
-#         if form.is_valid():
-#             print(request.FILES)
-#             form.save()
-#             return redirect(reverse('mypage'))
-
-#     context = {
-#         'form':form,
-#     }
-    
-#     return render(request,'account/editprofile.html',context)
