@@ -55,13 +55,13 @@
 <div class="edit-profile">
     
     <div id = "container" style="height: 1000px;">
-        <img src = "{% if request.user.profile_image %}{{ request.user.profile_image.url }}{% endif %}" style = "width: 170px; height: 170px; ">
+        <img src = "{{request.user.profile_image.url}}" style = "width: 170px; height: 170px; ">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
                 <medium style="color: rgba(255, 255, 255,0.8); font-size: 13px;" >file must not exceed 1 MB <input name="profilePic" type="file" accept="image/*"></medium>
                 <br>
                 <div style="align-content: center;">
-                <div style="color: white;">Name   :<input name="name" type = "text" value="{% if request.user.name %}{{request.user.name}}{% endif %}"></div>
+                <div style="color: white;">Name   :<input name="username" type = "text" value="{% if request.user.name %}{{request.user.name}}{% endif %}"></div>
                 <br>
                 <div style="color: white;">Info</div><textarea name="info" id="" cols="50" rows="10">{% if request.user.info %}{{request.user.info}}{% endif %}</textarea>
                 <br><br>
