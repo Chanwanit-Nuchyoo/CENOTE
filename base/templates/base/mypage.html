@@ -50,6 +50,12 @@
     <p>
         {{ request.user.username }}
     </p>
+<<<<<<< Updated upstream
+=======
+    <p style = "margin: 40px; color: black; font-size: 1.3em;">
+        {{ request.user.bio }}
+    </p>
+>>>>>>> Stashed changes
     <p>
         <div class = "row">
             <b>Likes {{request.user.like_count}}</b>
@@ -59,13 +65,27 @@
     </p>
     <div class = "row">
             <button id = "reddot">
+<<<<<<< Updated upstream
                 <i class="fi fi-rr-envelope"></i>
+=======
+                <a href = "{{request.user.email}}"> <img class = "reddot-pic" src={% static 'base/envelope.png' %}></a>
+>>>>>>> Stashed changes
             </button>
+
             <button id = "reddot">
+<<<<<<< Updated upstream
                 <i class="fi fi-brands-github"></i>
+=======
+                <a href = "{{request.user.github}}"> <img class = "reddot-pic" src={% static 'base/github.png' %}></a>
+>>>>>>> Stashed changes
             </button>
+            
             <button id = "reddot">
+<<<<<<< Updated upstream
                 <i class="fi fi-brands-youtube"></i>
+=======
+                <a href = "{{request.user.youtube}}"> <img class = "reddot-pic" src={% static 'base/youtube.png' %}></a>
+>>>>>>> Stashed changes
             </button>
     </div> 
     <div class = "line"></div>

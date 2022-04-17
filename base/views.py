@@ -12,6 +12,7 @@ import random
 from django.contrib import messages
 from django.core.paginator import Paginator
 from .models import Category, Note
+from account.forms import AccountEditForm
 
 # Create your views here.
 def home(request):
@@ -216,3 +217,20 @@ def like1(request,noteid):
     note.save()
     return redirect('book')
 
+
+@login_required(login_url='/login/')
+def edit_profile_view(request):
+    form = AccountEditForm(instance=request.user)
+
+    if request.method == 'POST':
+        form = AccountEditForm(request.POST,request.FILES,instance=request.user)
+        if form.is_valid():
+            print(request.FILES)
+            form.save()
+            return redirect(reverse('mypage'))
+
+    context = {
+        'form':form,
+    }
+    
+    return render(request,'base/editprofile.html',context)

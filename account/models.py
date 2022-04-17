@@ -66,6 +66,8 @@ class Account(AbstractBaseUser):
     profile_image       = models.ImageField(max_length=255,upload_to=get_profile_image_filepath,null=True, blank = True, default=get_default_profile_image)
     hide_email          = models.BooleanField(default=True)
     bio                 = models.TextField(max_length=300,null=True, blank=True,default='-')
+    youtube             = models.URLField(max_length=300,null=True,blank = True)
+    github              = models.URLField(max_length=300,null=True,blank = True)
     like_count          = models.IntegerField(default=0, null=True, blank=True)
     view_count          = models.IntegerField(default=0, null=True, blank=True)
 

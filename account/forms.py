@@ -17,20 +17,36 @@ class SignUpForm(UserCreationForm):
 class AccountEditForm(forms.ModelForm):
     class Meta:
         model = Account
-        fields = ['username','bio','profile_image']
+        fields = ['username','bio','profile_image','github','email','youtube']
 
         widgets = {
             'username': forms.TextInput(attrs={
-                # 'class' : 'form-control mt-5',
-                'style' : 'margin:auto;margin-top:0px;',
-                'id':'usernameInput',
+                'type':'text',
+                'placeholder':'Username...',
+                'required':'',
             }),
             'bio':forms.TextInput(attrs={
-                # 'class':'form-control text-center',
-                'style' : 'margin:auto;margin-top:0px;',
+                'type':'text',
+                'placeholder':'Info...',
+            }),
+
+            'email':forms.TextInput(attrs={
+                'type':'email',
+                'placeholder':'Email...',
+            }),
+
+            'github':forms.TextInput(attrs={
+                'type':'url',
+                'placeholder':'Github...',
+            }),
+            'youtube':forms.TextInput(attrs={
+                'type':'url',
+                'placeholder':'Youtube...',
             }),
 
             'profile_image': forms.FileInput(attrs={
-                'style' : 'margin:auto;margin-top:0px;',
+                'name':'profilePic',
+                'type':'file',
+                'accept':'image/*',
             }),
         }
