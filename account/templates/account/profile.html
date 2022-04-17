@@ -31,9 +31,9 @@
                 {% else %}
                 <a class="nav-link"><i class="fas fa-user-alt"></i>{{request.user.username}}</a>
                 <ul>
-                    <li class="nav-item" >
+                    {% comment %} <li class="nav-item" >
                         <a class="nav-link" href = "{% url 'profile' %}">Profile</a>
-                    </li>
+                    </li> {% endcomment %}
                     <li class="nav-item" >
                         <a id = "logout-button" href="{% url 'logoutview' %}">Sign Out</a>
                     </li>
@@ -51,14 +51,11 @@
         </div>
 </nav>
 <div class = "mypage-header">
-    <button id = "profile-pic">
-        <img src = {{ request.user.profile_image.url }}>
-    </button>
-    <p style = "margin: 20px;">
+    <button id = "profile-pic"><img src = {{ request.user.profile_image.url }}></button>
+    <p style = "margin: 20px; font-size: px;">
         {{ request.user.username }}
     </p>
     <p style = "margin: 40px; color: black; font-size: 1.3em;">
-        This is user info
         {{request.user.info}}
     </p>
     <p>
@@ -68,20 +65,22 @@
             <b>Views {{request.user.view_count}}</b>
         </div>
     </p>
+    <p style = "font-size:1.8em; color: orange; font-weight: bold; letter-spacing: 5px;" > CONTACT </p>
     <div class = "row">
             <button id = "reddot">
                 <a href = "#"> <img class = "reddot-pic" src={% static 'base/envelope.png' %}></a>
+                <p >EMAIL</p>
             </button>
             <button id = "reddot">
                 <a href = "{% if request.user.github %}{{ request.user.github }}{% endif %}"> <img class = "reddot-pic" src={% static 'base/github.png' %}></a>
+                <p>GIT HUB</p>    
             </button>
             <button id = "reddot">
                 <a href = "{% if request.user.youtube %}{{ request.user.youtube }}{% endif %}"> <img class = "reddot-pic" src={% static 'base/youtube.png' %}></a>
+                <p >YOUTUBE</p>    
             </button>
     </div> 
-    <button id = "edit-profile" >
-        <a href="{% url 'editprofile' %}">EDIT PROFILE</a> 
-    </button>
+    <a href="{% url 'editprofile' %}"><button id = "edit-profile" style ="left: 0;"> EDIT PROFILE</button></a> 
     <div class = "line"></div>
     <div class = "row">
         <button class ="sort">
@@ -121,17 +120,10 @@
         </div>
         {% endfor %}
     </div>
-    
-    
-
-    
 </div>
 
 <div class="loader-wrapper">
-    <span class="loader">
-        <span class="loader-inner" >
-        </span>
 
-    </span>
+</div>
 
 {% endblock %}

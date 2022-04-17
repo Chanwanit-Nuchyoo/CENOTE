@@ -130,8 +130,8 @@ def note_edit_view(request,id):
     note = get_object_or_404(Note,pk=id)
     note_owner = note.user
 
-    if user is not note_owner:
-        return redirect(reverse('book'))
+    if request.user.id != note.user.id:
+        return redirect(reverse('profile'))
 
     # Populate the fields
     form = NoteEditForm(instance=note)
