@@ -1,0 +1,126 @@
+{% extends 'main.html' %}
+
+{% load static %}
+{% block content %}
+<nav class="navbar navbar-expand-custom navbar-mainbg">
+    <a class="navbar-brand navbar-logo" href="{% url 'home' %}"><img class ='Logoo'src="{% static 'base/Logoo.png' %}"></a>
+    <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-bars text-white"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home"></i>HOME</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="{% url 'open' %}"><i class="fas fa-th-large"></i>categories</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'book' %}"><i class="fas fa-book-open"></i></i>notebook</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0);"><i class="fas fa-question-circle"></i>Q & A</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0);"><i class="fas fa-history"></i>Timeline</a>
+            </li>
+            <li class="nav-item">
+                {% if not request.user.is_authenticated %}
+                <a class="nav-link" href="{% url 'loginview' %}"><i class="fas fa-user-alt"></i>Log In / Sign In</a>
+                {% else %}
+                <a class="nav-link" href="{% url 'logoutview' %}"><i class="fas fa-user-alt"></i>{{request.user.username}}</a>
+                {% endif %}
+                
+            </li>
+        </ul>
+    </div>
+    <div class ="search-box">
+        <input class="search-txt" type = "text" name="" placeholder="Type to search">
+        <a class ="search-btn" href ="#">
+            <i class="fas fa-search"></i>
+        </a>
+        </div>
+</nav>
+
+<div class = "mypage-header">
+    <button id = "profile-pic">
+        <img src = {{ request.user.profile_image.url }}>
+    </button>
+    <p>
+        {{ request.user.username }}
+    </p>
+    <p>
+        <div class = "row">
+            <b>Likes {{request.user.like_count}}</b>
+            <b style="margin-left: 5px; margin-right: 5px;">|</b>
+            <b>Views {{request.user.view_count}}</b>
+        </div>
+    </p>
+    <div class = "row">
+            <button id = "reddot">
+                <i class="fi fi-rr-envelope"></i>
+            </button>
+            <button id = "reddot">
+                <i class="fi fi-brands-github"></i>
+            </button>
+            <button id = "reddot">
+                <i class="fi fi-brands-youtube"></i>
+            </button>
+    </div> 
+    <div class = "line"></div>
+        <div class = "row">
+        <button class ="recent">
+            <span><i class="fa-solid fa-clock-rotate-left"></i></span>
+                <span>Recent</span>
+        </button>
+        <button class ="view">
+                <span><i class="fa-regular fa-eye"></i></span><span>View</span>
+            
+        </button>
+        <button class ="like">
+            <span><i class="fa-regular fa-heart"></i></span>
+                <span>Like</span>
+        </button>
+    </div>
+   
+    <!-- ลูปแต่ละ note จาก book view -->
+        {% for n in notes %}
+        <div class='col-lg-3 mt-1 mb-3'>
+            <a href="{% url 'note_view' id=n.pk %}"><div class="img-box"><img src="{{n.cover.url}}" width="250" height="270" style="border-radius: 10px;"></div></a>
+            <div class="product">
+                <h4>
+                        {{n.title}}  
+                </h4>
+                <h5>
+                        โดย : {{n.user.username}}
+                </h5>
+                <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
+                <div class = "heart-product"><i class="fa-regular fa-heart"></i></div>
+                <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i></div>
+            </div>
+            
+        </div>
+        {% endfor %}
+    
+    
+    <!-- <div id = "sort-bar"></div>  -->
+
+    
+</div>
+
+<div class="loader-wrapper">
+    <span class="loader">
+        <span class="loader-inner" >
+        </span>
+
+    </span>
+
+{% if request.user.is_authenticated %}
+<div>
+    <h1>HELLO {{ request.user.username }}</h1>
+</div>
+{% endif %}
+
+</div>
+{% endblock %}

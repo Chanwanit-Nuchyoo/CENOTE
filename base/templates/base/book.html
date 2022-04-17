@@ -25,7 +25,12 @@
                 <a class="nav-link" href="javascript:void(0);"><i class="fas fa-history"></i>Timeline</a>
             </li>
             <li class="nav-item">
+                {% if not request.user.is_authenticated %}
                 <a class="nav-link" href="{% url 'loginview' %}"><i class="fas fa-user-alt"></i>Log In / Sign In</a>
+                {% else %}
+                <a class="nav-link" href="{% url 'logoutview' %}"><i class="fas fa-user-alt"></i>{{request.user.username}}</a>
+                {% endif %}
+                
             </li>
         </ul>
     </div>
@@ -51,48 +56,48 @@
             <div class = "cloud3"></div>
             <div class = "cloud4"></div>
             <div class="col-1">
-                <h1>ชื่อ Account</h1> 
-                <a href="{% url 'preview' %}"><div class="img-col1_3"></div></a>
-                <h2>ชื่อสรุปวิชา : ชื่อวิชา</h2> 
+                <h1>{{rank2.user.username}}</h1> 
+                <a href=""><div class="img-col1_3"></div></a>
+                <h2>{{rank2.title}} | {{rank1.category}}</h2> 
                 <div class = "small1"></div>
                 <div class = "small2"></div>
                 <div class = "eye"></div>
                 <div class = "heart">
                     <i class="fa-regular fa-heart"></i>
                 </div>
-                <h3>999</h3> 
-                <h4>1.1k</h4> 
+                <h3>{{rank2.view_count}}</h3> 
+                <h4>{{rank2.likes.count}}</h4> 
                 <div class="rank2"></div>
             </div>
 
             <div class="col-2">
-                <h1>ชื่อ Account</h1> 
-                <a href="{% url 'preview' %}"><div class="img-col1_3"></div></a>
-               <h2>ชื่อสรุปวิชา : ชื่อวิชา</h2> 
+                <h1>{{rank1.user.username}}</h1> 
+                <a href=""><div class="img-col1_3"></div></a>
+               <h2>{{rank1.title}} | {{rank2.category}}</h2> 
                <div class = "small1"></div>
                <div class = "small2"></div>
                <div class = "eye"></div>
                <div class = "heart">
                 <i class="fa-regular fa-heart"></i>
             </div>
-               <h3>999</h3> 
-               <h4>1.1k</h4> 
+                <h3>{{rank1.view_count}}</h3> 
+                <h4>{{rank1.likes.count}}</h4> 
                <div class="rank1"></div>
             </div>
 
             <div class="col-3">
-                <h1>ชื่อ Account</h1> 
+                <h1>{{rank3.user.username}}</h1> 
                 <div class="rank3"></div>
-                <a href="{% url 'preview' %}"><div class="img-col1_3"></div></a>
-                <h2>ชื่อสรุปวิชา : ชื่อวิชา</h2> 
+                <a href=""><div class="img-col1_3"></div></a>
+                <h2>{{rank3.title}} | {{rank2.category}}</h2> 
                 <div class = "small1"></div>
                 <div class = "small2"></div>
                 <div class = "eye"></div>
                 <div class = "heart">
                     <i class="fa-regular fa-heart"></i>
                 </div>
-                <h3>999</h3> 
-                <h4>1.1k</h4> 
+                <h3>{{rank3.view_count}}</h3> 
+                <h4>{{rank3.likes.count}}</h4> 
                 <div class="rank3"></div>
             </div>
         </div>
@@ -101,27 +106,63 @@
             
             <!-- ลูปแต่ละ note จาก book view -->
             <div class="row">
-            {% for n in notes %}
+            
+            
+            {% for n in page.object_list %}
             <div class='col-lg-3 mt-1 mb-3'>
-                <a href="{% url 'preview' %}"><div class="img-box"></div></a>
+                <a href="{% url 'note_view' id=n.pk %}"><div class="img-box"><img src="{{n.cover.url}}" width="250" height="270" style="border-radius: 10px;"></div></a>
                 <div class="product">
                     <h4>
-                            ชื่อสรุป : {{n.title}}  
+                            {{n.title}}  
                     </h4>
                     <h5>
-                            ชื่อผู้เขียน : {{n.user}}
+                            โดย : {{n.user}}
                     </h5>
-                    <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
-                    <div class = "heart-product"><i class="fa-regular fa-heart"></i></div>
-                    <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i></div>
+                    <div class = "eye-product"><a href=""><i class="fa-regular fa-eye"></i></a><small>{{n.view_count}}</small></div>
+                    <div class = "heart-product"><a href="{% url 'like1' noteid=n.id %}"><i class="fa-regular fa-heart"></i></a><small>{{n.likes.all.count}}</small></div>
+                    <div class = "chat-product"><a href=""><i class="fa-regular fa-comment-dots"></i></a></div>
                 </div>
                 
             </div>
             {% endfor %}
             </div>
-
             
-            <div class = "menu"></div>
+            <!-- โชว์เลขจำนวนโน๊ตที่มี-->
+            <h3>Total number of books: {{ count }} , page number : {{page.number}}</h3>
+            
+            <ul class ="pagination">
+                {% if page.has_previous %}
+                <li class="page-item">
+                    <a href="{% url 'book' %}?page={{ page.previous_page_number }}">Previous Page</a>
+                </li>
+                {% endif %}
+                {% for i in note_paginator.page_range %}
+                <h3>{{i}}</h3>
+                    <li class="page-item {% if i == page_num %} active {% endif %}">
+                        <a class="page-link" href="{% url 'book' %}?page={{ i }}">{{i}}</a>
+                    </li>
+                {% endfor %}
+                {% if page.has_next %}
+                <li class="page-item">
+                    <a href="{% url 'book' %}?page={{ page.next_page_number }}">Next Page</a>
+                </li>
+                {% endif %}
+            </ul>
+            
+
+            <!--Page version 1 ไปได้แค่หน้าหลัง -->
+            <!--ปุ่มกดไปpageหน้าหลัง-->
+            <!-- <div class ="page-links">
+                {% if page.has_previous %}
+                    <a href="{% url 'book' %}?page={{ page.previous_page_number}}">Previous Page</a>
+                {% endif %}
+                {% if page.has_next %}
+                    <a href="{% url 'book' %}?page={{ page.next_page_number}}">Next Page</a>
+                {% endif %} -->
+                
+            </div>
+
+            <div class = "menu" id = "sort-bar"></div>
             <button class ="btn-2"><div class = "icon"><i class="fa-solid fa-clock-rotate-left"></i></div><h1>Recent<h1></button>
             <button class ="btn-3"><div class = "icon"><i class="fa-regular fa-eye"></i></div><h2>View<h2></button>
             <button class ="btn-4"><div class = "icon"><i class="fa-regular fa-heart"></i></div><h3>Like<h3></button>

@@ -25,7 +25,12 @@
                 <a class="nav-link" href="javascript:void(0);"><i class="fas fa-history"></i>Timeline</a>
             </li>
             <li class="nav-item">
+                {% if not request.user.is_authenticated %}
                 <a class="nav-link" href="{% url 'loginview' %}"><i class="fas fa-user-alt"></i>Log In / Sign In</a>
+                {% else %}
+                <a class="nav-link" href="{% url 'logoutview' %}"><i class="fas fa-user-alt"></i>{{request.user.username}}</a>
+                {% endif %}
+                
             </li>
         </ul>
     </div>
@@ -38,24 +43,23 @@
 </nav>
 <div class = "header-preview-note">
     this is an undone preview note page
-    {% comment %} ติดตรงนี้ งงว่าดึงข้อมูลจำนวนรูปออกมาจากdatabaseยังไง {% endcomment %}
-    {% for n in notes %}
-    <div class = "title-category">
-        {{n.title}}  : {{n.category}} 
+ <div class = "title-category"> {{note.title}}  : {{note.category}} </div>
+ <div class = "box-preview">
+    <div class="btn-dow">
+        <a href="{{note.pdf_file.url}}" download = 'html' class = "download-button"><i class="fa fa-download"></i><small>Dowload</small></a>
     </div>
-    {% endfor %} 
-    <div class "img-to-preview">
-        <img src="https://engineer.kmitl.ac.th/wp-content/uploads/2020/11/go-300x212.png" alt="KMITL" style="width:20%; cursor: pointer;" >
-        <div class = "row"> 
-    {% comment %} ติดตรงนี้ งงว่าดึงรูปออกมาจากdatabaseยังไง {% endcomment %}
-        {% for n in notes %}
-                HHHellotest
+            {% for i in images %}
+               <div class ="preview" style="padding: 5px 5px; min-width: auto; min-height: auto;"><img src="{{i.image.url}}" width="270" height="300" style="border-radius: 10px;"></div>
             {% endfor %}
-            </div>
-    </div>
-    
-
+         
 </div>
+<div class = "box-preview-chat">
+    <div class ="line-pre"></div>
+    <div class ="prechat"></div>
+    <h1>Comments</h1>
+</div> 
+
+
 <div class="loader-wrapper"></div>
 
 {% endblock %}
