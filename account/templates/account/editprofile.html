@@ -19,13 +19,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'book' %}"><i class="fas fa-book-open"></i></i>NOTEBOOK</a>
             </li>
-            {% comment %} <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);"><i class="fas fa-question-circle"></i>Q & A</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);"><i class="fas fa-history"></i>Timeline</a>
-            </li> {% endcomment %}
-          
             <li class="nav-item" style ="cursor: pointer;">
                 {% if not request.user.is_authenticated %}
                 <a class="nav-link" href="{% url 'loginview' %}"><i class="fas fa-user-alt"></i>Sign In</a>
@@ -54,22 +47,22 @@
 
 <div class="edit-profile">
     
-    <div id = "container" style="height: 1000px;">
-        <img src = "{% if request.user.profile_image %}{{ request.user.profile_image.url }}{% endif %}" style = "width: 170px; height: 170px; ">
+    <div id = "container" >
+        <img src = "{% if request.user.profile_image %}{{ request.user.profile_image.url }}{% endif %}" style = "height: 200px;width: auto;">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
                 <medium style="color: rgba(255, 255, 255,0.8); font-size: 13px;" >file must not exceed 1 MB <input name="profilePic" type="file" accept="image/*"></medium>
                 <br>
                 <div style="align-content: center;">
-                <div style="color: white;">Name   :<input name="name" type = "text" value="{% if request.user.name %}{{request.user.name}}{% endif %}"></div>
+                <div style="color: white;">Name   :   <input name="name" type = "text" value="{% if request.user.name %}{{request.user.name}}{% endif %}"></div>
                 <br>
                 <div style="color: white;">Info</div><textarea name="info" id="" cols="50" rows="10">{% if request.user.info %}{{request.user.info}}{% endif %}</textarea>
                 <br><br>
-                <div style="color: white;">Github :<input name="github" type = "url" value="{% if request.user.github %}{{request.user.github}}{% endif %}"></div>
+                <div style="color: white;">Github :   <input name="github" type = "url" value="{% if request.user.github %}{{request.user.github}}{% endif %}"></div>
                 <br>
-                <div style="color: white;">Email  :<input type = "email" name="contact_email" value="{% if request.user.contact_email %}{{request.user.contact_email}}{% endif %}"></div>
+                <div style="color: white;">Email  :   <input type = "email" name="contact_email" value="{% if request.user.contact_email %}{{request.user.contact_email}}{% endif %}"></div>
                 <br>
-                <div style="color: white;">Youtube:<input type = "url" name="youtube" value="{% if request.user.youtube %}{{request.user.youtube}}{% endif %}"></div>
+                <div style="color: white;">Youtube:   <input type = "url" name="youtube" value="{% if request.user.youtube %}{{request.user.youtube}}{% endif %}"></div>
                 </div>
                 <button id = "save" type="submit">
                     <a href="">SAVE</a> 
@@ -78,11 +71,6 @@
     </div>
     <h1>Edit profile</h1>
 </div>
-<div class="loader-wrapper">
-    <span class="loader">
-        <span class="loader-inner" >
-        </span>
+<div class="loader-wrapper"></div>
 
-    </span>
-</div>
 {% endblock %}
