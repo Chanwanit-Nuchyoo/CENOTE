@@ -72,6 +72,7 @@ def edit_profile_view(request):
         if request.POST.get('info'):
             account.info = request.POST.get('info')
         if request.POST.get('github'):
+            print('Ihatethisproject')
             account.github = request.POST.get('github')
         if request.POST.get('contact_email'):
             account.contact_email = request.POST.get('contact_email')

@@ -65,9 +65,9 @@
                 <br>
                 <div style="color: white;">Info</div><textarea name="info" id="" cols="50" rows="10">{% if request.user.info %}{{request.user.info}}{% endif %}</textarea>
                 <br><br>
-                <div style="color: white;">Github :<input name="github" type = "url" value="{% if request.user.github %}{{request.user.info}}{% endif %}"></div>
+                <div style="color: white;">Github :<input name="github" type = "url" value="{% if request.user.github %}{{request.user.github}}{% endif %}"></div>
                 <br>
-                <div style="color: white;">Email  :<input type = "email" name="contact_email" value="{% if request.user.github %}{{request.user.contact_email}}{% endif %}"></div>
+                <div style="color: white;">Email  :<input type = "email" name="contact_email" value="{% if request.user.contact_email %}{{request.user.contact_email}}{% endif %}"></div>
                 <br>
                 <div style="color: white;">Youtube:<input type = "url" name="youtube" value="{% if request.user.youtube %}{{request.user.youtube}}{% endif %}"></div>
                 </div>

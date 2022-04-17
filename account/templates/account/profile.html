@@ -70,13 +70,13 @@
     </p>
     <div class = "row">
             <button id = "reddot">
-                <a href = "{{request.user.contact_email}}"> <img class = "reddot-pic" src={% static 'base/envelope.png' %}></a>
+                <a href = "#"> <img class = "reddot-pic" src={% static 'base/envelope.png' %}></a>
             </button>
             <button id = "reddot">
-                <a href = ""> <img class = "reddot-pic" src={% static 'base/github.png' %}></a>
+                <a href = "{% if request.user.github %}{{ request.user.github }}{% endif %}"> <img class = "reddot-pic" src={% static 'base/github.png' %}></a>
             </button>
             <button id = "reddot">
-                <a href = ""> <img class = "reddot-pic" src={% static 'base/youtube.png' %}></a>
+                <a href = "{% if request.user.youtube %}{{ request.user.youtube }}{% endif %}"> <img class = "reddot-pic" src={% static 'base/youtube.png' %}></a>
             </button>
     </div> 
     <button id = "edit-profile" >
