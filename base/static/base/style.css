@@ -346,7 +346,7 @@ i {
 
 .loader-wrapper {
     width: 100%;
-    height: 107%;
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
@@ -1277,11 +1277,20 @@ button {
     width: 100%;
 }
 
-.mypage-header #profile-pic {
-    background-color: #6E62FF;
+
+/* .mypage-header #profile-pic {
     width: 200px;
     height: 200px;
+    background-color: #6E62FF;
     border-radius: 50%;
+} */
+
+.mypage-header #profile-pic img,
+.edit-profile #container img {
+    position: relative;
+    width: 200px;
+    background-color: #6E62FF;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .mypage-header p {
@@ -1303,6 +1312,23 @@ button {
     width: 100px;
     height: 100px;
     border-radius: 50%;
+}
+
+.mypage-header #reddot p {
+    position: absolute;
+    color: black;
+    font-size: medium;
+    bottom: -50px;
+    left: 22px;
+    display: none;
+}
+
+.mypage-header #reddot:hover {
+    box-shadow: 5px 5px rgb(120, 19, 19);
+}
+
+.mypage-header #reddot:hover p {
+    display: inline-block;
 }
 
 .mypage-header #reddot .reddot-pic {
@@ -1418,7 +1444,10 @@ button {
     width: 200px;
     height: 100px;
     background-color: #6E62FF;
-    border-radius: 10%;
+    border-radius: 20px;
+    left: 135px;
+    font-size: medium;
+    color: white;
 }
 
 .edit-profile #save:hover {
@@ -1452,9 +1481,9 @@ button {
 .edit-profile #container {
     position: absolute;
     width: 915px;
-    height: 815px;
-    left: 262px;
-    top: 144px;
+    height: 1000px;
+    left: 480px;
+    top: 100px;
     background: #444444;
     border-radius: 30px;
     padding: 20px;
@@ -1465,20 +1494,12 @@ button {
     flex-basis: auto;
 }
 
-.edit-profile #container img {
-    background-color: #6E62FF;
-    box-shadow: 5px 5px #15258f;
-    border-radius: 50%;
-    margin-top: 70px;
-    margin-bottom: 50px;
-}
-
 .edit-profile h1 {
     position: absolute;
     width: 187px;
     height: 54px;
-    left: 314px;
-    top: 187px;
+    left: 530px;
+    top: 130px;
     font-style: normal;
     font-weight: 500;
     font-size: 36px;
