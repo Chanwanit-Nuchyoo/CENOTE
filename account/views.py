@@ -78,6 +78,7 @@ def edit_profile_view(request):
         if request.POST.get('youtube'):
             account.youtube = request.POST.get('youtube')
         account.save()
+        return redirect('profile')
     
     context = {
     }

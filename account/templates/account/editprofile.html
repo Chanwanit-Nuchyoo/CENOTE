@@ -67,7 +67,7 @@
                 <br><br>
                 <div style="color: white;">Github :<input name="github" type = "url" value="{% if request.user.github %}{{request.user.info}}{% endif %}"></div>
                 <br>
-                <div style="color: white;">Email  :<input type = "url" name="contact_email" value="{% if request.user.github %}{{request.user.contact_email}}{% endif %}"></div>
+                <div style="color: white;">Email  :<input type = "email" name="contact_email" value="{% if request.user.github %}{{request.user.contact_email}}{% endif %}"></div>
                 <br>
                 <div style="color: white;">Youtube:<input type = "url" name="youtube" value="{% if request.user.youtube %}{{request.user.youtube}}{% endif %}"></div>
                 </div>
