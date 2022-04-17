@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+{% comment %} <div class="mx-auto mw-100" style="margin:auto;max-width:300px"><h1>EDIT PROFILE</h1></div> {% endcomment %}
+<div class="text-center h1">EDIT PROFILE</div>
+
+<form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+<div class="text-center" style="">
+    <p style="" type="label" for="usernameInput">Username</p>
+    {{form.username}}
+</div>
+
+<div class="text-center" style="">
+    <p style="margin-bottom:0px;" type="label" for="usernameInput">Bio</p>
+    {{form.bio}}
+</div>
+
+<div class="text-center" style="">
+{{form.profile_image}}
+</div>
+
+<button class="btn btn-success" type="submit">Done</button>
+<button class="btn btn-dark" href="{%url 'mypage' %}">Cancel</button>
+
+{% endblock content %}

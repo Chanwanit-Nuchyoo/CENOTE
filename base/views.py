@@ -192,19 +192,6 @@ def mypage(request):
     }
     return render(request, 'base/mypage.html',context)
 
-'''
-def edit_profile_view(request):
-    user = request.user
-    form = EditProfileForm(instance=user) 
-    if request.method == 'POST':
-        pass
- 
-
-    context = {
-    }
-    return render('base/editprofile.html',context)
-''' 
-
 def cateview(request,cate):
     request.session['category'] = cate
     return redirect('book')

@@ -20,6 +20,8 @@ class EditProfileForm(forms.ModelForm):
         exclude = []
 '''
 
+        
+
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
