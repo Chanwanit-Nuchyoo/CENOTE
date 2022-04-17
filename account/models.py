@@ -6,6 +6,7 @@ from unittest.util import _MAX_LENGTH
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.forms import BooleanField, CharField
+from django.urls import reverse
 
 # create a new user
 # create a superuser
@@ -78,6 +79,9 @@ class Account(AbstractBaseUser):
     
     def __str__(self):
         return self.username
+
+    # def get_absolute_url(self):
+    #     return reverse("profile", kwargs={"pk": self.pk})
 
     def get_profile_image_filename(self):
         return str(self.profile_image)[str(self.profile_image).index('profile_images/(self.pk)/'):]

@@ -13,6 +13,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 from .models import Category, Note
 
+# Create your views here.
 def home(request):
     context = {}
     return render(request,'base/index.html',context)
@@ -190,15 +191,6 @@ def mypage(request):
         'notes':notes,
     }
     return render(request, 'base/mypage.html',context)
-
-def edit_profile_view(request):
-    # user = request.user
-    # form = EditProfileForm(instance=user) 
-    # if request.method == 'POST':
-    #     pass
-    context = {
-    }
-    return render(request,'base/editprofile.html',context)
 
 def cateview(request,cate):
     request.session['category'] = cate

@@ -5,7 +5,8 @@ from django.urls import reverse
 from django.contrib import messages
 from account.models import Account
 from account.backends import CaseInsensitiveModelBackend
-
+from account.forms import AccountEditForm
+from django.contrib.auth.decorators import login_required
 
 
 def loginview(request):
@@ -59,3 +60,22 @@ def signupview(request):
 def logout_view(request):
     logout(request)
     return redirect('home')
+
+
+
+@login_required(login_url='/login/')
+def edit_view(request):
+    form = AccountEditForm(instance=request.user)
+
+    if request.method == 'POST':
+        form = AccountEditForm(request.POST,request.FILES,instance=request.user)
+        if form.is_valid():
+            print(request.FILES)
+            form.save()
+            return redirect(reverse('mypage'))
+
+    context = {
+        'form':form,
+    }
+    
+    return render(request,'account/editprofile.html',context)
