@@ -12,8 +12,10 @@ import random
 from django.contrib import messages
 from django.core.paginator import Paginator
 from .models import Category, Note
+from django.views.generic import ListView
+from django.shortcuts import render
 
-# Create your views here.
+
 def home(request):
     context = {}
     return render(request,'base/index.html',context)
@@ -184,13 +186,6 @@ def note_view(request,id):
     }
     # รอ html สำหรับหน้า Note Detail
     return render(request,'base/noteview.html',context)
-
-def mypage(request):
-    notes = Note.objects.filter(user=request.user.id)
-    context = {
-        'notes':notes,
-    }
-    return render(request, 'base/mypage.html',context)
 
 def cateview(request,cate):
     request.session['category'] = cate

@@ -6,7 +6,6 @@ from unittest.util import _MAX_LENGTH
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.forms import BooleanField, CharField
-from django.urls import reverse
 
 # create a new user
 # create a superuser
@@ -48,10 +47,6 @@ def get_default_profile_image():
 
 class Account(AbstractBaseUser):
 
-    # username(unique=True)
-    # profile_image = ImageField(FileInput())
-    # email = EmailField(EmailInput())
-    # bio = TextField(Textarea)
 
     ############# Require Fields from AbstractBaseUser ##################################
     email               = models.EmailField(verbose_name='email', max_length=60, unique=True)
@@ -62,12 +57,16 @@ class Account(AbstractBaseUser):
     is_active           = models.BooleanField(default=False)
     is_staff            = models.BooleanField(default=False)
     is_superuser        = models.BooleanField(default=False)
-    ######################################################################################
+    ############# Profile Info ##########################################################
     profile_image       = models.ImageField(max_length=255,upload_to=get_profile_image_filepath,null=True, blank = True, default=get_default_profile_image)
     hide_email          = models.BooleanField(default=True)
-    bio                 = models.TextField(max_length=300,null=True, blank=True,default='-')
     like_count          = models.IntegerField(default=0, null=True, blank=True)
     view_count          = models.IntegerField(default=0, null=True, blank=True)
+    name                = models.CharField(max_length=50,null=True,blank=True)
+    info                = models.TextField(max_length=300,null=True, blank=True,default='-')
+    github              = models.CharField(max_length=50,null=True,blank=True)
+    contact_email       = models.CharField(max_length=50,null=True,blank=True)
+    youtube             = models.CharField(max_length=60,null=True,blank=True)
 
     objects = MyAccountManager()
 
@@ -79,9 +78,6 @@ class Account(AbstractBaseUser):
     
     def __str__(self):
         return self.username
-
-    # def get_absolute_url(self):
-    #     return reverse("profile", kwargs={"pk": self.pk})
 
     def get_profile_image_filename(self):
         return str(self.profile_image)[str(self.profile_image).index('profile_images/(self.pk)/'):]

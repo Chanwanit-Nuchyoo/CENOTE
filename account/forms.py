@@ -14,23 +14,3 @@ class SignUpForm(UserCreationForm):
         fields = ['email','username','password1', 'password2']
         exclude = []
 
-class AccountEditForm(forms.ModelForm):
-    class Meta:
-        model = Account
-        fields = ['username','bio','profile_image']
-
-        widgets = {
-            'username': forms.TextInput(attrs={
-                # 'class' : 'form-control mt-5',
-                'style' : 'margin:auto;margin-top:0px;',
-                'id':'usernameInput',
-            }),
-            'bio':forms.TextInput(attrs={
-                # 'class':'form-control text-center',
-                'style' : 'margin:auto;margin-top:0px;',
-            }),
-
-            'profile_image': forms.FileInput(attrs={
-                'style' : 'margin:auto;margin-top:0px;',
-            }),
-        }

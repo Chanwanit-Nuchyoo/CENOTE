@@ -1,5 +1,4 @@
 {% extends 'main.html' %}
-
 {% load static %}
 {% block content %}
 <nav class="navbar navbar-expand-custom navbar-mainbg" style = "overflow: visible !important;">
@@ -26,16 +25,15 @@
                 <a class="nav-link" href="javascript:void(0);"><i class="fas fa-history"></i>Timeline</a>
             </li> {% endcomment %}
           
-            <li class="nav-item active" style ="cursor: pointer;">
+            <li class="nav-item" style ="cursor: pointer;">
                 {% if not request.user.is_authenticated %}
                 <a class="nav-link" href="{% url 'loginview' %}"><i class="fas fa-user-alt"></i>Sign In</a>
                 {% else %}
-                {% comment %} <a class="nav-link" href="{% url 'logoutview' %}"><i class="fas fa-user-alt"></i>{{request.user.username}}</a> {% endcomment %}
                 <a class="nav-link"><i class="fas fa-user-alt"></i>{{request.user.username}}</a>
                 <ul>
-                    {% comment %} <li class="nav-item" >
-                        <a class="nav-link" href = "{% url 'home' %}">Home</a>
-                    </li> {% endcomment %}
+                    <li class="nav-item" >
+                        <a class="nav-link" href = "{% url 'profile' %}">Profile</a>
+                    </li>
                     <li class="nav-item" >
                         <a id = "logout-button" href="{% url 'logoutview' %}">Sign Out</a>
                     </li>
@@ -61,7 +59,7 @@
     </p>
     <p style = "margin: 40px; color: black; font-size: 1.3em;">
         This is user info
-        {% comment %} ดึงให้หน่อย {% endcomment %}
+        {{request.user.info}}
     </p>
     <p>
         <div class = "row">
@@ -72,7 +70,7 @@
     </p>
     <div class = "row">
             <button id = "reddot">
-                <a href = ""> <img class = "reddot-pic" src={% static 'base/envelope.png' %}></a>
+                <a href = "{{request.user.contact_email}}"> <img class = "reddot-pic" src={% static 'base/envelope.png' %}></a>
             </button>
             <button id = "reddot">
                 <a href = ""> <img class = "reddot-pic" src={% static 'base/github.png' %}></a>
@@ -114,11 +112,8 @@
                 <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
                 <div class = "heart-product"><i class="fa-regular fa-heart"></i></div>
                 <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i></div>
-                <div id = "pencil"> <i class="fi fi-rr-edit"></i>
-                {% comment %} ลิงก์ให้หน่อย 
-                    <a href = "{% url 'editnote' %}"></a>{% endcomment %}
-                    <a href = "#"></a>
-
+                <div id = "pencil">
+                    <a href = "{% url 'editnote' id=n.pk %}"><i class="fi fi-rr-edit"></i></a>
                 </div>
                 
             </div>

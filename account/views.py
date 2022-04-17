@@ -5,9 +5,9 @@ from django.urls import reverse
 from django.contrib import messages
 from account.models import Account
 from account.backends import CaseInsensitiveModelBackend
-from account.forms import AccountEditForm
 from django.contrib.auth.decorators import login_required
-
+from base.models import Note
+from django.shortcuts import get_object_or_404
 
 def loginview(request):
     context = {}
@@ -61,21 +61,32 @@ def logout_view(request):
     logout(request)
     return redirect('home')
 
-
-
-@login_required(login_url='/login/')
-def edit_view(request):
-    form = AccountEditForm(instance=request.user)
-
+def edit_profile_view(request):
+    account = get_object_or_404(Account,id=request.user.id)
     if request.method == 'POST':
-        form = AccountEditForm(request.POST,request.FILES,instance=request.user)
-        if form.is_valid():
-            print(request.FILES)
-            form.save()
-            return redirect(reverse('mypage'))
-
-    context = {
-        'form':form,
-    }
+        print(request.FILES)
+        if request.FILES:
+            account.profile_image = request.FILES.get('profilePic')
+        if request.POST.get('name'):
+            account.name = request.POST.get('name')
+        if request.POST.get('info'):
+            account.info = request.POST.get('info')
+        if request.POST.get('github'):
+            account.github = request.POST.get('github')
+        if request.POST.get('contact_email'):
+            account.contact_email = request.POST.get('contact_email')
+        if request.POST.get('youtube'):
+            account.youtube = request.POST.get('youtube')
+        account.save()
     
+    context = {
+    }
     return render(request,'account/editprofile.html',context)
+
+def profile(request):
+    notes = Note.objects.filter(user=request.user.id)
+    context = {
+        'notes':notes,
+    }
+    return render(request, 'account/profile.html',context)
+

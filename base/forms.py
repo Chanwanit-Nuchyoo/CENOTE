@@ -11,16 +11,6 @@ class NoteEditForm(forms.ModelForm):
     class Meta:
         model = Note
         fields = ['title','info','price','category','pdf_file']
-'''
-class EditProfileForm(forms.ModelForm):
-    
-    class Meta:
-        model = Account
-        fields = []
-        exclude = []
-'''
-
-        
 
 class CommentForm(forms.ModelForm):
     class Meta:
