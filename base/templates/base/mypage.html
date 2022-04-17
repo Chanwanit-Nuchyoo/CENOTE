@@ -2,7 +2,7 @@
 
 {% load static %}
 {% block content %}
-<nav class="navbar navbar-expand-custom navbar-mainbg">
+<nav class="navbar navbar-expand-custom navbar-mainbg" style = "overflow: visible !important;">
     <a class="navbar-brand navbar-logo" href="{% url 'home' %}"><img class ='Logoo'src="{% static 'base/Logoo.png' %}"></a>
     <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <i class="fas fa-bars text-white"></i>
@@ -10,28 +10,38 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
             <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home"></i>HOME</a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="{% url 'open' %}"><i class="fas fa-th-large"></i>categories</a>
+                <a class="nav-link" href="{% url 'open' %}"><i class="fas fa-th-large"></i>CATEGORIES</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'book' %}"><i class="fas fa-book-open"></i></i>notebook</a>
+                <a class="nav-link" href="{% url 'book' %}"><i class="fas fa-book-open"></i></i>NOTEBOOK</a>
             </li>
-            <li class="nav-item">
+            {% comment %} <li class="nav-item">
                 <a class="nav-link" href="javascript:void(0);"><i class="fas fa-question-circle"></i>Q & A</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="javascript:void(0);"><i class="fas fa-history"></i>Timeline</a>
-            </li>
-            <li class="nav-item">
+            </li> {% endcomment %}
+          
+            <li class="nav-item active" style ="cursor: pointer;">
                 {% if not request.user.is_authenticated %}
-                <a class="nav-link" href="{% url 'loginview' %}"><i class="fas fa-user-alt"></i>Log In / Sign In</a>
+                <a class="nav-link" href="{% url 'loginview' %}"><i class="fas fa-user-alt"></i>Sign In</a>
                 {% else %}
-                <a class="nav-link" href="{% url 'logoutview' %}"><i class="fas fa-user-alt"></i>{{request.user.username}}</a>
+                {% comment %} <a class="nav-link" href="{% url 'logoutview' %}"><i class="fas fa-user-alt"></i>{{request.user.username}}</a> {% endcomment %}
+                <a class="nav-link"><i class="fas fa-user-alt"></i>{{request.user.username}}</a>
+                <ul>
+                    {% comment %} <li class="nav-item" >
+                        <a class="nav-link" href = "{% url 'home' %}">Home</a>
+                    </li> {% endcomment %}
+                    <li class="nav-item" >
+                        <a id = "logout-button" href="{% url 'logoutview' %}">Sign Out</a>
+                    </li>
+                </ul> 
                 {% endif %}
-                
+                   
             </li>
         </ul>
     </div>
@@ -42,7 +52,6 @@
         </a>
         </div>
 </nav>
-
 <div class = "mypage-header">
     <button id = "profile-pic">
         <img src = {{ request.user.profile_image.url }}>
@@ -105,6 +114,12 @@
                 <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
                 <div class = "heart-product"><i class="fa-regular fa-heart"></i></div>
                 <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i></div>
+                <div id = "pencil"> <i class="fi fi-rr-edit"></i>
+                {% comment %} ลิงก์ให้หน่อย 
+                    <a href = "{% url 'editnote' %}"></a>{% endcomment %}
+                    <a href = "#"></a>
+
+                </div>
                 
             </div>
             
@@ -123,11 +138,5 @@
         </span>
 
     </span>
-
-{% if request.user.is_authenticated %}
-<div>
-    <h1>HELLO {{ request.user.username }}</h1>
-</div>
-{% endif %}
 
 {% endblock %}

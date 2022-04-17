@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Promt');
 @import url('https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css');
 @import url('https://fonts.googleapis.com/css?family=Kanit&subset=thai,latin');
 body {
-    /* font-family: 'Promt', sans-serif; */
     font-family: 'Kanit', sans-serif;
 }
 
@@ -19,7 +17,8 @@ i {
 /*----------bootstrap-navbar-css------------*/
 
 .navbar-logo {
-    padding: 15px;
+    width: 150px;
+    /* padding: 15px; */
     color: #fff;
 }
 
@@ -29,7 +28,7 @@ i {
 }
 
 #navbarSupportedContent {
-    overflow: hidden;
+    overflow: visible;
     position: relative;
 }
 
@@ -53,19 +52,31 @@ i {
     font-size: 15px;
     display: block;
     padding: 20px 20px;
-    transition-duration: 0.6s;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     position: relative;
 }
 
-nav ul li a {
-    color: #EC0033;
-}
-
 #navbarSupportedContent>ul>li.active>a {
     color: #5161ce;
-    background-color: transparent;
-    transition: all 0.7s;
+    background-color: white;
+}
+
+#navbarSupportedContent ul ul {
+    display: none;
+}
+
+#navbarSupportedContent>ul>li:hover>ul {
+    cursor: auto;
+    position: absolute;
+    top: 62.5px;
+    display: block;
+    background-color: #000;
+    color: #E6EEF9;
+}
+
+#logout-button {
+    background-color: #F8574F;
+    width: 300px;
 }
 
 #navbarSupportedContent a:not(:only-child):after {
@@ -79,14 +90,14 @@ nav ul li a {
     padding-right: 3px;
     vertical-align: middle;
     font-weight: 900;
-    transition: 0.5s;
 }
 
 #navbarSupportedContent .active>a:not(:only-child):after {
     transform: rotate(90deg);
 }
 
-.hori-selector {
+
+/* .hori-selector {
     display: inline-block;
     position: absolute;
     height: 100%;
@@ -135,12 +146,12 @@ nav ul li a {
 .hori-selector .left:before {
     bottom: 0;
     left: -25px;
-}
+} */
 
 .Logoo {
     max-width: 1000px;
     width: 150px;
-    height: 150px;
+    height: auto;
     position: absolute;
     top: -55%;
     left: 1px;
@@ -208,6 +219,46 @@ nav ul li a {
     animation: rank 3s ease 0s infinite normal none;
 }
 
+.header-book .box-peo h1 {
+    color: #000000;
+    position: absolute;
+    top: 340px;
+    left: 30px;
+    font-size: 25px;
+}
+
+.header-book .box-peo h2 {
+    color: #000000;
+    position: absolute;
+    top: 300px;
+    left: 30px;
+    font-size: 25px;
+}
+
+.header-book .box-peo h3 {
+    color: #000000;
+    position: absolute;
+    top: 392px;
+    left: 100px;
+    font-size: 25px;
+}
+
+.header-book .box-peo h4 {
+    color: #000000;
+    position: absolute;
+    top: 392px;
+    left: 202px;
+    font-size: 25px;
+}
+
+.header-book .box-peo h5 {
+    color: #000000;
+    position: absolute;
+    top: 330px;
+    left: 30px;
+    font-size: 25px;
+}
+
 .header-book #sort-bar {
     position: absolute;
     width: 650px;
@@ -215,8 +266,9 @@ nav ul li a {
     background-color: white;
     border-radius: 35px;
     border: 3px solid #9a97f0;
-    top: 500px;
-    left: 350px;
+    top: 650px;
+    left: -125px;
+    padding: auto;
 }
 
 .header-book #sort-bar .btn-2 {
@@ -224,20 +276,41 @@ nav ul li a {
     border-radius: 30px;
     height: 50px;
     width: 160px;
+    margin: 0;
     /* top: -73px;
     left: 350px; */
 }
 
 .header-book #sort-bar .btn-2:focus {
-    background-color: #E6EEF9;
     color: #185EE0;
     border-radius: 30px;
 }
 
-.header-book #sort-bar .icon {
+.header-book #sort-bar .btn-2 .icon {
     position: absolute;
-    top: 3px;
+    top: 10px;
     left: 25px;
+    font-size: 2rem;
+}
+
+.header-book #sort-bar .btn-3 .icon {
+    position: absolute;
+    top: 18px;
+    left: 0;
+    font-size: 2rem;
+}
+
+.header-book #sort-bar .btn-4 .icon {
+    position: absolute;
+    top: 13px;
+    left: 0px;
+    font-size: 2rem;
+}
+
+.header-book #sort-bar h1 {
+    position: absolute;
+    top: 10px;
+    left: 70px;
     font-size: 2rem;
 }
 
@@ -246,12 +319,12 @@ nav ul li a {
     border-radius: 30px;
     height: 50px;
     width: 160px;
-    top: -73px;
-    left: 568px;
+    top: -10px;
+    left: 250px;
+    margin: 0;
 }
 
 .header-book #sort-bar .btn-3:focus {
-    background-color: #E6EEF9;
     color: #185EE0;
     border-radius: 30px;
 }
@@ -261,12 +334,12 @@ nav ul li a {
     border-radius: 30px;
     height: 50px;
     width: 160px;
-    top: -73px;
-    left: 800px;
+    top: -8px;
+    left: 480px;
+    margin: 0;
 }
 
 .header-book #sort-bar .btn-4:focus {
-    background-color: #E6EEF9;
     color: #185EE0;
     border-radius: 30px;
 }
@@ -1052,7 +1125,7 @@ button {
 }
 
 .search-box:hover>.search-txt {
-    width: 600px;
+    width: 400px;
     padding: 0 6px;
 }
 
@@ -1318,6 +1391,26 @@ button {
     top: 395px;
     left: 250px;
     font-size: 1.2rem;
+}
+
+.mypage-header #pencil {
+    cursor: pointer;
+    position: absolute;
+    color: #d7534c;
+    background-color: #9BD1AC;
+    border-radius: 50%;
+    padding: 10px;
+    top: 290px;
+    left: 275px;
+}
+
+#pencil i {
+    font-size: large;
+    margin: 0;
+}
+
+.mypage-header #pencil:hover {
+    box-shadow: 2px 2px 2px #000000;
 }
 
 .mypage-header #edit-profile,
