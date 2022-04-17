@@ -66,8 +66,8 @@
             <div class = "cloud3"></div>
             <div class = "cloud4"></div>
             <div class="col-1">
+                <a href="{% url 'note_view' id=rank2.id %}"><div class="img-box"><img src="{{rank2.cover.url}}" width="250" height="270" style="border-radius: 10px;"></div></a>
                 <h2>{{rank2.title}}</h2>
-                {% comment %} <a href="{% url 'note_view' id=n.pk %}"><div class="img-box"><img src="{{n.cover.url}}" width="250" height="270" style="border-radius: 10px;"></div></a> {% endcomment %}
                 <h1>by {{rank2.user.username}}</h1> 
                 <div class = "small1"></div>
                 <div class = "small2"></div>
@@ -81,6 +81,7 @@
             </div>
 
             <div class="col-2">
+                <a href="{% url 'note_view' id=rank1.id %}"><div class="img-box"><img src="{{rank1.cover.url}}" width="250" height="270" style="border-radius: 10px;"></div></a>
                 <h2>{{rank1.title}}</h2> 
                 <h1>by {{rank1.user.username}}</h1> 
                 <div class = "small1"></div>
@@ -95,6 +96,7 @@
             </div>
 
             <div class="col-3">
+                <a href="{% url 'note_view' id=rank3.id %}"><div class="img-box"><img src="{{rank3.cover.url}}" width="250" height="270" style="border-radius: 10px;"></div></a>
                 <div id = "title-name">
                     <h2>{{rank3.title}}</h2>
                     <h1>by {{rank3.user.username}}</h1>
