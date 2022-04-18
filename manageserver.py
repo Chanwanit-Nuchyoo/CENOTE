@@ -127,14 +127,29 @@ def exec_command(command=''):
         print('process id :',proc.pid)
         return
 
+    if command.split()[0] in ['startapp','app']:
+        try:
+            appname = command.split()[1]
+        except IndexError:
+            print(f"{command.split()[0]} need 1 argument [appname]")
+            return
+        proc = subprocess.Popen(f'python manage.py startapp {appname}',shell=True)
+        print('process id :',proc.pid)
+        return
+
+
     if command in ['stop',]:
         for proc in subproc:
             print(f'killing {proc.pid}')
             proc.kill()
         return
 
-    if command in ['vs code','code','code .','opencode']:
-        exec_command('.code .')
+    if command.split()[0] in ['vs code','code','code .','opencode']:
+        try:
+            path=command.split()[1]
+        except IndexError:
+            path='.'
+        exec_command(f'.code {path}')
         return
 
     if command.split()[0] in ['web','webbrowser','openweb',]:
