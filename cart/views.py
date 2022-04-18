@@ -38,4 +38,4 @@ def clear_item_in_cart_view(request):
     if user.cart.items:
         user.cart.items.all().delete()
 
-    return redirect(reverse('cart_view'))
+    return redirect(reverse('cart:cart_view'))
