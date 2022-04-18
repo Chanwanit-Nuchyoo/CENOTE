@@ -23,6 +23,10 @@ class MyAccountManager(BaseUserManager):
         )
         user.set_password(password)
         user.save(using=self._db)
+
+        from cart.models import Cart        
+        Cart.objects.create(account=user)
+
         return user
 
     def create_superuser(self,email,username,password):
@@ -78,6 +82,10 @@ class Account(AbstractBaseUser):
     
     def __str__(self):
         return self.username
+
+    def get_cart_url(self):
+        from django.urls import reverse
+        return reverse('cart:cart')
 
     def get_profile_image_filename(self):
         return str(self.profile_image)[str(self.profile_image).index('profile_images/(self.pk)/'):]

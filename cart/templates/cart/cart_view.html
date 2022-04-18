@@ -1,0 +1,22 @@
+
+{% extends 'main.html' %} {% load humanize%}
+
+
+{% block content %}
+
+<h1 style="text-align:center"> Cart </h1>
+
+{% for item in request.user.cart.items.all %}
+
+<div>
+Note: {{item.note}} {{item.note.price|intcomma}} Baht ------------- Quantity: {{item.quantity}} <br>
+</div>
+
+{% endfor %}
+<br>
+Total price : {{ request.user.cart.total_price|intcomma }} Baht <br>
+Total of : {{request.user.cart.total_quantity|intcomma}} items
+
+
+
+{% endblock content %}
