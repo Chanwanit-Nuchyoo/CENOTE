@@ -210,3 +210,6 @@ def like1(request,noteid):
     note.save()
     return redirect('book')
 
+def payment(request):
+    context = {}
+    return render(request,'base/payment.html',context)

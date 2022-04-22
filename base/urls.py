@@ -12,4 +12,5 @@ urlpatterns = [
     path('cate/<str:cate>',views.cateview, name='cate'),
     path('book/all',views.all,name='all'),
     path('like1/<int:noteid>',views.like1,name='like1'),
+    path('payment',views.payment,name='payment'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
