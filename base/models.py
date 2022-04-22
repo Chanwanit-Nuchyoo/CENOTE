@@ -65,7 +65,7 @@ class Note(models.Model):
 
 class Comment(models.Model):
     note             = models.ForeignKey(Note, on_delete=models.CASCADE)
-    comment          =  models.CharField(max_length=300)
+    comment          = models.CharField(max_length=300)
     date_created     = models.DateTimeField(auto_now_add=True,null=True)
     commenter        = models.ForeignKey(Account,on_delete=models.CASCADE)
 

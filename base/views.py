@@ -65,7 +65,12 @@ def book(request):
         rank3 = rank[2]
     note_paginator = Paginator(notes,2)#parameter คือจำนวนโน๊ตที่มีใน 1 page
     page_num = request.GET.get('page',1)
-    page = note_paginator.get_page(page_num) 
+    page_object = note_paginator.get_page(page_num) 
+
+    paginator = Paginator(notes, per_page=2)
+    page_object = paginator.get_page(page_num)
+    page_object.adjusted_elided_pages = note_paginator.get_elided_page_range(page_num,on_each_side=1)
+    print(page_num,list(paginator.get_elided_page_range(page_num, on_each_side=1)))
 
     cate = request.session.get('category') or 0
     if cate:
@@ -73,13 +78,14 @@ def book(request):
     context = {
         'notes':notes,
         'count':note_paginator.count,
-        'page':page,
+        'page_object':page_object,
         'note_paginator':note_paginator,
         'page_num':int(page_num),
         'rank1': rank1,
         'rank2': rank2,
         'rank3': rank3,
         }
+
     print(rank)
     return render(request,'base/book.html',context)
 

@@ -130,7 +130,7 @@
             <!-- โชว์เลขจำนวนโน๊ตที่มี-->
             <h3>Total number of books: {{ count }} , page number : {{page.number}}</h3>
             
-            <ul class ="pagination">
+            <!-- <ul class ="pagination">
                 {% if page.has_previous %}
                 <li class="page-item">
                     <a href="{% url 'book' %}?page={{ page.previous_page_number }}">Previous Page</a>
@@ -147,8 +147,26 @@
                     <a href="{% url 'book' %}?page={{ page.next_page_number }}">Next Page</a>
                 </li>
                 {% endif %}
+            </ul> -->
+        
+            <ul class="pagination">
+                {% if page_object.has_previous %}
+                <li class="page-item"><a class="page-link" href="{% url 'book' %}?page={{ page_object.previous_page_number }}">←</a></li>
+                {% endif %}
+                {% for i in page_object.adjusted_elided_pages %}
+                    
+                    {% if i == page_object.paginator.ELLIPSIS %}
+                        {{i}}
+                    {% else %}
+                    <li class="page-item {% if page_object.number == i %}active{% endif %}">
+                    <a class="page-link" href="{% url 'book'%}?page={{ i }}" class="{% if i == page_object.number %}page.number{% endif %}">{{i}}</a>
+                </li>
+                {% endif %}
+                {% endfor %}
+                {% if page_object.has_next %}
+                <li class="page-item"><a class="page-link" href="{% url 'book' %}?page={{ page_object.next_page_number }}">→</a></li>
+                {% endif %}
             </ul>
-            
 
             <!--Page version 1 ไปได้แค่หน้าหลัง -->
             <!--ปุ่มกดไปpageหน้าหลัง-->
@@ -160,16 +178,16 @@
                     <a href="{% url 'book' %}?page={{ page.next_page_number}}">Next Page</a>
                 {% endif %} -->
                 
-            </div>
+            
 
             <div class = "menu" id = "sort-bar"></div>
             <button class ="btn-2"><div class = "icon"><i class="fa-solid fa-clock-rotate-left"></i></div><h1>Recent<h1></button>
             <button class ="btn-3"><div class = "icon"><i class="fa-regular fa-eye"></i></div><h2>View<h2></button>
             <button class ="btn-4"><div class = "icon"><i class="fa-regular fa-heart"></i></div><h3>Like<h3></button>
-        </div>
+        
          
     </div>
-    
+</div>
 </div>  
 <div class="loader-wrapper"></div>
 {% endblock %}
