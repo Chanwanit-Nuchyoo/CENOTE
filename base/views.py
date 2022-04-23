@@ -3,7 +3,7 @@ from unicodedata import category
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from account.models import Account
-from base.forms import NoteForm,NoteEditForm
+from base.forms import NoteForm,NoteEditForm,CommentForm
 from base.models import Images,Note
 from django.contrib.auth import authenticate, login
 from django.shortcuts import get_object_or_404
@@ -14,10 +14,15 @@ from django.core.paginator import Paginator
 from .models import Category, Note
 from django.views.generic import ListView
 from django.shortcuts import render
+from django.db.models import Count
+from django.apps import apps
 
 
 def home(request):
-    context = {}
+    categories = Category.objects.all()
+    context = {
+        'categories':categories,
+    }
     return render(request,'base/index.html',context)
 
 def open(request):
@@ -26,10 +31,17 @@ def open(request):
 
 def book(request):
     notes = Note.objects.all()
+    notes = notes.order_by('-date_created')
     rank=[]
+    search = ''
     for i in notes:
         rank.append(i)
     
+    if request.method == 'POST':
+        if request.POST.get('search'):
+            search = request.POST.get('search')
+            notes = Note.objects.filter(title__icontains=search)
+
     #sort rank ลองใช้order_byแล้วไม่เวิร์ค
     for i in range(len(rank)-1):
     # range(n) also work but outer loop will
@@ -62,24 +74,43 @@ def book(request):
         rank1 = rank[0]
         rank2 = rank[1]
         rank3 = rank[2]
-    note_paginator = Paginator(notes,2)#parameter คือจำนวนโน๊ตที่มีใน 1 page
-    page_num = request.GET.get('page',1)
-    page = note_paginator.get_page(page_num) 
-
+    # Category ID 
+    # 1 = Hardware
+    # 2 = NETWORK
+    # 3 = Software
+    categories = Category.objects.all()
     cate = request.session.get('category') or 0
     if cate:
-        notes = notes.filter(category__name__contains=cate)
+        notes = notes.filter(category_id=cate)
+
+    
+    order_id = request.session.get('order') or 0
+    if order_id == 0:
+        notes = notes.order_by('-date_created')
+    elif order_id == 1:
+        notes = notes.order_by('-view_count')
+    elif order_id == 2:
+        notes = notes.annotate(like_count=Count('likes')).order_by('-like_count')
+
+    paginator = Paginator(notes, per_page=8)
+    page_num = request.GET.get('page') or 1
+    page_object = paginator.get_page(page_num)
+    page_object.adjusted_elided_pages = paginator.get_elided_page_range(page_num,on_each_side=1)
+
+
     context = {
         'notes':notes,
-        'count':note_paginator.count,
-        'page':page,
-        'note_paginator':note_paginator,
+        'count':paginator.count,
+        'page_object':page_object,
+        #'note_paginator':note_paginator,
         'page_num':int(page_num),
         'rank1': rank1,
         'rank2': rank2,
         'rank3': rank3,
+        'categories':categories,
+        'categ_id':cate,
         }
-    print(rank)
+    #print(rank)
     return render(request,'base/book.html',context)
 
 def default_cover():
@@ -107,13 +138,14 @@ def addnote(request):
             note.save()
             if images:
                 for f in images:
-                    print(f)
+                    #print(f)
                     image = Images()
                     image.note = Note.objects.get(id=note.pk)
                     image.image = f
                     image.save()
             context['formA'] = NoteForm()
-            return redirect('home')
+            # return r edirect('home')
+            return redirect(reverse('note_view', kwargs={"id": note.id}))
 
         else:
             context['formA'] = formA
@@ -140,7 +172,7 @@ def note_edit_view(request,id):
         form = NoteEditForm(request.POST,request.FILES,instance=note)
         if form.is_valid():
             form.save()
-            print('/editnote:Form saved')
+            #print('/editnote:Form saved')
             images = request.FILES.getlist('images')
 
             if request.FILES.get('cover'):
@@ -148,7 +180,7 @@ def note_edit_view(request,id):
                 note.save()
 
             if images:
-                print("/editnote: priview images update.")
+                #print("/editnote: priview images update.")
                 # Remove all old preview images
                 Images.objects.filter(note=note).delete()
                 # Replace with new images
@@ -174,6 +206,7 @@ def note_edit_view(request,id):
 def note_view(request,id):
     note = get_object_or_404(Note,id=id)
     note.view_count = note.view_count+1
+    comment_form = CommentForm()
     note.save()
     author = get_object_or_404(Account,id=note.user.id)
     author.view_count += 1
@@ -182,12 +215,14 @@ def note_view(request,id):
     context = {
         'note':note,
         'images':images,
+        'comment_form':comment_form,
     }
     # รอ html สำหรับหน้า Note Detail
     return render(request,'base/noteview.html',context)
 
 def cateview(request,cate):
     request.session['category'] = cate
+    request.session['order'] = 0
     return redirect('book')
 
 def all(request):
@@ -211,5 +246,34 @@ def like1(request,noteid):
     return redirect('book')
 
 def payment(request):
+    if request.method == 'POST':
+        # GET CREDIT CARD INFOMATION HERE        
+        
+        # Checkout Cart
+        user = request.user
+        user.cart.checkout()
+
+        return redirect(reverse('paymentconfirm'))
+
     context = {}
     return render(request,'base/payment.html',context)
+
+def paymentconfirm(request):
+    context = {}
+    request.user.cart.remove_all_item()
+    return render(request,'base/paymentconfirm.html',context)
+
+def order_history_view(request):
+    Shelf = apps.get_model('base','Shelf')
+    ShelfItem = apps.get_model('base','ShelfItem')
+    shelf = Shelf.objects.get_or_create(account=request.user)
+    shelfitems = ShelfItem.objects.all().filter(shelf__account=request.user)
+    context = {
+        'shelf':shelf,
+        'items':shelfitems,
+    }
+    return render(request,'account/orderhistory.html',context)
+
+def sort(request,s):
+    request.session['order'] = s
+    return redirect('book')

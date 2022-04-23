@@ -15,27 +15,31 @@ def cart_view(request):
     context = {
         'cart':cart,
     }
-    return render(request,'cart/cart_view.html',context)
+    return render(request,'base/cart.html',context)
 
-@login_required
+@login_required(login_url='/login/')
 def add_item_to_cart_view(request,id,quantity=1):
     user = request.user
     note = get_object_or_404(Note,pk=id)
     user.cart.add_item(note=note,quantity=quantity) 
-    return redirect(reverse('note_view',kwargs={'id':note.id}))
+    return redirect(reverse('cart:cart_view'))
+    # return redirect(reverse('note_view',kwargs={'id':note.id}))
     
-@login_required
+@login_required(login_url='/login/')
 def remove_item_from_cart_view(request,id,quantity=1):
     user = request.user
     note = get_object_or_404(Note,pk=id)
     if user.cart.items.filter(note=note).exists():
         user.cart.remove_item(note=note,quantity=quantity) 
-    return redirect(reverse('note_view',kwargs={'id':note.id}))
+    return redirect(reverse('cart:cart_view'))
 
-@login_required
+@login_required(login_url='/login/')
 def clear_item_in_cart_view(request):
     user = request.user
     if user.cart.items:
         user.cart.items.all().delete()
 
     return redirect(reverse('cart:cart_view'))
+
+def test(request):
+    return render(request,'cart/cart_view.html')

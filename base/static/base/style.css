@@ -24,7 +24,12 @@ i {
 
 .navbar-mainbg {
     background-color: #5161ce;
-    padding: 0px;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    padding:0;
+    z-index:10;
 }
 
 #navbarSupportedContent {
@@ -60,6 +65,7 @@ i {
 #navbarSupportedContent>ul>li.active>a {
     color: #5161ce;
     background-color: white;
+
 }
 
 #navbarSupportedContent ul ul {
@@ -77,7 +83,7 @@ i {
 
 #logout-button {
     background-color: #f52b21;
-    width: 136px;
+    width: 143px;
     color: #581845;
 }
 
@@ -108,7 +114,6 @@ i {
 #navbarSupportedContent .active>a:not(:only-child):after {
     transform: rotate(90deg);
 }
-
 
 /* .hori-selector {
     display: inline-block;
@@ -164,7 +169,7 @@ i {
 .Logoo {
     max-width: 1000px;
     width: 150px;
-    height: auto;
+    height: 100px;
     position: absolute;
     top: -55%;
     left: 1px;
@@ -172,30 +177,89 @@ i {
     background-size: cover;
 }
 
+
+
 .header {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100vh;
-    background: url(https://wallpaperxyz.com/wp-content/uploads/Chill-Lofi-Background-Wallpaper-Full-HD-Free-Download-for-PC-Laptop-Macbook-231121-Wallpaperxyz.com-1.gif) no-repeat;
+    padding-top:30px;
+}
+.box-head{
+    position:relative;
+    border: 2px solid red;
+    width: 800px;
+    height: 500px;
+    top:-180px;
+    left:30px;
+}
+.bar-CENOTE {
+    position: absolute;
+    width: 650px;
+    height: 70px;
+    background-color: white;
+    border-radius: 35px;
+    border: 3px solid #000000;
+    top: 20px;
+    left: 120px;
+    padding: auto;
+}
+.tab-tbook {
+    height: 150px;
+    background: url(https://scontent.fbkk13-1.fna.fbcdn.net/v/t1.15752-9/278238403_1635652550131369_8137892993993576200_n.png?stp=dst-png_p75x225&_nc_cat=108&ccb=1-5&_nc_sid=ae9488&_nc_ohc=yxG8TWOruesAX9k2ct4&_nc_ht=scontent.fbkk13-1.fna&oh=03_AVJlJqgveugK3xJHRPr7QNtKc79pZsBnobD4BLah1URYLg&oe=62890AC0) no-repeat;
+    background-size: cover;
+}
+.tab-blue {
+    position:absolute;
+    top:130%;
+    left:0;
+    right:0;
+    height:17%;
+    background-color:#5161ce; 
+ 
+}
+.img-homelogo {
+    position:absolute;
+    top: 200px;
+    left: -440px;
+    max-width: 1000px;
+    height: 70px;
+    width: 1600px;
+    background: url(https://scontent.xx.fbcdn.net/v/t1.15752-9/276037407_871947346911586_774893112822355969_n.png?stp=dst-png_p206x206&_nc_cat=111&ccb=1-5&_nc_sid=aee45a&_nc_ohc=KJCvvyIrkksAX_NtRAM&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AVLeDPeIocsHFqqJmB8YdByNh0aDmWKNyVPJr5bIaBAhLA&oe=62713E40) no-repeat;
     background-size: cover;
 }
 
+
 .header p {
-    color: white;
+    color: rgb(0, 0, 0);
     position: absolute;
-    top: 29%;
-    font-size: 4em;
-    text-shadow: 10px 10px 10px rgb(21, 5, 243);
+    top:3%;
+    left:20%;
+    font-size: 3.5em;
+    text-shadow: 3px 3px 3px rgb(118, 118, 247);
 }
 
-.header b {
-    color: rgb(255, 255, 255);
+.header h1 {
+    position: absolute;
+    top:120px;
+    left:150px;
+    color: rgb(0, 0, 0);
     font-size: 1.6em;
     text-shadow: 10px 10px 10px rgb(0, 0, 0);
     animation: Bot 3s ease 0s infinite normal none;
 }
+.header h2 {
+    position: absolute;
+    top:120px;
+    left:370px;
+    color: rgb(0, 0, 0);
+    font-size: 1.6em;
+    text-shadow: 10px 10px 10px rgb(0, 0, 0);
+    animation: Bot 3s ease 0s infinite normal none;
+}
+
 
 .header-addnote {
     display: flex;
@@ -206,9 +270,140 @@ i {
     background: url(https://wallpaperxyz.com/wp-content/uploads/Chill-Lofi-Background-Wallpaper-Full-HD-Free-Download-for-PC-Laptop-Macbook-231121-Wallpaperxyz.com-1.gif) no-repeat;
     background-size: cover;
 }
+/* ============================================================ Category ==============================================================================*/
+.header-open {
+    display: flex;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    background-size: cover;
+    padding-top:30px;
+}
+.header-open h1{
+    position: absolute;
+    top:270px;
+    left:80px;
+    color: rgb(255, 255, 255);
+    font-size: 2.8em;
+    text-shadow: 10px 10px 10px rgb(0, 0, 0);
+}
+.header-open h2{
+    position: absolute;
+    top:270px;
+    left:20px;
+    color: rgb(255, 255, 255);
+    font-size: 2.8em;
+    text-shadow: 10px 10px 10px rgb(0, 0, 0);
+}
+.header-open h3{
+    position: absolute;
+    top:270px;
+    left:13px;
+    color: rgb(255, 255, 255);
+    font-size: 2.8em;
+    text-shadow: 10px 10px 10px rgb(0, 0, 0);
+}
+.header-open h4{
+    position: absolute;
+    top:270px;
+    left:5px;
+    color: rgb(255, 255, 255);
+    font-size: 2.8em;
+    text-shadow: 10px 10px 10px rgb(0, 0, 0);
+}
+.box-open{
+    position: relative;
+    width:800px;
+    height:600px;
+
+ 
+}
+.open{
+    position:relative;
+    top:-40px;
+    height:370px;
+    background:url(https://i.pinimg.com/originals/2e/ff/9f/2eff9f54508ac631fb5a85dc20f834d4.gif);
+    background-size:cover;
+    border-radius:15px;
+    padding:158px;
+    margin-top: 50px;
+    margin-left: 50px;
+    float: left;
+    border:2px solid black;
+    cursor: pointer;
+    box-shadow:10px 10px 10px  #5161ce;
+    animation:open-anime 3s ease 0s infinite normal none;
+}
+.open-img{
+    position:absolute;
+    padding:130px;
+    top:20px;
+    left:30px;
+    border-radius:15px;
+    background-color:white;
+}
+.open-NW{
+    position:absolute;
+    padding:125px;
+    top:5px;
+    left:5px;
+    border-radius:15px;
+    background:url(https://thumbs.gfycat.com/IdealCookedHaddock-size_restricted.gif);
+    background-size:cover;
+}
+.open-SW{
+    position:absolute;
+    padding:125px;
+    top:5px;
+    left:5px;
+    border-radius:15px;
+    background:url(https://c.tenor.com/bfOEyTxwK40AAAAC/work-computer.gif);
+    background-size:cover;
+}
+.open-HW{
+    position:absolute;
+    padding:125px;
+    top:5px;
+    left:5px;
+    border-radius:15px;
+    background:url(https://i.pinimg.com/originals/c4/b1/99/c4b19969def51164ea4ad9a290a217bf.gif);
+    background-size:cover;
+}
+.open-ALL{
+    position:absolute;
+    padding:125px;
+    top:5px;
+    left:5px;
+    border-radius:15px;
+    background:url(https://c.tenor.com/dF6mEQlXgswAAAAd/hypercube-tesseract.gif);
+    background-size:cover;
+}
+
+@keyframes open-anime {
+    0.0%{
+		
+		box-shadow: 12px 12px 12px #5161ce;
+		
+    }
+    50.8%{
+
+		box-shadow: 9px 9px 9px #5161ce;
+
+    }
+	100%{
+	
+		box-shadow: 7px 7px 7px #5161ce;
+	
+    }
+}
 
 
-/* =================book=================== */
+
+/* ============================================================ book ================================================================================ */
 
 .header-book {
     display: flex;
@@ -220,6 +415,7 @@ i {
     height: 100vh;
     background: white;
     background-size: cover;
+    padding-top:30px;
 }
 
 .header-book #MR {
@@ -238,6 +434,7 @@ i {
     top: 340px;
     left: 30px;
     font-size: 25px;
+  
 }
 
 .header-book .box-peo h2 {
@@ -277,8 +474,8 @@ i {
     width: 650px;
     height: 70px;
     background-color: white;
+    border: 2px solid black;
     border-radius: 35px;
-    border: 3px solid #9a97f0;
     top: 650px;
     left: -125px;
     padding: auto;
@@ -489,34 +686,12 @@ button {
     transition: all 0.25s ease;
 }
 
-.btn-1:hover::after {
-    transform: translate(-7px, -7px);
-    border: 5px solid #1608e2;
-}
-
-.btn-1:hover::before {
-    transform: translate(7px, 7px);
-    border: 5px solid #1608e2;
-}
-
-.btn-1:after,
-.btn-1::before {
-    content: "";
-    border: 5px solid rgb(255, 255, 255);
-    position: absolute;
-    border-radius: inherit;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    bottom: 0;
-    transition: all 0.25s ease;
-}
 
 .typing {
     position: relative;
     line-height: 24px;
     display: inline-block;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     min-width: 1px;
     min-height: 24px;
 }
@@ -564,7 +739,13 @@ button {
     transform-origin: center center;
     animation: Anime2 7s ease 0s infinite normal none;
 }
-
+.fa-clipboard{
+   color:black;
+}
+.fa-pencil-alt{
+    color:black;
+ }
+ 
 
 /* ============================================================== ส่วนด้านบน อันดับแรงค์ ============================================*/
 
@@ -721,85 +902,7 @@ button {
     background-size: cover;
 }
 
-.rainbow1 {
-    position: absolute;
-    top: 430px;
-    left: -230px;
-    height: 100px;
-    width: 250px;
-    background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Rainbow-diagram-ROYGBIV.svg/1200px-Rainbow-diagram-ROYGBIV.svg.png) no-repeat;
-    background-size: cover;
-}
 
-.rainbow2 {
-    position: absolute;
-    top: 430px;
-    left: 940px;
-    height: 100px;
-    width: 250px;
-    background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Rainbow-diagram-ROYGBIV.svg/1200px-Rainbow-diagram-ROYGBIV.svg.png) no-repeat;
-    background-size: cover;
-}
-
-.cloud1 {
-    position: absolute;
-    top: 505px;
-    left: -50px;
-    height: 60px;
-    width: 100px;
-    background: url(https://media4.giphy.com/media/frHMkZ3Wnjx1YR2RvB/giphy.gif?cid=6c09b952bb34058dcfecbeb63da4fbc2f86fdb87502711d3&rid=giphy.gif&ct=s) no-repeat;
-    background-size: cover;
-}
-
-.cloud2 {
-    position: absolute;
-    top: 505px;
-    left: -270px;
-    height: 60px;
-    width: 100px;
-    background: url(https://media4.giphy.com/media/frHMkZ3Wnjx1YR2RvB/giphy.gif?cid=6c09b952bb34058dcfecbeb63da4fbc2f86fdb87502711d3&rid=giphy.gif&ct=s) no-repeat;
-    background-size: cover;
-}
-
-.cloud3 {
-    position: absolute;
-    top: 505px;
-    left: 900px;
-    height: 60px;
-    width: 100px;
-    background: url(https://media4.giphy.com/media/frHMkZ3Wnjx1YR2RvB/giphy.gif?cid=6c09b952bb34058dcfecbeb63da4fbc2f86fdb87502711d3&rid=giphy.gif&ct=s) no-repeat;
-    background-size: cover;
-}
-
-.cloud4 {
-    position: absolute;
-    top: 505px;
-    left: 1130px;
-    height: 60px;
-    width: 100px;
-    background: url(https://media4.giphy.com/media/frHMkZ3Wnjx1YR2RvB/giphy.gif?cid=6c09b952bb34058dcfecbeb63da4fbc2f86fdb87502711d3&rid=giphy.gif&ct=s) no-repeat;
-    background-size: cover;
-}
-
-.pu1 {
-    position: absolute;
-    top: -60px;
-    left: -270px;
-    height: 160px;
-    width: 200px;
-    background: url(https://f.ptcdn.info/771/002/000/1362331152-1361452452-o.gif) no-repeat;
-    background-size: cover;
-}
-
-.pu2 {
-    position: absolute;
-    top: -60px;
-    left: 990px;
-    height: 160px;
-    width: 200px;
-    background: url(https://f.ptcdn.info/771/002/000/1362331152-1361452452-o.gif) no-repeat;
-    background-size: cover;
-}
 
 .box-rank .line {
     position: absolute;
@@ -851,6 +954,7 @@ button {
     top: 45px;
     left: 60px;
 }
+
 
 .box-product h1 {
     position: absolute;
@@ -904,7 +1008,39 @@ button {
     padding: 140px;
     margin: 30px;
 }
-
+.box-product .product .box-premium-sign{
+    width: 70px;
+    height: 70px;
+    top: 0px;
+    right: 15px;
+    position: absolute;
+}
+.box-product .product .box-premium-sign .premium-sign{
+    width: 70px;
+    height: 70px;
+    background-color: #FF928C;
+    border-radius: 50%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: absolute;
+}
+.box-product .product .box-premium-sign .premium-sign .fi.fi-rr-crown{
+    width: 50px;
+    height: 50px;
+    font-size: 40px;
+    position: absolute;
+    top: 10px;
+    left: 14px;
+    color: yellow;
+}
+.box-product .product .box-premium-sign .premium-sign p{
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+    position: absolute;
+    top: 18px;
+    left: 12px;
+    color: yellow;
+}
 .img-product-1 {
     position: absolute;
     width: 240px;
@@ -1008,7 +1144,48 @@ button {
     left: 250px;
     font-size: 1.2rem;
 }
+.header-book .cart-product {
+    cursor: pointer;
+    position: absolute;
+    top: 330px;
+    left: 250px;
+    font-size: 2.8rem;
+}
+.slide-bar {
+    position: absolute;
+    width: 240px;
+    height: 50px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 35px;
+    top: 970px;
+    left: 650px;
+    padding: auto;
+    margin-bottom: 50px;
+}
+.page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: 1px;
+    margin-top:5px;
+    line-height: 1.25;
+    color: #007bff;
+    background-color: #fff;
+    border: 0px solid #dee2e6;
+}
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #185EE0;;
+    border-color: #185EE0;;
 
+}
+.page-item:first-child .page-link {
+    margin-left: 15px;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
 
 /* ================================================================ Sing in ===============================================*/
 
@@ -1093,7 +1270,9 @@ button {
     justify-content: center;
     height: 87.5vh;
     width: 97.5vw;
-    margin: 20px;
+    margin:20px;
+    top: 60px;
+    
 }
 
 .box-addnote h1 {
@@ -1118,6 +1297,7 @@ button {
     max-width: 1200px;
     background-color: #444444;
     border-radius: 15px;
+    margin-top:150px;
 }
 
 .box-addnote .addnote span {
@@ -1200,7 +1380,7 @@ button {
     position: absolute;
     top: 23%;
     left: 10%;
-    width: 950px;
+    width: 900px;
     transform: translate(0, -5%);
     background: rgb(255, 255, 255);
     border-radius: 40px;
@@ -1229,7 +1409,7 @@ button {
     font-size: 16px;
     /* transition: 0.4s; */
     line-height: 40px;
-    width: 900px;
+    width: 850px;
     padding: 0 6px;
 }
 
@@ -1238,37 +1418,92 @@ button {
 
 .header-preview-note {
     text-align: center;
+    display: flex;
+    flex-direction: column;
     font-size: 30px;
+    padding-top: 70px;
+}
+.box-preview-page {
+        /* position: relative; */
+        top: 15px;
+        /* left: 55%; */
+        display: flex;
+        /* justify-content: flex-start; */
+        /* height: 500px; */
+        /* width: 1200px; */
+        margin-top: 70px;
+        margin-right: 250px;
+        margin-bottom: 70px;
+        margin-left: 350px;
+        /* margin: 80px 100px 80px 100px; */
+        
+}
+.header-preview-note .box-preview {
+    display: flex;
+    align-content: center;
+    margin-bottom: 40px;
+    /* border: 2px solid red; */
+}
+.header-preview-note .box-preview .container{
+    width: 100%;
+    margin-top:100px;
+}
+.title-category{
+    margin-top: 60px;
 }
 
-.box-preview {
-    position: relative;
-    left: 50%;
-    height: 800px;
-    width: 1600px;
-    margin-left: -750px;
-    margin-top: 15px;
-    border: 2px solid red;
-}
-
-.preview {
-    height: 380px;
-    background-color: #9a97f0;
+.container .image-container{
+    height: fit-content;
     border-radius: 15px;
-    padding: 130px;
     margin: 10px;
-    float: left;
-    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* border: 2px solid red; */
+    margin:50px;
 }
-
-.btn-dow {
+.header-preview-note .price{
+    background-color: #F8574F;
+    border-radius: 20px;
+    padding: 10px 30px 10px 30px;
+    margin: auto;
+}
+.header-preview-note .btn-dow {
     position: absolute;
     border-radius: 30px;
-    height: 50px;
-    width: 190px;
-    top: -73px;
-    left: 1290px;
+    padding: 10px 30px 10px 30px;
+    top: 100px;
+    right: 30px;
     background-color: #E6EEF9;
+}
+.header-preview-note .preview {
+    /* box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px; */
+    box-shadow: 5px 5px 5px rgb(151, 151, 151);
+    margin:30px;
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px; */
+    /* background-color: #9a97f0;
+    border-radius: 5px; 
+    padding: 130px;
+    margin: 10px; */
+    float: left;
+    cursor: pointer;
+    
+}
+
+.preview img {
+    transition:1s;
+    padding:15px;
+    width:200px
+}
+.preview img:hover{
+    transform:scale(1.1);
+}
+
+
+.lb-nav a.lb-next {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///8AAADq6uodHR3u7u4ZGRmdnZ3s7OyWlpaZmZkXFxfo6OikpKQgICAWFhacnJyPj48RERHNzc1KSko4ODihDc3xAAACMUlEQVR4nO3cbXKCUAxGYdNWK7ZKv/a/1uoooyLJr1KGw3lWwDtJ7r2AuFpJkiRJkiRJkiRJkiRJkiRJkiTp/zRvU1/ByJpYv0x9DaPaRsTn09RXMaImTp65Ec8Bj1WkNmoXMGL9OvW1jGIbV2viitrELeAs3gcM3qaxjb4dq4qPAY+NSprFfoteqshp1OGAoFn8SgKCDnDvaUTMppFHPFAaNY+IOcAVESmbxrKryJ/FA39FxWwam7yKlEbNI2Jmsagiv1GdxfkoZpGy9ReNSjnALbqKmE2jTSNi7voXvWlgXtvkjYpZbrJHjBE7yqaRR8TMYlFFyiwOvc24RORXEXOAKxqVsqLmjYo5wOURMQe4PCJm0yiqyG9UzAGuiEjZNIpZXEAVKbP4kUbEPCrOI2I2jaKK/EZ1FufDWST4TiP+TH1pfwO/2OQB94zDW1FBxkJTrKT0FuXPIL1FIff5+BnMb4D39ICQ82gRkF5ByDZRzCBjFc0DHugBITNYvCKlB4Qc1fAP85fcovgKMmYQ36L4H7TnASEziP/pZfELYXqL4gNCjmoLriDkjh6/TRQVdAZnAT+D+bfckG0C/68Kxdf49BblB6TPIL6C/G2CsYrm//WF+YArO8tAZvBkOCIo4PCjJ8hRrfP4ABjy8uWq36ioFj27jwjZJu7dNirkqNbXklv0rGtUyMuXIS13BjunWcR8pT1sw53BTstcRSVJkiRJkiRJkiRJkiRJkiRJkmbtF7QbE1ECMuZaAAAAAElFTkSuQmCC) right 48% no-repeat;
+    background-size:cover;
 }
 
 
@@ -1282,7 +1517,6 @@ button {
     width: 1400px;
     margin-left: -700px;
     margin-top: 15px;
-    border: 3px solid red;
 }
 
 .box-preview-chat h1 {
@@ -1295,7 +1529,6 @@ button {
 
 .line-pre {
     position: absolute;
-    top: 185px;
     left: 30px;
     height: 2.5px;
     width: 1300px;
@@ -1312,7 +1545,29 @@ button {
     background-size: cover;
 }
 
+.prev-comments .single-item {
+    background:#FFF;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    padding: 10px 20px;
+    text-align: left;
+}
+.prev-comments .single-item h4 {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #111;
+}
+.prev-comments .single-item a{
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #111;
+    text-decoration: none;
+    display: inline-block;
+}
 
+.prev-comments .single-item p {
+    font-size: 0.9rem;
+    color: #111;
+}
 /* ================================= Drop Down Hover =============================== */
 
 .btn-drop {
@@ -1384,13 +1639,30 @@ button {
     height: 100px;
     border-radius: 50%;
 }
-
-.mypage-header #reddot p {
+.mypage-header #reddot h1 {
     position: absolute;
     color: black;
     font-size: medium;
-    bottom: -50px;
-    left: 22px;
+    bottom: -40px;
+    left: 35px;
+    display: none;
+}
+
+.mypage-header #reddot h2 {
+    position: absolute;
+    color: black;
+    font-size: medium;
+    bottom: -40px;
+    left: 23px;
+    display: none;
+}
+
+.mypage-header #reddot h3 {
+    position: absolute;
+    color: black;
+    font-size: medium;
+    bottom: -40px;
+    left: 15px;
     display: none;
 }
 
@@ -1398,9 +1670,12 @@ button {
     box-shadow: 5px 5px rgb(120, 19, 19);
 }
 
-.mypage-header #reddot:hover p {
+.mypage-header #reddot:hover h1,
+.mypage-header #reddot:hover h2,
+.mypage-header #reddot:hover h3 {
     display: inline-block;
 }
+
 
 .mypage-header #reddot .reddot-pic {
     position: absolute;
@@ -1441,7 +1716,7 @@ button {
     text-align: center;
     margin-left: 50px;
     margin-right: 50px;
-    margin-top: 10px;
+    margin-top: 40px;
     margin-bottom: 10px;
     height: 2.5px;
     width: 1700;
@@ -1509,7 +1784,7 @@ button {
 }
 
 .mypage-header #edit-profile,
-.edit-profile #save {
+.edit-profile #save{
     width: 200px;
     height: 100px;
     background-color: #6E62FF;
@@ -1517,6 +1792,7 @@ button {
     left: 135px;
     font-size: medium;
     color: white;
+    margin-bottom:-10px;
 }
 
 .edit-profile #save:hover {
@@ -1534,7 +1810,7 @@ button {
     font-size: medium;
 }
 
-.mypage-header #edit-profile:hover {
+.mypage-header #edit-profile:hover{
     width: 200px;
     height: 100px;
     background-color: #6E62FF;
@@ -1589,6 +1865,130 @@ button {
     border-radius: 10%;
 }
 
+/* ===============================cart=============================== */
+.header-cart{
+    width:100vw;
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    position: absolute;
+    /* align-items: center; */
+    /* justify-content: center; */
+    margin: 20px;
+} 
+.header-cart .top{
+    font-size: 2rem ;
+    font-weight: bold;
+    margin-bottom:30px;
+}
+.header-cart .container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.header-cart .right{
+    background-color: #CBC1FE ;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    border-radius: 20px;
+    height: fit-content;
+    padding: 20px;
+}
+
+.header-cart .right .top{
+    font-size: 1.5rem ;
+    font-weight: normal;
+}
+.header-cart .right  .checkout-btn {
+    background-color: #F8574F;
+    border-radius: 20px;
+    padding: 20px 30px 20px 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.header-cart .right  .checkout-btn button{
+    font-size: 1.3rem;
+}
+.header-cart .right  .checkout-btn:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.header-cart .right  .checkout-btn button{
+    color: #F9CEC1 ;
+}
+/* ===========================================payment confirm====================================*/
+.header-paymentconfirm{
+    height: 100vh;
+    width:100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+.header-paymentconfirm .circle{
+    display: flex;
+    justify-content: center;
+    border: 5px solid #BFFFB5;
+    color: green;
+    font-size: 60px;
+    border-radius: 50%;
+    margin-left: 500px;
+    padding-top: 10px;
+    padding-left: 15px;
+    margin-right: 500px;
+}
+.header-paymentconfirm .container .btn-box{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+}
+.header-paymentconfirm .container #return{
+    width: 200px;
+    height: 100px;
+    background-color: #6E62FF;
+    border-radius: 20px;
+    /* left: 135px; */
+    font-size: medium;
+    color: white;
+}
+.header-paymentconfirm .container #return:hover{
+    background-color: #4b3bfc;
+    color: wheat;
+    font-size: medium;
+}
+/* ===========================Order History====================================== */
+.header-order-history{
+    height: 100vh;
+    width:100vw;
+    display: flex;
+    margin-top: 100px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+    text-align: center;
+    color:white;
+    padding: 50px 30px 50px 30px;
+}
+.header-order-history .container{
+    max-width: 804px;
+
+    border-radius: 20px;
+    background-color: #444444;
+}
+.table td, .table th {
+    padding: 1rem;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+}
+
+.header-order-history .container .top{
+    margin-top: 30px; 
+    margin-bottom: 30px; 
+    font-size: 2rem;
+    /* background-color: #444444; */
+}
+/* ===========================keyframe======================================== */
 @keyframes Bot {
     0.0% {
         text-shadow: 4px 4px 4px rgb(253, 253, 255);
@@ -1721,7 +2121,21 @@ button {
         border: 1px solid rgb(255, 255, 255);
     }
 }
+@media screen and (max-width: 1200px){
+    .header-cart{
+        margin-left:0px ;
+    }
+    .header-cart .container{
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .header-cart .container .right{
+        margin-top: 50px;
+        margin-bottom: 50px;
 
+    }
+}
 @media screen and (max-width: 699px)and (min-width:550px) {
     /* #navbarSupportedContent ul li a {
         padding: 12px 30px;

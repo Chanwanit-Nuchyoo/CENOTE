@@ -3,7 +3,7 @@
 {% block head %}
 	<title>Sign up</title>
     <nav class="navbar navbar-expand-custom navbar-mainbg" style = "overflow: visible !important;">
-        <a class="navbar-brand navbar-logo" href="{% url 'home' %}"><img class ='Logoo'src="{% static 'base/Logoo.png' %}"></a>
+        <a class="navbar-brand navbar-logo" href="{% url 'home' %}"><div class="Logoo"></div></a>
         <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars text-white"></i>
         </button>
@@ -18,6 +18,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'book' %}"><i class="fas fa-book-open"></i></i>NOTEBOOK</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cart/"><i class="fa-solid fa-cart-shopping"></i>CART</a>
                 </li>
                 {% comment %} <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);"><i class="fas fa-question-circle"></i>Q & A</a>

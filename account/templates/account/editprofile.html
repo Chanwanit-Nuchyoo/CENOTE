@@ -3,7 +3,7 @@
 {% load static %}
 {% block content %}
 <nav class="navbar navbar-expand-custom navbar-mainbg" style = "overflow: visible !important;">
-    <a class="navbar-brand navbar-logo" href="{% url 'home' %}"><img class ='Logoo'src="{% static 'base/Logoo.png' %}"></a>
+    <a class="navbar-brand navbar-logo" href="{% url 'home' %}"><div class="Logoo"></div></a>
     <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <i class="fas fa-bars text-white"></i>
     </button>
@@ -19,7 +19,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'book' %}"><i class="fas fa-book-open"></i></i>NOTEBOOK</a>
             </li>
-            <li class="nav-item" style ="cursor: pointer;">
+            <li class="nav-item">
+                <a class="nav-link" href="/cart/"><i class="fa-solid fa-cart-shopping"></i>CART</a>
+            </li>
+            <li class="nav-item active" style ="cursor: pointer;">
                 {% if not request.user.is_authenticated %}
                 <a class="nav-link" href="{% url 'loginview' %}"><i class="fas fa-user-alt"></i>Sign In</a>
                 {% else %}
@@ -27,6 +30,12 @@
                 <ul>
                     <li class="nav-item" >
                         <a class="nav-link" href = "{% url 'profile' %}">Profile</a>
+                    </li>
+                    <li class="nav-item" >
+                        <a class="nav-link" href="{% url 'addnote' %}">Create Note</a>
+                    </li>
+                    <li class="nav-item" >
+                        <a class="nav-link" href="#">Order History</a>
                     </li>
                     <li class="nav-item" >
                         <a id = "logout-button" href="{% url 'logoutview' %}">Sign Out</a>
@@ -37,12 +46,6 @@
             </li>
         </ul>
     </div>
-    <div class ="search-box">
-        <input class="search-txt" type = "text" name="" placeholder="Type to search">
-        <a class ="search-btn" href ="#">
-            <i class="fas fa-search"></i>
-        </a>
-        </div>
 </nav>
 
 <div class="edit-profile">
@@ -51,19 +54,25 @@
         <img src = "{% if request.user.profile_image %}{{ request.user.profile_image.url }}{% endif %}" style = "height: 200px;width: auto;">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-                <medium style="color: rgba(255, 255, 255,0.8); font-size: 13px;" >file must not exceed 1 MB <input name="profilePic" type="file" accept="image/*"></medium>
+                <medium style="color: rgba(255, 255, 255,0.8); font-size: 13px;" >file must not exceed 1 MB {{form.profile_image}}</medium>
                 <br>
                 <div style="align-content: center;">
-                <div style="color: white;">Name   :   <input name="name" type = "text" value="{% if request.user.name %}{{request.user.name}}{% endif %}"></div>
+                <div style="color:white;">Name : {{form.username}}</div>
+                <!-- <div style="color: white;">Name   :   <input name="name" type = "text" value="{% if request.user.name %}{{request.user.name}}{% endif %}"></div> -->
                 <br>
-                <div style="color: white;">Info</div><textarea name="info" id="" cols="50" rows="10">{% if request.user.info %}{{request.user.info}}{% endif %}</textarea>
+                <div style="color:white;">Info : <br> {{form.info}}</div>
+                <!-- <div style="color: white;">Info</div><textarea name="info" id="" cols="50" rows="10">{% if request.user.info %}{{request.user.info}}{% endif %}</textarea> -->
                 <br><br>
-                <div style="color: white;">Github :   <input name="github" type = "url" value="{% if request.user.github %}{{request.user.github}}{% endif %}"></div>
+                <div style="color:white;">Github : {{form.github}}</div>
+                <!-- <div style="color: white;">Github :   <input name="github" type = "url" value="{% if request.user.github %}{{request.user.github}}{% endif %}"></div> -->
                 <br>
-                <div style="color: white;">Email  :   <input type = "email" name="contact_email" value="{% if request.user.contact_email %}{{request.user.contact_email}}{% endif %}"></div>
+                <div style="color:white;">Contact email : {{form.contact_email}}</div>
+                <!-- <div style="color: white;">Email  :   <input type = "email" name="contact_email" value="{% if request.user.contact_email %}{{request.user.contact_email}}{% endif %}"></div> -->
                 <br>
-                <div style="color: white;">Youtube:   <input type = "url" name="youtube" value="{% if request.user.youtube %}{{request.user.youtube}}{% endif %}"></div>
+                <div style="color:white;"> Youtube : {{form.youtube}}</div>
+                <!-- <div style="color: white;">Youtube:   <input type = "url" name="youtube" value="{% if request.user.youtube %}{{request.user.youtube}}{% endif %}"></div> -->
                 </div>
+                <div style="color:white;">{{form.errors}}</div>
                 <button id = "save" type="submit">
                     <a href="">SAVE</a> 
                 </button>

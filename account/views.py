@@ -93,6 +93,9 @@ def edit_profile_view(request):
             print(request.FILES)
             form.save()
             return redirect(reverse('profile'))
+        else:
+            print("FORM IS NOT VALID")
+            
 
     context = {
         'form':form,

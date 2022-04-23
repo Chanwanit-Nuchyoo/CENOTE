@@ -1,8 +1,14 @@
 {% extends 'main.html' %}
 {% load static %}
+{% load humanize %}
+
+{% block head %}
+<title>{{note.title}}</title>
+{% endblock %}
+
 {% block content %}
  <nav class="navbar navbar-expand-custom navbar-mainbg">
-    <a class="navbar-brand navbar-logo" href="{% url 'home' %}"><img class ='Logoo'src="{% static 'base/Logoo.png' %}"></a>
+    <a class="navbar-brand navbar-logo" href="{% url 'home' %}"><div class="Logoo"></div></a>
     <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <i class="fas fa-bars text-white"></i>
     </button>
@@ -18,6 +24,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'book' %}"><i class="fas fa-book-open"></i></i>NOTEBOOK</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/cart/"><i class="fa-solid fa-cart-shopping"></i>CART</a>
+            </li>
  
             <li class="nav-item" style ="cursor: pointer;">
                 {% if not request.user.is_authenticated %}
@@ -30,6 +39,12 @@
                         <a class="nav-link" href = "{% url 'profile' %}">Profile</a>
                     </li>
                     <li class="nav-item" >
+                        <a class="nav-link" href="{% url 'addnote' %}">Create Note</a>
+                    </li>
+                    <li class="nav-item" >
+                        <a class="nav-link" href="#">Order History</a>
+                    </li>
+                    <li class="nav-item" >
                         <a id = "logout-button" href="{% url 'logoutview' %}">Sign Out</a>
                     </li>
                 </ul> 
@@ -38,30 +53,79 @@
             </li>
         </ul>
     </div>
-    <div class ="search-box">
-        <input class="search-txt" type = "text" name="" placeholder="Type to search">
-        <a class ="search-btn" href ="#">
-            <i class="fas fa-search"></i>
-        </a>
-        </div>
 </nav>
+
+
 <div class = "header-preview-note">
-    this is an undone preview note page
- <div class = "title-category"> {{note.title}}  : {{note.category}} </div>
- <div class = "box-preview">
+    <div class = "title-category"> {{note.title}}  : {{note.category}} </div>
     <div class="btn-dow">
+        {% if note.price == 0 %}
         <a href="{{note.pdf_file.url}}" download = 'html' class = "download-button"><i class="fa fa-download"></i><small>Dowload</small></a>
+        {% else %}
+        <a href="{{ note.get_add_to_cart_url }}" class = "download-button"><i class="fa-solid fa-cart-shopping"></i><small>Add to cart</small></a>
+        {% endif %}
     </div>
-            {% for i in images %}
-               <div class ="preview" style="padding: 5px 5px; min-width: auto; min-height: auto;"><img src="{{i.image.url}}" width="270" height="300" style="border-radius: 10px;"></div>
+   <div class="box-preview-page">
+        
+        <div class="image-container" style="display: flex; flex-direction: row; flex-wrap: wrap;">
+            {% for i in images %}    
+            <!-- box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px; -->
+            <div class="preview" style="margin: 10px; width: 230px; height: 290px;">
+                <a href="{{i.image.url}}" data-lightbox="mygallery"><img src="{{i.image.url}}" style="width: 230px; height: 290px;"></a>
+                
+            </div>
             {% endfor %}
-         
+        </div>
+                <!-- {% for i in images %}
+                <div class ="preview" style="padding: 5px 5px; min-width: auto; min-height: auto;"><img src="{{i.image.url}}" width="270" height="300" style="border-radius: 10px;"></div>
+                {% endfor %} -->     
 </div>
-<div class = "box-preview-chat">
-    <div class ="line-pre"></div>
-    <div class ="prechat"></div>
-    <h1>Comments</h1>
-</div> 
+    <div class="box-note-info container" style="margin-top: 50px;">
+        <div class="center-align" style="display: flex; flex-direction: row; margin: 15px;">
+            <div class="center-align" style="background-image:url({{note.user.profile_image.url}}); background-size: cover; background-repeat: no-repeat; background-position: center center;  border-radius: 50%; margin-right: 30px; width: 150px; height: 120px;"></div>
+            <div style="width: 100%; padding: 3px;">
+                <div style="text-align: left;">
+                    <p style="font-size: 40px; margin-bottom: 5px;">{{note.user.username}}</p>
+                    <div style="display: flex; flex-direction: row; margin-top: 0px ;">
+                        <div class = "eye-product"><a href=""><i class="fa-regular fa-eye"></i></a><small>{{note.view_count}}</small></div>
+                        <div class = "heart-product" style="margin-left: 8px; margin-right: 8px;"><a href="{% url 'like1' noteid=note.id %}"><i class="fa-regular fa-heart"></i></a><small>{{note.likes.all.count}}</small></div>
+                        <div class = "chat-product"><a href=""><i class="fa-regular fa-comment-dots"></i></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-left: 10%; margin-bottom: 50px;">
+            <div style="width: 80%; text-align: center; word-wrap: break-word;">{{note.info}}</div>
+        </div>
+    </div>
+        {% if note.price != 0 %}
+        <div class="price">
+            Price {{note.price | intcomma}} THB 
+        </div>    
+        {% endif %}
+    <div class = "box-preview-chat" style="padding: 10px;">
+        <div class ="line-pre"></div>
+        <div class ="prechat" style="position: relative; left: 0%; top: 2%; display: inline-block;"></div>
+        <div style="display: inline-block;">Comment</div>
+        <div style="margin-top: 20px;">
+            <form method="POST">
+                {% csrf_token %}
+                {{comment_form.comment}}
+                <input type="submit" value="Post" style="display: none;">
+            </form>
+        </div>
+        <div style="margin-top: 20px; display: flex; flex-direction: column;">
+                <div style="display: flex; flex-direction: row; margin-top: 50px;">
+                        <div style="background-image:url({{note.user.profile_image.url}}); background-size: cover; background-repeat: no-repeat; background-position: center center;  border-radius: 50%; margin-right: 30px; width: 80px; height: 80px;"></div>
+                        <div style="display: flex; flex-direction: column;">
+                            <div style="text-align:left;">{{note.user.username}}</div>
+                            <div style="word-wrap: break-word; font-size: 20px;">{{note.info}}</div>
+                        </div>
+                </div>
+        </div>
+    </div> 
+</div>>
 
 
 <div class="loader-wrapper"></div>

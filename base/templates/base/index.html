@@ -3,7 +3,7 @@
 {% load static %}
 {% block content %}
 <nav class="navbar navbar-expand-custom navbar-mainbg">
-    <a class="navbar-brand navbar-logo" href="{% url 'home' %}"><img class ='Logoo'src="{% static 'base/Logoo.png' %}"></a>
+    <a class="navbar-brand navbar-logo" href="{% url 'home' %}"><div class="Logoo"></div></a>
     <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <i class="fas fa-bars text-white"></i>
     </button>
@@ -17,7 +17,10 @@
                 <a class="nav-link" href="{% url 'open' %}"><i class="fas fa-th-large"></i>CATEGORIES</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'book' %}"><i class="fas fa-book-open"></i></i>NOTEBOOK</a>
+                <a class="nav-link" href="{% url 'book' %}"><i class="fas fa-book-open"></i>NOTEBOOK</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/cart/"><i class="fa-solid fa-cart-shopping"></i>CART</a>
             </li>
             <li class="nav-item" style ="cursor: pointer;">
                 {% if not request.user.is_authenticated %}
@@ -29,6 +32,12 @@
                         <a class="nav-link" href = "{% url 'profile' %}">Profile</a>
                     </li>
                     <li class="nav-item" >
+                        <a class="nav-link" href="{% url 'addnote' %}">Create Note</a>
+                    </li>
+                    <li class="nav-item" >
+                        <a class="nav-link" href="#">Order History</a>
+                    </li>
+                    <li class="nav-item" >
                         <a id = "logout-button" href="{% url 'logoutview' %}">Sign Out</a>
                     </li>
                 </ul> 
@@ -36,25 +45,30 @@
             </li>
         </ul>
     </div>
-    <div class ="search-box">
-        <input class="search-txt" type = "text" name="" placeholder="Type to search">
-        <a class ="search-btn" href ="#">
-            <i class="fas fa-search"></i>
-        </a>
-        </div>
 </nav>
+<nav class="tab-tbook"></nav>
+
 
 <div class="header">
-    <p><span id="typing" class="typing"></span></p> 
-    <a href="{% url 'all' %}"><button class="btn-1"><b>View Note</b></button></a>
+   
+    <div class="box-head">
+        <div class="img-homelogo"></div>
+        <div class="bar-CENOTE"></div>
+       
+        <p><span id="typing" class="typing"></span></p> 
+    <a href="{% url 'all' %}"><button class="btn-1"><h1>View Note</h1></button></a>
     <div class="targetElement">
         <i class="far fa-clipboard"></i>
     </div>
     <div class="targetElement2">
         <i class="fas fa-pencil-alt"></i>
     </div>
-    <a href="{% url 'addnote' %}"><button class="btn-1"><p1><b>Create Note</b></p></button></a>
+    <a href="{% url 'addnote' %}"><button class="btn-1"><h2>Create Note</h2></button></a>
+    </div>
+  
 </div>
+    <nav class="tab-blue"></nav>
+
 <div class="loader-wrapper">
     <span class="loader">
         <span class="loader-inner" >

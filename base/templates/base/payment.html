@@ -13,7 +13,7 @@
 
 {% block content %}
 <nav class="navbar navbar-expand-custom navbar-mainbg" style = "overflow: visible !important;">
-    <a class="navbar-brand navbar-logo" href="{% url 'home' %}"><img class ='Logoo'src="{% static 'base/Logoo.png' %}"></a>
+    <a class="navbar-brand navbar-logo" href="{% url 'home' %}"><div class="Logoo"></div></a>
     <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <i class="fas fa-bars text-white"></i>
     </button>
@@ -28,6 +28,9 @@
             </li>
             <li class="nav-item active" style = "white">
                 <a class="nav-link" href="{% url 'book' %}"><i class="fas fa-book-open"></i></i>NOTEBOOK</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/cart/"><i class="fa-solid fa-cart-shopping"></i>CART</a>
             </li>
             {% comment %} <li class="nav-item">
                 <a class="nav-link" href="javascript:void(0);"><i class="fas fa-question-circle"></i>Q & A</a>
@@ -47,6 +50,12 @@
                         <a class="nav-link" href = "{% url 'profile' %}">Profile</a>
                     </li>
                     <li class="nav-item" >
+                        <a class="nav-link" href="{% url 'addnote' %}">Create Note</a>
+                    </li>
+                    <li class="nav-item" >
+                        <a class="nav-link" href="#">Order History</a>
+                    </li>
+                    <li class="nav-item" >
                         <a id = "logout-button" href="{% url 'logoutview' %}">Sign Out</a>
                     </li>
                 </ul> 
@@ -55,12 +64,6 @@
             </li>
         </ul>
     </div>
-    <div class ="search-box">
-        <input class="search-txt" type = "text" name="" placeholder="Type to search">
-        <a class ="search-btn" href ="#">
-            <i class="fas fa-search"></i>
-        </a>
-        </div>
 </nav>
 
 
@@ -101,20 +104,21 @@
     </div>
 
     <form action="" method="POST">
+        {% csrf_token %}
         <div class="inputBox">
             <span>card number</span>
-            <input type="text" maxlength="19" class="card-number-input">
+            <input type="text" maxlength="19" name="card-number-input" class="card-number-input" required>
         </div>
 
         <div class="inputBox">
             <span>card holder</span>
-            <input type="text" class="card-holder-input" id="cardholder" maxlength="20">
+            <input type="text" name="card-holder-input" class="card-holder-input" id="cardholder" maxlength="20" required>
         </div>
 
         <div class="flexbox">
             <div class="inputBox">
                 <span>Card's type</span>
-                    <select name="" id="" class="type-input" class="type-input">
+                    <select name="type-input" id="" class="type-input" class="type-input" required>
                         <option value="visa" selected>visa</option>
                         <option value="mastercard">mastercard</option>
                     </select>
@@ -122,7 +126,7 @@
 
             <div class="inputBox">
                 <span>expiration mm</span>
-                <select name="" id="" class="month-input">
+                <select name="month-input" id="" class="month-input" required>
                     <option value="month" selected disabled>month</option>
                     <option value="01">01</option>
                     <option value="02">02</option>
@@ -140,7 +144,7 @@
             </div>
             <div class="inputBox">
                 <span>expiration yy</span>
-                <select name="" id="" class="year-input">
+                <select name="year-input" id="" class="year-input" required>
                     <option value="year" selected disabled>year</option>
                     <option value="22">2022</option>
                     <option value="23">2023</option>
@@ -156,7 +160,7 @@
             </div>
             <div class="inputBox">
                 <span>cvv</span>
-                <input type="text" maxlength="4" class="cvv-input">
+                <input type="text" maxlength="4" name="cvv" class="cvv-input" required>
             </div>
         </div>
         <input type="submit" value="submit" class="submit-btn">

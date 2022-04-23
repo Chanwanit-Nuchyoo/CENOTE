@@ -1,6 +1,8 @@
 from django.db import models
 from account.models import Account
-from  base.models import Note
+from base.models import Note
+from django.db.models.signals import post_save
+from django.apps import apps
 
 
 class Cart(models.Model):
@@ -8,7 +10,24 @@ class Cart(models.Model):
 
     account = models.OneToOneField(Account,on_delete=models.CASCADE,related_name='cart')
     # related_name = ['items',]
-    
+
+    def checkout(self):
+        # Checkout entire cart
+        # Move notes in cart to owner's shelf
+        # Clear all notes in Shelf
+        Shelf = apps.get_model('base','Shelf')
+        ShelfItem = apps.get_model('base','ShelfItem')
+        shelf,created = Shelf.objects.get_or_create(account=self.account)
+        
+        for item in self.items.all():
+            shelfitem = ShelfItem(note=item.note,shelf=shelf)
+            shelfitem.save()
+
+        self.remove_all_item()
+        
+        return shelf
+
+
     def total_price(self):
         price = 0        
         price = sum([item.note.price*item.quantity for item in self.items.all()])
@@ -17,12 +36,24 @@ class Cart(models.Model):
     def total_quantity(self):
         return sum([item.quantity for item in self.items.all()])
     
+    def has_brought(self,note):
+        Shelf = apps.get_model('base','Shelf')
+        shelf = Shelf.objects.get(account=self.account)
+        return shelf.has_brought(note)
+
     def add_item(self,note,quantity=1):
+        if self.has_brought(note):
+            # User has brought the note, cannot add to the cart
+            return 
+
         if self.items.all().filter(note=note).exists():
             item = self.items.get(note=note)
-            item.quantity += quantity
+            
+            if item.quantity >= 1:
+                return item
+
             return item.save()
-        return self.items.create(cart=self,note=note,quantity=quantity)
+        return self.items.create(cart=self,note=note,quantity=1)
 
     def remove_item(self,note,quantity=1):
         if self.items.all().filter(note=note).exists():
@@ -32,7 +63,7 @@ class Cart(models.Model):
                 # remove successfully
                 if item.quantity == 0:
                     # down to 0
-                    return self.item.delete()
+                    return item.delete()
                 return item.save()
             else:
                 # cannot remove due to negative result
@@ -54,3 +85,7 @@ class Item(models.Model):
     def __str__(self) -> str:
         return f'Note: {self.note.title} : Quantity={self.quantity}'
 
+    def total_price(self):
+        return self.note.price*self.quantity
+
+    

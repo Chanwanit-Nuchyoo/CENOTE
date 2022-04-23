@@ -6,6 +6,7 @@ from unittest.util import _MAX_LENGTH
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.forms import BooleanField, CharField
+from django.db.models.signals import post_save
 
 # create a new user
 # create a superuser
@@ -24,8 +25,8 @@ class MyAccountManager(BaseUserManager):
         user.set_password(password)
         user.save(using=self._db)
 
-        from cart.models import Cart        
-        Cart.objects.create(account=user)
+        # from cart.models import Cart        
+        # Cart.objects.create(account=user)
 
         return user
 
@@ -95,3 +96,23 @@ class Account(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
+        
+        
+
+        # from cart.models import Cart
+        # cart = Cart(account=user)
+        # print('saving cart')
+        # cart.save()
+def create_cart_for_account(sender,instance,*args,**kwargs):
+    from cart.models import Cart        
+    print(sender)
+    
+    try:
+        instance.cart    
+    except Exception:
+        cart = Cart(account=instance)
+        cart.save()
+        print("saving cart")
+    return 
+
+post_save.connect(create_cart_for_account,sender=Account)

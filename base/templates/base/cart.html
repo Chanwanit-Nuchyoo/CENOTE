@@ -1,0 +1,105 @@
+{% extends 'main.html' %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+<nav class="navbar navbar-expand-custom navbar-mainbg">
+    <a class="navbar-brand navbar-logo" href="{% url 'home' %}"><div class="Logoo"></div></a>
+    <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-bars text-white"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home"></i>HOME</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="{% url 'open' %}"><i class="fas fa-th-large"></i>CATEGORIES</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'book' %}"><i class="fas fa-book-open"></i></i>NOTEBOOK</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/cart/"><i class="fa-solid fa-cart-shopping"></i>CART</a>
+            </li>
+            <li class="nav-item" style ="cursor: pointer;">
+                {% if not request.user.is_authenticated %}
+                <a class="nav-link" href="{% url 'loginview' %}"><i class="fas fa-user-alt"></i>Sign In</a>
+                {% else %}
+                <a class="nav-link"><i class="fas fa-user-alt"></i>{{request.user.username}}</a>
+                <ul>
+                    <li class="nav-item" >
+                        <a class="nav-link" href = "{% url 'profile' %}">Profile</a>
+                    </li>
+                    <li class="nav-item" >
+                        <a class="nav-link" href="{% url 'addnote' %}">Create Note</a>
+                    </li>
+                    <li class="nav-item" >
+                        <a class="nav-link" href="#">Order History</a>
+                    </li>
+                    <li class="nav-item" >
+                        <a id = "logout-button" href="{% url 'logoutview' %}">Sign Out</a>
+                    </li>
+                </ul> 
+                {% endif %}
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="header-cart">
+    <div class="top"><p>YOUR CART</p></div>
+    <div class = "container">
+        <div class="left">
+                <!-- ตารางของใน Cart -->
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col"></th>
+                            <th scope="col">ชื่อโน้ต</th>
+                            <th scope="col">ราคาต่อชั้น</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- ลูปหนังสือที่อยู่ใน Cart -->
+                        {% for item in cart.items.all %}
+                        <tr>
+                            <th scope="row">{{forloop.counter}}</th>
+                            <td><div><img src="{{item.note.cover.url}}" style="width:50px;height: 53px;"></div></td>
+                            <td>{{item.note.title}}</td>
+                            <td>{{item.note.price|intcomma}}</td>
+                            <td><a href="remove/{{item.note.pk}}">ลบ</a></td>
+                        </tr>
+                        {% endfor %}
+                        <!-- จบลูป -->
+                        
+                        <!-- รวมทั้งหมด -->
+                        <tr>
+                            <th scope="row">รวม</th>
+                            <td></td>
+                            <td></td>
+                            <td>{{cart.total_price|intcomma}}</td>
+                            <td><a href="clear">ลบทั้งหมด</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+        <div class="right">
+            <div class="top"><p>Order Summary</p></div>
+            <div class="order-sum">
+                <br>
+                รวมทั้งหมด : {{cart.total_quantity|intcomma}} รายการ<br>
+                ราคารวมทั้งหมด : {{cart.total_price|intcomma}} บาท
+            </div>
+            <div class="checkout">
+                <a href="{% if cart.total_quantity == 0 %}#{% else %}/payment/{% endif %}" class="checkout-btn">
+                    <button >  CHECKOUT</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="loader-wrapper"></div>
+
+{% endblock %}
