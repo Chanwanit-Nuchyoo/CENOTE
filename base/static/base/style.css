@@ -30,6 +30,7 @@ i {
 #navbarSupportedContent {
     overflow: visible;
     position: relative;
+    /* position: fixed; */
 }
 
 #navbarSupportedContent ul {
@@ -75,8 +76,20 @@ i {
 }
 
 #logout-button {
+    background-color: #f52b21;
+    width: 136px;
+    color: #581845;
+}
+
+#navbarSupportedContent>ul>li:hover>ul #logout-button:hover {
+    color: #581845;
     background-color: #F8574F;
-    width: 300px;
+}
+
+#navbarSupportedContent>ul>li:hover>ul #pf-btn:hover {
+    color: white;
+    width: 136px;
+    background-color: #262626;
 }
 
 #navbarSupportedContent a:not(:only-child):after {
@@ -213,7 +226,7 @@ i {
     color: rgb(0, 0, 0);
     position: absolute;
     top: -5px;
-    ;
+    left: 100px;
     font-size: 3.8em;
     text-shadow: 10px 10px 10px rgb(21, 5, 243);
     animation: rank 3s ease 0s infinite normal none;
@@ -564,13 +577,22 @@ button {
 }
 
 .crown {
-    position: absolute;
-    top: -8px;
-    left: -110px;
     height: 80px;
     width: 100px;
     background: url(https://blog.joypixels.com/content/images/2020/09/crown.gif) no-repeat;
     background-size: cover;
+}
+
+.crown.one {
+    position: absolute;
+    top: -10px;
+    left: -20px;
+}
+
+.crown.two {
+    position: absolute;
+    top: -10px;
+    left: 335px;
 }
 
 .box-peo {
@@ -811,6 +833,11 @@ button {
     left: -500px;
     height: 500px;
     width: 1400px;
+}
+
+.box-peo .img-box {
+    top: 22px;
+    left: 28px;
 }
 
 .img-box {
@@ -1059,11 +1086,14 @@ button {
 /* ================================================================ Add Note ==================================================*/
 
 .box-addnote {
-    position: relative;
-    top: 40px;
-    left: 130px;
-    height: 500px;
-    width: 1200px;
+    display: flex;
+    /* text-align: center; */
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    height: 87.5vh;
+    width: 97.5vw;
+    margin: 20px;
 }
 
 .box-addnote h1 {
@@ -1075,40 +1105,92 @@ button {
     color: #FFFFFF;
 }
 
-.addnote-col {
-    position: absolute;
-    width: 600px;
-    height: 650px;
-    top: -10px;
-    left: 360px;
-    background-color: #444444;
-    border-radius: 15px;
-    padding: 300px;
-    margin: 10px;
+.addnote-col form img {
+    position: relative;
 }
 
-.addnote {
-    position: absolute;
-    width: 380px;
+.addnote form div {
+    font-size: 18px;
+}
+
+.box-addnote .addnote {
+    padding: 25px;
+    max-width: 1200px;
+    background-color: #444444;
     border-radius: 15px;
-    padding: 1px;
-    margin-top: -9px;
-    top: 35px;
-    left: 500px;
+}
+
+.box-addnote .addnote span {
+    margin: 5px;
 }
 
 .btn-addnote {
-    position: absolute;
     border-radius: 7px;
+    color: white;
     background-color: #6f62ff;
-    height: 20px;
-    width: 110px;
-    top: 500px;
-    left: 310px;
+    left: 250px;
 }
 
 .btn-addnote:hover {
+    color: wheat;
     background-color: #7e73ff;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+
+/* ================================================================ Edit Note ==================================================*/
+
+.box-editnote {
+    display: flex;
+    /* text-align: center; */
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    height: 150vh;
+    width: 97.5vw;
+    margin: 20px;
+}
+
+.box-editnote h1 {
+    position: absolute;
+    top: 10px;
+    left: 29px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.editnote form div {
+    font-size: 18px;
+}
+
+.editnote .btn {
+    width: 100%;
+    text-align: center;
+}
+
+.box-editnote .editnote {
+    padding: 25px;
+    max-width: 1200px;
+    background-color: #444444;
+    border-radius: 15px;
+}
+
+.box-editnote .editnote span {
+    margin: 5px;
+}
+
+.btn-editnote {
+    border-radius: 7px;
+    color: white;
+    background-color: #6f62ff;
+    /* left: 250px; */
+}
+
+.btn-editnote:hover {
+    color: wheat;
+    background-color: #7e73ff;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
 
 
@@ -1118,20 +1200,16 @@ button {
     position: absolute;
     top: 23%;
     left: 10%;
+    width: 950px;
     transform: translate(0, -5%);
     background: rgb(255, 255, 255);
     border-radius: 40px;
     padding: 0px;
 }
 
-.search-box:hover>.search-txt {
-    width: 400px;
-    padding: 0 6px;
-}
-
 .search-btn {
     color: #e84118;
-    float: right;
+    float: left;
     width: 50px;
     height: 40px;
     border-radius: 80%;
@@ -1145,13 +1223,14 @@ button {
     border: none;
     background: none;
     outline: none;
-    float: right;
+    float: left;
     padding: 0;
     color: rgb(0, 0, 0);
     font-size: 16px;
-    transition: 0.4s;
+    /* transition: 0.4s; */
     line-height: 40px;
-    width: 0px;
+    width: 900px;
+    padding: 0 6px;
 }
 
 
@@ -1277,14 +1356,6 @@ button {
     width: 100%;
 }
 
-
-/* .mypage-header #profile-pic {
-    width: 200px;
-    height: 200px;
-    background-color: #6E62FF;
-    border-radius: 50%;
-} */
-
 .mypage-header #profile-pic img,
 .edit-profile #container img {
     position: relative;
@@ -1348,17 +1419,15 @@ button {
 
 .mypage-header .sort {
     border-radius: 30px;
-    /*background-color: #b8cfee;*/
 }
 
 .mypage-header .sort:hover {
-    /*background-color: #b8cfee;*/
     color: #185EE0;
     border-radius: 30px;
     border-color: #89CFF0;
 }
 
-.mypage-header .sort:focus {
+.mypage-header .sort.active {
     background-color: #b8cfee;
     color: #185EE0;
     border-radius: 30px;
@@ -1602,6 +1671,12 @@ button {
     }
 }
 
+@media screen and (max-width: 1640px) {
+    .search-box {
+        display: none;
+    }
+}
+
 @media screen and (max-width: 991px) and (min-width:700px) {
     #navbarSupportedContent ul li a {
         padding: 12px 30px;
@@ -1642,18 +1717,15 @@ button {
         top: 70%;
         left: 75%;
     }
-    .search-box {
-        display: none;
-    }
     .loader {
         border: 1px solid rgb(255, 255, 255);
     }
 }
 
 @media screen and (max-width: 699px)and (min-width:550px) {
-    #navbarSupportedContent ul li a {
+    /* #navbarSupportedContent ul li a {
         padding: 12px 30px;
-    }
+    } */
     .hori-selector {
         margin-top: 0px;
         margin-left: 10px;
