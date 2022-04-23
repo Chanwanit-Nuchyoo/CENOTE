@@ -116,13 +116,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'book' %}"><i class="fas fa-book-open"></i></i>NOTEBOOK</a>
             </li>
-            {% comment %} <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);"><i class="fas fa-question-circle"></i>Q & A</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);"><i class="fas fa-history"></i>Timeline</a>
-            </li> {% endcomment %}
-          
+ 
             <li class="nav-item" style ="cursor: pointer;">
                 {% if not request.user.is_authenticated %}
                 <a class="nav-link" href="{% url 'loginview' %}"><i class="fas fa-user-alt"></i>Sign In</a>
@@ -137,7 +131,6 @@
                     </li>
                 </ul> 
                 {% endif %}
-                   
             </li>
         </ul>
     </div>

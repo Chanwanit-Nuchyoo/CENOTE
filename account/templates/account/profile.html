@@ -18,13 +18,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'book' %}"><i class="fas fa-book-open"></i></i>NOTEBOOK</a>
             </li>
-            {% comment %} <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);"><i class="fas fa-question-circle"></i>Q & A</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);"><i class="fas fa-history"></i>Timeline</a>
-            </li> {% endcomment %}
-          
+ 
             <li class="nav-item" style ="cursor: pointer;">
                 {% if not request.user.is_authenticated %}
                 <a class="nav-link" href="{% url 'loginview' %}"><i class="fas fa-user-alt"></i>Sign In</a>
@@ -66,6 +60,7 @@
         </div>
     </p>
     <p style = "font-size:1.8em; color: orange; font-weight: bold; letter-spacing: 5px;" > CONTACT </p>
+    <p style = "font-size:1.5em; color: #FF5733 ; font-weight: bold; letter-spacing: 5px;" > DM:  </p>
     <div class = "row">
             <button id = "reddot">
                 <a href = "#"> <img class = "reddot-pic" src={% static 'base/envelope.png' %}></a>
@@ -73,7 +68,7 @@
             </button>
             <button id = "reddot">
                 <a href = "{% if request.user.github %}{{ request.user.github }}{% endif %}"> <img class = "reddot-pic" src={% static 'base/github.png' %}></a>
-                <p>GIT HUB</p>    
+                <p>GITHUB</p>    
             </button>
             <button id = "reddot">
                 <a href = "{% if request.user.youtube %}{{ request.user.youtube }}{% endif %}"> <img class = "reddot-pic" src={% static 'base/youtube.png' %}></a>
@@ -83,7 +78,7 @@
     <a href="{% url 'editprofile' %}"><button id = "edit-profile" style ="left: 0;"> EDIT PROFILE</button></a> 
     <div class = "line"></div>
     <div class = "row">
-        <button class ="sort">
+        <button class ="sort active" >
             <span><i class="fa-solid fa-clock-rotate-left"></i></span>
                 <span>Recent</span>
         </button>
@@ -120,6 +115,14 @@
         </div>
         {% endfor %}
     </div>
+    <script type = "text/javascript">
+        $(document).ready(function(){
+            $('button').on('click',function(){
+                $(this).siblings().removeClass('active');
+                $(this).addClass('active');
+            })
+        })
+    </script>
 </div>
 
 <div class="loader-wrapper">
