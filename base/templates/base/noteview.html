@@ -1,6 +1,7 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block content %}
+
 <nav class="navbar navbar-expand-custom navbar-mainbg">
     <a class="navbar-brand navbar-logo" href="{% url 'home' %}"><img class ='Logoo'src="{% static 'base/Logoo.png' %}"></a>
     <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,11 +49,26 @@
     <div class="btn-dow">
         <a href="{{note.pdf_file.url}}" download = 'html' class = "download-button"><i class="fa fa-download"></i><small>Dowload</small></a>
     </div>
-            {% for i in images %}
-               <div class ="preview" style="padding: 5px 5px; min-width: auto; min-height: auto;"><img src="{{i.image.url}}" width="270" height="300" style="border-radius: 10px;"></div>
-            {% endfor %}
-         
+    <!-- <img src="{{i.image.url}}" width="270" height="300" style="border-radius: 10px;"> -->
+    <!-- {% for i in images %}
+    <div class ="preview" style="padding: 5px 5px; min-width: auto; min-height: auto;">
+        <a href="{{i.image.url}}" data-lightbox="mygallery"><img src="{{i.image.url}}" ></a>
+        
+    </div>
+    {% endfor %} -->
+    <section id="index-gallery" class="wrapper-gallery">
+    {% for i in images %}
+    <!-- <div class="gallery-img img1" style="background-image: url('{% static 'base/picatu.jpg' %}');"> -->
+    <div class="gallery-img img1" style="background-image: url('{{i.image.url}}');">
+        <div><a href="#" >This is tiltle</a></div>
+        <!-- <img src="{{i.image.url}}" grid-area="img1" > -->
+    </div>
+    {% endfor %}
+</section>
 </div>
+
+<script src="../static/base/gallery.js"></script>
+
 <div class = "box-preview-chat">
     <div class ="line-pre"></div>
     <div class ="prechat"></div>

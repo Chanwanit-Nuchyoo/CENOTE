@@ -108,7 +108,7 @@
             <div class="row">
             
             
-            {% for n in page.object_list %}
+            {% for n in page_object.object_list %}
             <div class='col-lg-3 mt-1 mb-3'>
                 <a href="{% url 'note_view' id=n.pk %}"><div class="img-box"><img src="{{n.cover.url}}" width="250" height="270" style="border-radius: 10px;"></div></a>
                 <div class="product">
