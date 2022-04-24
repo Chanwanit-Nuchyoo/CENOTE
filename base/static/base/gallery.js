@@ -10,7 +10,7 @@ if(galleryImages){
             let getImgUrlPos = getFullImgUrl.split("8000/");
             
             let SetNewImgUrl = getImgUrlPos[1].replace('")','');
-            alert(SetNewImgUrl);
+            
             getLastestOpenedImg = index+1;
 
             let container = document.body;
@@ -27,6 +27,6 @@ if(galleryImages){
 }
 
 function closeImg(){
-    document.querySelector(".img-window");
+    document.querySelector(".img-window").remove();
 
 }
