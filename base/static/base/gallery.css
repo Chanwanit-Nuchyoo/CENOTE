@@ -73,3 +73,41 @@
     max-width: 80vw;
 
 }
+
+/* next image */
+.img-btn-next{
+    display: block;
+    padding: 6px 10px;
+    border-radius: 4px;
+    background-color: #111111;
+    position:fixed;
+    top: 48vh;
+    z-index: 500;
+    font-family: Arial, Helvetica, sans-serif;
+    color:#ffffff;
+    cursor:pointer;
+    text-transform:uppercase;
+}
+.img-btn-next:hover{
+    opacity:0.8;
+}
+.img-btn-prev{
+    display: block;
+    background-image: url("/picatu.jpg");
+    /* padding: 6px 10px;
+    border-radius: 4px; */
+    /* background-color: #111111; */
+    position:fixed;
+    top: 48vh;
+    z-index: 500;
+    font-family: Arial, Helvetica, sans-serif;
+    /* color:#ffffff; */
+    cursor:pointer;
+    /* width: 100px;
+    height: 100px; */
+    /* transform: scale(1); */
+    text-transform:uppercase;
+}
+.img-btn-prev:hover{
+    opacity:0.8;
+}
