@@ -25,6 +25,20 @@
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="{% url 'open' %}"><i class="fas fa-th-large"></i>CATEGORIES</a>
+                <!-- <ul>
+                    <li class="nav-item" >
+                        <a class="nav-link" href = "{% url 'cate' cate=1 %}">All</a>
+                    </li>
+                    <li class="nav-item" >
+                        <a class="nav-link" href="{% url 'cate' cate=2 %}">NETWORK</a>
+                    </li>
+                    <li class="nav-item" >
+                        <a class="nav-link" href="{% url 'cate' cate=3 %}">SOFTWARE</a>
+                    </li>
+                    <li class="nav-item" >
+                        <a class="nav-link" href="{% url 'cate' cate=4 %}">HARDWARE</a>
+                    </li>
+                </ul>  -->
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'book' %}"><i class="fas fa-book-open"></i></i>NOTEBOOK</a>
@@ -83,7 +97,5 @@
                  
          </div>
     </div>
-
     <nav class="tab-blue"></nav>
-
 {% endblock %}

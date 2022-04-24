@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from base.models import Note
 from django.shortcuts import get_object_or_404
 from account.forms import AccountEditForm
+from django.db.models import Count
 
 def loginview(request):
     context = {}
@@ -106,10 +107,23 @@ def edit_profile_view(request):
     
     # return render(request,'account/editprofile.html',context)
 
+@login_required(login_url='/login')
 def profile(request):
     notes = Note.objects.filter(user=request.user.id)
+    profilesort = request.session.get('profilesort') or 0
+    if profilesort == 0:
+        notes = notes.order_by('-date_created')
+    elif profilesort == 1:
+        notes = notes.order_by('-view_count')
+    elif profilesort == 2:
+        notes = notes.annotate(like_count=Count('likes')).order_by('-like_count')
     context = {
         'notes':notes,
+        'profilesort': profilesort,
     }
     return render(request, 'account/profile.html',context)
 
+@login_required(login_url='/login')
+def profilesort(request,sortid):
+    request.session['profilesort'] = sortid
+    return redirect('profile')

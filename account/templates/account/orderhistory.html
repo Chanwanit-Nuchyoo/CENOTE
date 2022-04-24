@@ -65,26 +65,17 @@
                 <tr style="color: white;">
                     <!-- <th scope="row">1</th> -->
                     <td><div><img src="{{item.note.cover.url}}" style="width:50px;height: 53px;"></div></td>
-                    <td style ="text-align: left;">{{item.note.title}}</td>
+                    <td style ="text-align: left;"><a href="{% url 'note_view' id=item.note.pk %}" style="text-decoration:none">{{item.note.title}}</a></td>
                     <td></td>
                     <td></td>
                     <td>{{item.note.price|intcomma}}</td>
                 </tr>
                 {% endfor %}
                 <!-- จบลูป -->
-                
-                <!-- รวมทั้งหมด -->
-                <tr style="color: white;">
-                    <th scope="row">รวม</th>
-                    <td></td>
-                    <td></td>
-                    <td>{{cart.total_quantity|intcomma}}</td>
-                    <td>{{cart.total_price|intcomma}}</td>
-                </tr>
             </tbody>
         </table>
     </div>
 </div>
-<div class="loader-wrapper"></div>
+
 
 {% endblock %}

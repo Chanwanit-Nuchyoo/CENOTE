@@ -55,14 +55,13 @@
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
                 <medium style="color: rgba(255, 255, 255,0.8); font-size: 13px;" >file must not exceed 1 MB {{form.profile_image}}</medium>
-                <br>
                 <div style="align-content: center;">
                 <div style="color:white;">Name : {{form.username}}</div>
                 <!-- <div style="color: white;">Name   :   <input name="name" type = "text" value="{% if request.user.name %}{{request.user.name}}{% endif %}"></div> -->
                 <br>
                 <div style="color:white;">Info : <br> {{form.info}}</div>
                 <!-- <div style="color: white;">Info</div><textarea name="info" id="" cols="50" rows="10">{% if request.user.info %}{{request.user.info}}{% endif %}</textarea> -->
-                <br><br>
+                <br>
                 <div style="color:white;">Github : {{form.github}}</div>
                 <!-- <div style="color: white;">Github :   <input name="github" type = "url" value="{% if request.user.github %}{{request.user.github}}{% endif %}"></div> -->
                 <br>
@@ -80,6 +79,6 @@
     </div>
     <h1>Edit profile</h1>
 </div>
-<div class="loader-wrapper"></div>
+
 
 {% endblock %}

@@ -22,7 +22,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/cart/"><i class="fa-solid fa-cart-shopping"></i>CART</a>
             </li>
-            <li class="nav-item" style ="cursor: pointer;">
+            <li class="nav-item" style ="cursor: pointer; width: fit-content;">
                 {% if not request.user.is_authenticated %}
                 <a class="nav-link" href="{% url 'loginview' %}"><i class="fas fa-user-alt"></i>Sign In</a>
                 {% else %}
@@ -35,7 +35,7 @@
                         <a class="nav-link" href="{% url 'addnote' %}">Create Note</a>
                     </li>
                     <li class="nav-item" >
-                        <a class="nav-link" href="{% url 'order_history' %}">Order History</a>
+                        <a class="nav-link" href="#">Order History</a>
                     </li>
                     <li class="nav-item" >
                         <a id = "logout-button" href="{% url 'logoutview' %}">Sign Out</a>
@@ -49,15 +49,17 @@
 <div class="header-cart">
     <div class="top"><p>YOUR CART</p></div>
     <div class = "container">
+        {% comment %} <div class="left my-custom-scrollbar table-wrapper-scroll-y "> {% endcomment %}
         <div class="left">
+
                 <!-- ตารางของใน Cart -->
                 <table class="table">
-                    <thead class="thead-dark">
+                    <thead class="thead-bg-white">
                         <tr>
                             <th scope="col">#</th>
+                            <th scope="col">Product</th>
                             <th scope="col"></th>
-                            <th scope="col">ชื่อโน้ต</th>
-                            <th scope="col">ราคาต่อชั้น</th>
+                            <th scope="col">Price</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -69,18 +71,18 @@
                             <td><div><img src="{{item.note.cover.url}}" style="width:50px;height: 53px;"></div></td>
                             <td>{{item.note.title}}</td>
                             <td>{{item.note.price|intcomma}}</td>
-                            <td><a href="remove/{{item.note.pk}}">ลบ</a></td>
+                            <td><a href="remove/{{item.note.pk}}">Delete</a></td>
                         </tr>
                         {% endfor %}
                         <!-- จบลูป -->
                         
                         <!-- รวมทั้งหมด -->
                         <tr>
-                            <th scope="row">รวม</th>
+                            <th scope="row">Total</th>
                             <td></td>
                             <td></td>
                             <td>{{cart.total_price|intcomma}}</td>
-                            <td><a href="clear">ลบทั้งหมด</a></td>
+                            <td><a href="clear">Delete all</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -90,7 +92,7 @@
             <div class="order-sum">
                 <br>
                 รวมทั้งหมด : {{cart.total_quantity|intcomma}} รายการ<br>
-                ราคารวมทั้งหมด : {{cart.total_price|intcomma}} บาท
+                Total : {{cart.total_price|intcomma}} THB
             </div>
             <div class="checkout">
                 <a href="{% if cart.total_quantity == 0 %}#{% else %}/payment/{% endif %}" class="checkout-btn">
@@ -100,6 +102,6 @@
         </div>
     </div>
 </div>
-<div class="loader-wrapper"></div>
+
 
 {% endblock %}

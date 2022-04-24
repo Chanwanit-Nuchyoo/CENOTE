@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 from django.urls import reverse
 from account.models import Account
 from base.forms import NoteForm,NoteEditForm,CommentForm
-from base.models import Images,Note
+from base.models import Images,Note,Comment
 from django.contrib.auth import authenticate, login
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -83,6 +83,13 @@ def book(request):
     if cate:
         notes = notes.filter(category_id=cate)
 
+    category_verbose = {
+        '0':'All',
+        '1':'Hardware',
+        '2':'Network',
+        '3':'Software',
+    }
+
     
     order_id = request.session.get('order') or 0
     if order_id == 0:
@@ -109,6 +116,8 @@ def book(request):
         'rank3': rank3,
         'categories':categories,
         'categ_id':cate,
+        'order_id':order_id,
+        'category_verbose':category_verbose.get(str(cate)),
         }
     #print(rank)
     return render(request,'base/book.html',context)
@@ -116,7 +125,7 @@ def book(request):
 def default_cover():
     return 'account/{filename}{randomint}{ext}'.format(filename='defaultcover' , randomint=random.randint(1,7) ,ext='.jpg')
 
-# @login_required(login_url='/login')
+@login_required(login_url='/login')
 def addnote(request):
     context = {}
     if request.method == "POST":
@@ -154,6 +163,7 @@ def addnote(request):
         context['formA'] = formA
     return render(request,'base/addnote.html',context)
 
+@login_required(login_url='/login')
 def note_edit_view(request,id):
     
     # User can edit the note if it is their owns.
@@ -191,7 +201,6 @@ def note_edit_view(request,id):
                     image.save()
             messages.success(request,'Note updated')
             
-
     images =[image.image.url for image in Images.objects.filter(note=note)]
 
     context = {
@@ -211,24 +220,62 @@ def note_view(request,id):
     author = get_object_or_404(Account,id=note.user.id)
     author.view_count += 1
     author.save()
+
+    try :
+        has_brought = request.user.shelf.has_brought(note)
+    except Exception:
+        has_brought = False
+
+    if request.method=='POST':
+
+        # Check if user is authenticated before comment
+        if not request.user.is_authenticated:
+            return redirect(reverse('loginview'))
+
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.note = note
+            comment.commenter = request.user
+            comment.save()
+            comment_form = CommentForm()
+            note.comment_count += 1
+            note.save()
+            return redirect('note_view', id = id)
+        else:
+            comment_form = CommentForm()
+            print('invalid form')
+
+    category_verbose = {
+        '0':'All',
+        '1':'Hardware',
+        '2':'Network',
+        '3':'Software',
+    }
+
+    comments = Comment.objects.filter(note = id)
     images = Images.objects.filter(note=id)
     context = {
         'note':note,
         'images':images,
         'comment_form':comment_form,
+        'comments':comments,
+        'has_brought': has_brought,
+        'category_verbose': category_verbose.get(str(note.category.pk)),
     }
-    # รอ html สำหรับหน้า Note Detail
     return render(request,'base/noteview.html',context)
 
 def cateview(request,cate):
     request.session['category'] = cate
     request.session['order'] = 0
+    
     return redirect('book')
 
 def all(request):
     request.session['category'] = None
     return redirect('book')
 
+@login_required(login_url='/login')
 def like1(request,noteid):
     note = get_object_or_404(Note,id=noteid)
     author = get_object_or_404(Account,id=note.user.id)
@@ -245,6 +292,41 @@ def like1(request,noteid):
     note.save()
     return redirect('book')
 
+@login_required(login_url='/login')
+def like2(request,noteid):
+    note = get_object_or_404(Note,id=noteid)
+    author = get_object_or_404(Account,id=note.user.id)
+    user = note.likes.all()
+    user = user.filter(id=request.user.id)
+    if user:
+        note.likes.remove(request.user)
+        author.like_count -= 1
+        author.save()
+    else:
+        note.likes.add(request.user)
+        author.like_count += 1
+        author.save()
+    note.save()
+    return redirect('profile')
+
+@login_required(login_url='/login')
+def like3(request,noteid):
+    note = get_object_or_404(Note,id=noteid)
+    author = get_object_or_404(Account,id=note.user.id)
+    user = note.likes.all()
+    user = user.filter(id=request.user.id)
+    if user:
+        note.likes.remove(request.user)
+        author.like_count -= 1
+        author.save()
+    else:
+        note.likes.add(request.user)
+        author.like_count += 1
+        author.save()
+    note.save()
+    return redirect('note_view', id = noteid)
+
+@login_required(login_url='/login')
 def payment(request):
     if request.method == 'POST':
         # GET CREDIT CARD INFOMATION HERE        
@@ -258,11 +340,13 @@ def payment(request):
     context = {}
     return render(request,'base/payment.html',context)
 
+@login_required(login_url='/login')
 def paymentconfirm(request):
     context = {}
     request.user.cart.remove_all_item()
     return render(request,'base/paymentconfirm.html',context)
 
+@login_required(login_url='/login')
 def order_history_view(request):
     Shelf = apps.get_model('base','Shelf')
     ShelfItem = apps.get_model('base','ShelfItem')

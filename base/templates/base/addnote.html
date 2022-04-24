@@ -1,6 +1,15 @@
 {% extends 'main.html' %}
+{% load crispy_forms_tags %}
 {% load static %}
+{% block head %}
+<title>Addnote</title>
+{% endblock %}
 {% block content %}
+<style>
+    select .form-control{
+        width: 50%;
+    }
+</style>
  <nav class="navbar navbar-expand-custom navbar-mainbg">
     <a class="navbar-brand navbar-logo" href="{% url 'home' %}"><div class="Logoo"></div></a>
     <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,23 +55,26 @@
         </ul>
     </div>
 </nav>
-<div class ="box-addnote">
+
+<div class ="box-addnote center-align" style="width: 100%; height: fit-content;">
     {% comment %} <div class="addnote-col"></div> {% endcomment %}
-    <div class="addnote">
+    <div class="text-left" style="width: 650px; height: fit-content; padding: 50px; background-color: #444444; border-radius: 30px; margin-bottom: 30px;">
         <form enctype="multipart/form-data" method="POST">
             {% csrf_token %}
-            <medium style="color: rgb(255, 255, 255);">{{formA.as_p}}</medium>
+            <medium style="color: rgb(255, 255, 255); ">{{formA| crispy }}</medium>
             <div>
             <medium style="color: rgb(255, 255, 255);">pdf file (required) : <input name="pdf" type="file" accept=".pdf"></medium> <br> <br>
             <medium style="color: rgb(255, 255, 255);">Image file for note's cover(not required) : <input name="cover" type="file" accept="image/*"></medium> <br> <br>
             <medium style="color: rgb(255, 255, 255);">Image file(s) to preview(required) : <input required name="images" type="file" multiple accept="image/*"></medium>
             </div>
-            <br><button class ="btn-addnote">Submit</button>
+            <div class="box-btn">
+                <br><button class ="btn-addnote">Submit</button>
+            </div>
+            
         </form>
     <div>
 
 
  
 </div>
-
 {% endblock %}

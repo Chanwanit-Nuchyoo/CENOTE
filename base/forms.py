@@ -25,6 +25,6 @@ class CommentForm(forms.ModelForm):
                 'rows': 3,
                 'required':'',
                 'TextMode':'MultiLine',
-                'style':'font-size:20px',
+                'style':'font-size:20px; border-radius:10px; resize: none; background-color: #444444; color: white; padding:5px',
             }),
         }

@@ -56,6 +56,7 @@ class Note(models.Model):
     last_edit           = models.DateTimeField(auto_now=True)
     likes               = models.ManyToManyField(Account, related_name='member',null=True, blank=True)
     view_count          = models.IntegerField(default=0,null=True,blank=True)
+    comment_count       = models.IntegerField(default=0,null=True,blank=True)
 
     def __str__(self):
         return self.title
@@ -65,6 +66,13 @@ class Note(models.Model):
 
     def get_absolute_url(self):
         return reverse("note_view", kwargs={"slug": self.slug})
+
+    @property
+    def is_liked(self,request):
+        if self.likes.filter(id=request.user.id):
+            return True
+        else:
+            return False
 
 
 class Comment(models.Model):

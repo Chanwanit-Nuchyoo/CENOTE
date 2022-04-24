@@ -1,7 +1,11 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block head %}
+{% if categ_id %}
+<title>{{category_verbose}}</title>
+{% else %}
 <title>All | Note</title>
+{% endif %}
 <link rel="stylesheet" href="{% static 'base/style.css' %}">
 {% endblock %}
 {% block content %}
@@ -60,6 +64,7 @@
 <!-- show category -->
 
 
+
     <div class="list-group">
             {% if not categ_id %}
             <!-- <a href="{% url 'open' %}"><p style="text-align:center">Category</p></a> -->
@@ -76,54 +81,49 @@
             {%endfor%}
     </div>
 
+<!-- <div class="path" style="left: -100px;"> -->
 
 <div class="header-book">
     <div class="box-rank">
+        <div class="path"> 
+            <div class="sort-bar-path">
+            <a href="{% url 'home' %}"><h1><u>Home</u><h1></a><h2><i class="fa-solid fa-arrow-right"></i></h2><h3>{{category_verbose}}</h3>  
+            </div>
+        </div>
         <div class="crown one"></div>
-        <p id = "MR">Ranking</p> 
+        <p id = "MR">RANKING</p> 
         <div class="crown two"></div>
         <div class="box-peo">
-            <div class = "pu1"></div>
-            <div class = "pu2"></div>
             <div class = "line"></div>
-            <div class = "rainbow1"></div>
-            <div class = "rainbow2"></div>
-            <div class = "cloud1"></div>
-            <div class = "cloud2"></div>
-            <div class = "cloud3"></div>
-            <div class = "cloud4"></div>
             <div class="col-1">
                 <a href="{% url 'note_view' id=rank2.id %}"><div class="img-box"><img src="{{rank2.cover.url}}" width="250" height="270" style="border-radius: 10px;"></div></a>
                 <h2>{{rank2.title}}</h2>
                 <h1>by {{rank2.user.username}}</h1> 
-                <div class = "small1"></div>
-                <div class = "small2"></div>
-                <div class = "eye"></div>
-                <div class = "heart">
-                    <i class="fa-regular fa-heart"></i>
+                <div class = "small1">
+                    <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
+                    <h3>{{rank2.view_count}}</h3> 
                 </div>
-                <h3>{{rank2.view_count}}</h3> 
-                <h4>{{rank2.likes.count}}</h4> 
+                <div class = "small2">
+                    <div class = "heart">  <i class="fa-regular fa-heart"></i></div>
+
+                    <h4>{{rank2.likes.count}}</h4>
+                </div>
                 <div class="rank2"></div>
-        </div>
-
-
-
-        <div class="col-2">
+            </div>
+            <div class="col-2">
                 <a href="{% url 'note_view' id=rank1.id %}"><div class="img-box"><img src="{{rank1.cover.url}}" width="250" height="270" style="border-radius: 10px;"></div></a>
                 <h2>{{rank1.title}}</h2> 
-                <h1>by {{rank1.user.username}}</h1> 
-                <div class = "small1"></div>
-                <div class = "small2"></div>
-                <div class = "eye"></div>
-                <div class = "heart">
-                <i class="fa-regular fa-heart"></i>
+                <h1>by {{rank1.user.username}}</h1>
+                <div class = "small1">
+                    <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
+                    <h3>{{rank1.view_count}}</h3> 
+                </div>
+                <div class = "small2">
+                    <div class = "heart">  <i class="fa-regular fa-heart"></i></div>
+                    <h4>{{rank1.likes.count}}</h4>
+                </div> 
+                <div class="rank1"></div>
             </div>
-                <h3>{{rank1.view_count}}</h3> 
-                <h4>{{rank1.likes.count}}</h4> 
-               <div class="rank1"></div>
-            </div>
-
             <div class="col-3">
                 <a href="{% url 'note_view' id=rank3.id %}"><div class="img-box"><img src="{{rank3.cover.url}}" width="250" height="270" style="border-radius: 10px;"></div></a>
                 <div id = "title-name">
@@ -131,14 +131,14 @@
                     <h1>by {{rank3.user.username}}</h1>
                 </div> 
                 <div class="rank3"></div>
-                <div class = "small1"></div>
-                <div class = "small2"></div>
-                <div class = "eye"></div>
-                <div class = "heart">
-                    <i class="fa-regular fa-heart"></i>
+                <div class = "small1">
+                    <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
+                    <h3>{{rank3.view_count}}</h3>                     
                 </div>
-                <h3>{{rank3.view_count}}</h3>
-                <h4>{{rank3.likes.count}}</h4> 
+                <div class = "small2">
+                    <div class = "heart">  <i class="fa-regular fa-heart"></i></div>
+                    <h4>{{rank3.likes.count}}</h4>
+                </div>
                 <div class="rank3"></div>
             </div>
         </div>
@@ -146,7 +146,7 @@
 
 <div class="box-product">
             <!-- ลูปแต่ละ note จาก book view -->
-            <div class="row">
+            <div class="row" style="margin-top: 60px;">
             {% for n in page_object.object_list %}
             <div class='col-lg-3 mt-1 mb-3'>
                 <a href="{% url 'note_view' id=n.pk %}"><div class="img-box"><img src="{{n.cover.url}}" width="250" height="270" style="border-radius: 10px;"></div></a>
@@ -164,8 +164,8 @@
                         {% endif %}   
                     </div>
                     <div class = "eye-product"><a href=""><i class="fa-regular fa-eye"></i></a><small>{{n.view_count}}</small></div>
-                    <div class = "heart-product"><a href="{% url 'like1' noteid=n.id %}"><i class="fa-regular fa-heart"></i></a><small>{{n.likes.all.count}}</small></div>
-                    <div class = "chat-product"><a href=""><i class="fa-regular fa-comment-dots"></i></a></div>
+                    <div class = "heart-product"><a href="{% url 'like1' noteid=n.id %}"><i class="{% if request.user in n.likes.all %}fa-solid fa-heart{% else %}fa-regular fa-heart{% endif %}"></i></a><small>{{n.likes.all.count}}</small></div>
+                    <div class = "chat-product"><a href=""><i class="fa-regular fa-comment-dots"></i></a><small>{{n.comment_count}}</small></div>
                     <!--<div class = "cart-product"><a href="{{ n.get_add_to_cart_url }}"><i class="fa-solid fa-cart-shopping"></i></a></div>-->
                 </div>
                 
@@ -175,32 +175,52 @@
             
             <!-- โชว์เลขจำนวนโน๊ตที่มี-->
             <!-- <h3>Total number of books: {{ count }} , page number : {{page_object.number}}</h3> -->
-     <div class="slide-bar">
-                <ul class="pagination">
-                    {% if page_object.has_previous %}
-                    <li class="page-item"><a class="page-link" href="{% url 'book' %}?categoryid={{categ_id}}&page={{ page_object.previous_page_number }}">←</a></li>
-                    {% endif %}
-                    {% for i in page_object.adjusted_elided_pages %}
-                        {% if i == page_object.paginator.ELLIPSIS %}
-                            {{i}}
-                        {% else %}
-                        <li class="page-item {% if page_object.number == i %}active{% endif %}">
-                        <a class="page-link" href="{% url 'book'%}?categoryid={{categ_id}}&page={{ i }}" class="{% if i == page_object.number %}page.number{% endif %}"> {{i}} </a>
-                    </li>
-                    {% endif %}
-                    {% endfor %}
-                    {% if page_object.has_next %}
-                    <li class="page-item"><a class="page-link" href="{% url 'book' %}?page={{ page_object.next_page_number }}">→</a></li>
-                    {% endif %}
-                    
-                </ul>
-     </div>
+            <div class="box-slide">
+                <div class="slide-bar">
+                    <ul class="pagination">
+                        {% if page_object.has_previous %}
+                        <li class="page-item"><a class="page-link" href="{% url 'book' %}?categoryid={{categ_id}}&page={{ page_object.previous_page_number }}">←</a></li>
+                        {% endif %}
+                        {% if page_object.has_previous or page_object.has_next  %}
+                            {% for i in page_object.adjusted_elided_pages %}
+                                {% if i == page_object.paginator.ELLIPSIS %}
+                                    {{i}}
+                                {% else %}
+                                    <li class="page-item {% if page_object.number == i %}active{% endif %}">
+                                    <a class="page-link" href="{% url 'book'%}?categoryid={{categ_id}}&page={{ i }}" class="{% if i == page_object.number %}page.number{% endif %}"> {{i}} </a>
+                                    </li>                        
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                        {% if page_object.has_next %}
+                        <li class="page-item"><a class="page-link" href="{% url 'book' %}?page={{ page_object.next_page_number }}">→</a></li>
+                        {% endif %}
+                        
+                    </ul>
+                </div>
+            </div>
+            
 
 </div>
-        <div id = "sort-bar">
-            <a href="{% url 'sort' s=0 %}" style="text-decoration: none;"><button class ="btn-2 active"><div class = "icon" style="color: #185EE0; border-radius: 30px;"><i class="fa-solid fa-clock-rotate-left" ></i></div><h1 style="color: #185EE0; border-radius: 30px;">Recent<h1></button></a>
+        <div id = "sort-bar" style="margin-top: 50px;">
+            <!--Recent-->
+            {% if order_id == 0 %} 
+            <a href="{% url 'sort' s=0 %}" style="text-decoration: none;"><button class ="btn-2"><div class = "icon" style="color: #185EE0; border-radius: 30px;"><i class="fa-solid fa-clock-rotate-left" ></i></div><h1 style="color: #185EE0;border-radius: 30px;">Recent<h1></button></a>
             <a href="{% url 'sort' s=1 %}" style="text-decoration: none;"><button class ="btn-3"><div class = "icon"><i class="fa-regular fa-eye"></i></div><h2>View<h2></button></a>
-            <a href="{% url 'sort' s=2 %}" style="text-decoration: none;"><button class ="btn-4"><div class = "icon"><i class="fa-regular fa-heart"></i></div><h3>Like<h3></button></a>
+            <a href="{% url 'sort' s=2 %}" style="text-decoration: none;"><button class ="btn-4"><div class = "icon"><i class="fa-regular fa-heart"></i></div><h3>Like<h3></button></a>    
+            <!--View-->
+            {% elif order_id == 1%}
+            <a href="{% url 'sort' s=0 %}" style="text-decoration: none;"><button class ="btn-2"><div class = "icon" style="border-radius: 30px;"><i class="fa-solid fa-clock-rotate-left" ></i></div><h1 >Recent<h1></button></a>
+            <a href="{% url 'sort' s=1 %}" style="text-decoration: none;"><button class ="btn-3"><div class = "icon" style="color: #185EE0; border-radius: 30px;"><i class="fa-regular fa-eye"></i></div><h2 style="color: #185EE0;border-radius: 30px;">View<h2></button></a>
+            <a href="{% url 'sort' s=2 %}" style="text-decoration: none;"><button class ="btn-4"><div class = "icon"><i class="fa-regular fa-heart"></i></div><h3>Like<h3></button></a>    
+            <!--liket-->
+            {% elif order_id == 2 %}
+            <a href="{% url 'sort' s=0 %}" style="text-decoration: none;"><button class ="btn-2"><div class = "icon" style="border-radius: 30px;"><i class="fa-solid fa-clock-rotate-left" ></i></div><h1 >Recent<h1></button></a>
+            <a href="{% url 'sort' s=1 %}" style="text-decoration: none;"><button class ="btn-3"><div class = "icon"><i class="fa-regular fa-eye"></i></div><h2>View<h2></button></a>
+            <a href="{% url 'sort' s=2 %}" style="text-decoration: none;"><button class ="btn-4"><div class = "icon"style="color: #185EE0; border-radius: 30px;"><i class="fa-regular fa-heart"></i></div><h3  style="color: #185EE0;border-radius: 30px;">Like<h3></button></a>
+            {% endif %}
+            <!--<a href="{% url 'sort' s=1 %}" style="text-decoration: none;"><button class ="btn-3 {% if order_id == 1 %}active{% endif %}""><div class = "icon"><i class="fa-regular fa-eye"></i></div><h2>View<h2></button></a>
+            <a href="{% url 'sort' s=2 %}" style="text-decoration: none;"><button class ="btn-4 {% if order_id == 2 %}active{% endif %}""><div class = "icon"><i class="fa-regular fa-heart"></i></div><h3>Like<h3></button></a>-->
         </div>
 
     </div>

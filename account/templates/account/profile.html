@@ -63,10 +63,15 @@
     <p style = "font-size:1.8em; color: orange; font-weight: bold; letter-spacing: 5px;" > CONTACT </p>
     <p style = "font-size:1.5em; color: #FF5733 ; font-weight: bold; letter-spacing: 5px;" > EMAIL : {{request.user.contact_email}} </p>
     <div class = "row">
-            <button id = "reddot">
-                <a href = "#"> <img class = "reddot-pic" src={% static 'base/envelope.png' %}></a>
-                <h1 >DM</h1>
+            <button id = "reddot-copy">
+                <a href = "#"> <img class = "reddot-pic" src={% static 'base/envelope.png' %}>
+                    <article id="content-copy" style="color: rgba(0, 0, 0, 0.0); cursor: none; font-size: 0%;">
+                        {{request.user.contact_email}}
+                    </article>
+                </a>
+                <h1 >Email copy</h1>
             </button>
+            
             <button id = "reddot">
                 <a href = "{% if request.user.github %}{{ request.user.github }}{% endif %}"> <img class = "reddot-pic" src={% static 'base/github.png' %}></a>
                 <h2>GITHUB</h2>    
@@ -79,18 +84,24 @@
     <a href="{% url 'editprofile' %}"><button id = "edit-profile" style ="left: 0;"> EDIT PROFILE</button></a> 
     <div class = "line"></div>
     <div class = "row">
-        <button class ="sort active" >
-            <span><i class="fa-solid fa-clock-rotate-left"></i></span>
+        <a href="{% url 'profilesort' sortid=0 %}">
+            <button class ="sort {% if profilesort == 0 %}active{% endif %}" >
+                <span><i class="fa-solid fa-clock-rotate-left"></i></span>
                 <span>Recent</span>
-        </button>
-        <button class ="sort">
+            </button>
+        </a>
+        <a href="{% url 'profilesort' sortid=1 %}">
+        <button class ="sort {% if profilesort == 1 %}active{% endif %}">
                 <span><i class="fa-regular fa-eye"></i></span><span>View</span>
             
         </button>
-        <button class ="sort">
+        </a>
+        <a href="{% url 'profilesort' sortid=2 %}">
+        <button class ="sort {% if profilesort == 2 %}active{% endif %}">
             <span><i class="fa-regular fa-heart"></i></span>
                 <span>Like</span>
         </button>
+        </a>
     </div>
     <div class = "row">
     <!-- ลูปแต่ละ note จาก book view -->
@@ -104,9 +115,9 @@
                 <h5>
                         โดย : {{n.user.username}}
                 </h5>
-                <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
-                <div class = "heart-product"><i class="fa-regular fa-heart"></i></div>
-                <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i></div>
+                <div class = "eye-product"><i class="fa-regular fa-eye"></i><small>{{n.view_count}}</small></div>
+                <a href="{% url 'like2' noteid=n.pk %}"><div class = "heart-product"><i class="{% if request.user in n.likes.all %}fa-solid fa-heart{% else %}fa-regular fa-heart{% endif %}"></i><small>{{n.likes.all.count}}</small></div></a>
+                <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i><small>{{n.comment_count}}</small></div>
                 <div id = "pencil">
                     <a href = "{% url 'editnote' id=n.pk %}"><i class="fi fi-rr-edit"></i></a>
                 </div>
@@ -126,8 +137,18 @@
     </script>
 </div>
 
-<div class="loader-wrapper">
 
-</div>
+<script>
 
+    const copyButton = document.getElementById('reddot-copy');
+
+    copyButton.addEventListener('click', (event) => {
+        // getting the text content that we want to copy
+        const content = document.getElementById('content-copy').textContent;
+        // loading the content into our clipboard
+        navigator.clipboard.writeText(content);
+        // copyButton.classList.add("active");
+
+})
+</script>
 {% endblock %}

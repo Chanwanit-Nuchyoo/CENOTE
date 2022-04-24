@@ -11,4 +11,5 @@ urlpatterns = [
     path('logout/',views.logout_view, name='logoutview'),
     path('profile/edit',views.edit_profile_view,name='editprofile'),
     path('profile', views.profile, name='profile'),
+    path('profile/sort/<int:sortid>', views.profilesort, name="profilesort"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

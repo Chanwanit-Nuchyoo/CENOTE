@@ -1,92 +1,90 @@
 {% extends 'main.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block head %}
-	<title>Sign up</title>
-    <nav class="navbar navbar-expand-custom navbar-mainbg" style = "overflow: visible !important;">
-        <a class="navbar-brand navbar-logo" href="{% url 'home' %}"><div class="Logoo"></div></a>
-        <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars text-white"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home"></i>HOME</a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="{% url 'open' %}"><i class="fas fa-th-large"></i>CATEGORIES</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'book' %}"><i class="fas fa-book-open"></i></i>NOTEBOOK</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/cart/"><i class="fa-solid fa-cart-shopping"></i>CART</a>
-                </li>
-                {% comment %} <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);"><i class="fas fa-question-circle"></i>Q & A</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);"><i class="fas fa-history"></i>Timeline</a>
-                </li> {% endcomment %}
-              
-                <li class="nav-item" style ="cursor: pointer;">
-                    {% if not request.user.is_authenticated %}
-                    <a class="nav-link" href="{% url 'loginview' %}"><i class="fas fa-user-alt"></i>Sign In</a>
-                    {% else %}
-                    <a class="nav-link"><i class="fas fa-user-alt"></i>{{request.user.username}}</a>
-                    <ul>
-                        <li class="nav-item" >
-                            <a class="nav-link" href = "{% url 'profile' %}">Profile</a>
-                        </li>
-                        <li class="nav-item" >
-                            <a id = "logout-button" href="{% url 'logoutview' %}">Sign Out</a>
-                        </li>
-                    </ul> 
-                    {% endif %}
-                       
-                </li>
-            </ul>
-        </div>
-        <div class ="search-box">
-            <input class="search-txt" type = "text" name="" placeholder="Type to search">
-            <a class ="search-btn" href ="#">
-                <i class="fas fa-search"></i>
-            </a>
-            </div>
-    </nav>
+    <title>Sign up</title>
 {% endblock %}
 
 {% block content %}
-<br><br>
-<div class = "box-sing">
-    <div class="sing-col"></div>
-    <div class="sing">
-            <form method="post">
-                {% csrf_token %}
-                
-                {% for field in signup_form %}
-                <p>
-                    <small style="color: rgb(255, 255, 255);">{{field.label_tag}}</small>
-                    {{field}}
-                    
-                    {% if field.help_text %}
-                        <small style="color: gray;">{{field.help_text}}</small>
-                    {% endif %}
-                    <br>
-                    {% for error in field.errors %}
-                        <small style="color: red;">{{error}}</small>
-                    {% endfor %}
-        
-                </p>
-                {% endfor %}
-                <button class ="btn-sing"><h1>Create Account</h1></button>
-            </form>
-            <h2>Sign Up</h2>
-            <div class="add"></div>
+<style>
+    .help_text{
+        color:white;
+    }
+
+    ul{
+        margin-left: 50px;
+        color: white;
+    }
+
+    form {
+        color: white;
+    }
+
+    .requiredField{
+        color: white;
+
+    }
+
+</style>
+<nav class="navbar navbar-expand-custom navbar-mainbg" style = "overflow: visible !important;">
+    <a class="navbar-brand navbar-logo" href="{% url 'home' %}"><div class="Logoo"></div></a>
+    <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-bars text-white"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home"></i>HOME</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="{% url 'open' %}"><i class="fas fa-th-large"></i>CATEGORIES</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'book' %}"><i class="fas fa-book-open"></i></i>NOTEBOOK</a>
+            </li>
+			<li class="nav-item">
+                <a class="nav-link" href="/cart/"><i class="fa-solid fa-cart-shopping"></i>CART</a>
+            </li>
+ 
+            <li class="nav-item" style ="cursor: pointer;">
+                {% if not request.user.is_authenticated %}
+                <a class="nav-link" href="{% url 'loginview' %}"><i class="fas fa-user-alt"></i>Sign In</a>
+                {% else %}
+                <a class="nav-link"><i class="fas fa-user-alt"></i>{{request.user.username}}</a>
+                <ul>
+                    <li class="nav-item" >
+                        <a class="nav-link" href = "{% url 'profile' %}">Profile</a>
+                    </li>
+                    <li class="nav-item" >
+                        <a class="nav-link" href="{% url 'addnote' %}">Create Note</a>
+                    </li>
+                    <li class="nav-item" >
+                        <a class="nav-link" href="{% url 'order_history' %}">Order History</a>
+                    </li>
+                    <li class="nav-item" >
+                        <a id = "logout-button" href="{% url 'logoutview' %}">Sign Out</a>
+                    </li>
+                </ul> 
+                {% endif %}
+            </li>
+        </ul>
     </div>
+</nav>
 
-  
 
-
+<div class="center-align">
+    <div class="container" style="width:800px; height: 730px; background-color: #444444; position: relative; margin-top: 10%; padding: 20px; border-radius: 30px;">
+        <h1 style="text-align: center;color: white; margin-bottom: 40px; margin-top: 40px;">Sign Up</h1>
+        <form action="" method="POST" >
+            {% csrf_token %}
+            {{ signup_form|crispy }}
+            <div class="center-align" style="justify-content: center; align-items: center; text-align: center; margin-top: 50px; margin-bottom: 50px;">
+                <input type="submit" value="Create Account" style="width:  312px; height: 52px; border-radius: 10px; margin-bottom: 50px; background-color: #6E62FF;">
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock %}
+
+
