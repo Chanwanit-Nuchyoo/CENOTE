@@ -105,14 +105,12 @@ class Account(AbstractBaseUser):
         # cart.save()
 def create_cart_for_account(sender,instance,*args,**kwargs):
     from cart.models import Cart        
-    print(sender)
     
     try:
         instance.cart    
     except Exception:
         cart = Cart(account=instance)
         cart.save()
-        print("saving cart")
     return 
 
 post_save.connect(create_cart_for_account,sender=Account)

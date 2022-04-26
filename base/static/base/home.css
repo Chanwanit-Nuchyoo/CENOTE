@@ -7,6 +7,7 @@ body {
 * {
     margin: 0;
     padding: 0;
+    
 }
 
 i {
@@ -365,15 +366,47 @@ section::after {
   box-shadow: 5px 5px 5px 5px #8E8E8E ;
   z-index:5;
 }
+.img-left{
+  position: absolute;
+  left:2px;
+  top:-30px;
+  background-image: url(https://icons-for-free.com/download-icon-arrow+left+chevron+chevronleft+left+left+icon+icon-1320185731545502691_512.png);
+  background-size:cover;
+  width:60px;
+  height: 60px;
+ 
+}
+.img-right{
+  position: absolute;
+  left:1135px;
+  top:-30px;
+  background-image: url(https://icons-for-free.com/download-icon-arrow+right+chevron+chevronright+right+right+icon+icon-1320185732203239715_512.png);
+  background-size:cover;
+  width:60px;
+  height: 60px;
+ 
+}
+
+
+
+
 .box-secpage01{
   position: relative;
   top:40px;
   left:460px;
   width:650px;
-  height: 470px;
+  height: 500px;
   border: 2px solid black;
   border-radius: 30px;
   z-index:7;
+}
+.box-secpage01 p{
+  position: absolute;
+  top:100px;
+  left:20px;
+  color: rgb(0, 0, 0);
+  font-size: 2em;
+  text-shadow: 0.1px 0.1px 0.1px  black;
 }
 .box-secpage01 h1{
   position: absolute;
@@ -399,10 +432,18 @@ section::after {
   top:40px;
   left:75px;
   width:650px;
-  height: 470px;
+  height: 500px;
   border: 2px solid black;
   border-radius: 30px;
   z-index:7;
+}
+.box-secpage02 p{
+  position: absolute;
+  top:100px;
+  left:10px;
+  color: rgb(0, 0, 0);
+  font-size: 2em;
+  text-shadow: 0.1px 0.1px 0.1px  black;
 }
 .box-secpage02 h1{
   position: absolute;
@@ -425,22 +466,55 @@ section::after {
 }
 .box-secpage03{
   position: relative;
-  top:40px;
-  left:263px;
-  width:700px;
-  height: 470px;
+  top:20px;
+  left:100px;
+  width:1000px;
+  height: 535px;
   border: 2px solid black;
   border-radius: 30px;
   z-index:7;
 }
 .box-secpage03 h1{
   position: absolute;
-  top:20px;
-  left:110px;
+  top:5px;
+  left:350px;
   color: rgb(0, 0, 0);
   font-size: 2.5em;
   text-shadow: 3px 3px 3px rgb(118, 118, 247);
   
+}
+.box-secpage03 h2{
+  position: absolute;
+  top:-10px;
+  left:592px;
+  color: rgb(0, 0, 0);
+  font-size: 2.5em;
+
+}
+
+.box-secpage03 h3{
+  position: absolute;
+  top:50px;
+  left:550px;
+  color: rgb(0, 0, 0);
+  font-size: 2.5em;
+  font-weight: bold;
+}
+.box-secpage03 h4{
+  position: absolute;
+  top:290px;
+  left:470px;
+  color: rgb(0, 0, 0);
+  font-size: 2.5em;
+  font-weight: bold;
+}
+.box-secpage03 h5{
+  position: absolute;
+  top:290px;
+  left:660px;
+  color: rgb(0, 0, 0);
+  font-size: 2.5em;
+  font-weight: bold;
 }
 
 .demo a {
@@ -1045,7 +1119,7 @@ section::after {
 /*=============================================================== Slider ========================================== */
 *{box-sizing: border-box; -webkit-box-sizing: border-box; }
 html, body { height: 100%; }
-body { margin: 0; font: 16px/1.3 sans-serif; }
+/* body { margin: 0; font: 16px/1.3 sans-serif; } */
 
 /*
 PURE RESPONSIVE CSS3 SLIDESHOW GALLERY by Roko C. buljan
@@ -1095,7 +1169,6 @@ http://stackoverflow.com/a/34696029/383904
 }
 
 .CSSgal .prevNext a {
-	background: #fff;
 	position: absolute;
 	width:       60px;
 	height:      60px;
@@ -1197,7 +1270,184 @@ http://stackoverflow.com/a/34696029/383904
 	text-decoration: none;
 }
 
+/* ============================================ SDP S01 G06 =============================================*/
+section.iq-features{
+  top:-10px;
+  left:-120px;
+	padding:100px 0px;
+	margin:50px 0 0;
+  }
+  .holderCircle {
+	  border-radius: 100%;
+  }
+  .round {
+	  position: absolute;
+	  left: 150px;
+	  top: 150px;
+	  width: 410px;
+	  height: 410px;
+	  border: 0;
+	  border-radius: 100%;
+	  -webkit-animation: rotation 100s infinite linear;
+  }
+  .dotCircle {
+	  width: 100%;
+	  height: 100%;
+	  position: absolute;
+	  margin: auto;
+	  top: 0;
+	  left: 0;
+	  right: 0;
+	  bottom: 0;
+	  border-radius: 100%;
+	  z-index: 20;
+  }
+  .dotCircle .itemDot {
+	  display: block;
+	  width: 130px;
+	  height: 130px;
+	  position: absolute;
+	  background: #ffffff;
+	  color: #7d4ac7;
+	  border-radius: 50%;
+	  text-align: center;
+	  line-height: 80px;
+	  font-size: 30px;
+	  z-index: 3;
+	  cursor: pointer;
+	  border: 0;
+	  overflow: hidden;
+	  object-fit: cover;
+  }
+  .dotCircle .itemDot {
+	  font-size: 40px;
+	  box-shadow: 10px -2px 20px #c0bebe;
+  }
+  .dotCircle .itemDot:hover{
+	color: #ffffff;
+	transition: 0.5s;
+	background: #7d4ac7;
+	background: -moz-linear-gradient(left, #7d4ac7 0%, #a733bb 100%);
+	background: -webkit-linear-gradient(left, #7d4ac7 0%, #a733bb 100%);
+	background: linear-gradient(to right, #7d4ac7 0%, #a733bb 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7d4ac7', endColorstr='#a733bb', GradientType=1);
 
+
+  }
+ .dotCircle .itemDot.active {
+	  color: #ffffff;
+	  transition: 0.5s;
+	  background: #7d4ac7;
+	  background: -moz-linear-gradient(left, #7d4ac7 0%, #a733bb 100%);
+	  background: -webkit-linear-gradient(left, #7d4ac7 0%, #a733bb 100%);
+	  background: linear-gradient(to right, #7d4ac7 0%, #a733bb 100%);
+	  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7d4ac7', endColorstr='#a733bb', GradientType=1);
+	  border: 5px solid rgb(118 118 247);
+	 
+  }
+  .dotCircle .itemDot img {
+	  vertical-align: middle;
+	  border-style: none;
+	  object-fit: cover;
+	  width: 100%;
+	  height: 100%;
+  }
+  .dotCircle .itemDot .forActive {
+	  width: 100%;
+	  height: 100%;
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  right: 0;
+	  bottom: 0;
+	  display: none;
+	  background: rgba(255, 255, 255, 0.341);
+  }
+  .dotCircle .itemDot.active .forActive {
+	  display: block;
+  }
+  .content-star {
+	  background: url(../img/star-shape.png) no-repeat;
+	  position: absolute;
+	  top: 140px;
+	  left: 102px;
+	  content: "";
+	  background-size: 100%;
+	  height: 450px;
+	  width: 450px;
+	  transform: translate(45deg);
+	  transform: rotate(-12deg);
+	  opacity: 0.6;
+  }
+  .contentCircle {
+	  width: 250px;
+	  border-radius: 100%;
+	  color: #222222;
+	  position: relative;
+	  top: 50px;
+	  left: 50%;
+	  transform: translate(-50%, -16%);
+	  background: #fff;
+	  height: 300px;
+	  width: 300px;
+  }
+  .contentCircle .CirItem {
+	  border-radius: 100%;
+	  color: #222222;
+	  position: absolute;
+	  text-align: center;
+	  bottom: 0;
+	  left: 0;
+	  opacity: 0;
+	  transform: scale(0);
+	  transition: 0.5s;
+	  font-size: 15px;
+	  width: 100%;
+	  height: 100%;
+	  top: 80px;
+	  right: 0;
+	  margin: auto;
+	  line-height: 250px;
+  }
+  .title-box .title {
+	  font-weight: 600;
+	  letter-spacing: 2px;
+	  position: relative;
+	  z-index: -1;
+  }
+  .title-box p {
+	  font-size: 16px;
+	  line-height: 30px;
+	  color: #656565;
+	  font-weight: 400;
+	  text-align: center;
+	  display: -webkit-box;
+	  -webkit-line-clamp: 5;
+	  -webkit-box-orient: vertical;
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+	  padding: 0 50px;
+  }
+  .contentCircle .CirItem i {
+	  font-size: 180px;
+	  position: absolute;
+	  top: 0;
+	  left: 50%;
+	  margin-left: -90px;
+	  color: #000000;
+	  opacity: 0.1;
+	  display: none;
+  }
+  .CirItem.active {
+	  z-index: 1;
+	  opacity: 1;
+	  transform: scale(1);
+	  transition: 0.5s;
+  }
+  
+  .love-graphic{
+	padding-left:50px;
+  }
 /* ===========================keyframe======================================== */
 @keyframes Bot {
     0.0% {

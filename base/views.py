@@ -85,9 +85,9 @@ def book(request):
 
     category_verbose = {
         '0':'All',
-        '1':'Hardware',
-        '2':'Network',
-        '3':'Software',
+        '2':'Hardware',
+        '3':'Network',
+        '1':'Software',
     }
 
     
@@ -248,9 +248,9 @@ def note_view(request,id):
 
     category_verbose = {
         '0':'All',
-        '1':'Hardware',
-        '2':'Network',
-        '3':'Software',
+        '2':'Hardware',
+        '3':'Network',
+        '1':'Software',
     }
 
     comments = Comment.objects.filter(note = id)
@@ -307,7 +307,7 @@ def like2(request,noteid):
         author.like_count += 1
         author.save()
     note.save()
-    return redirect('profile')
+    return redirect('profile',username=request.user.username)
 
 @login_required(login_url='/login')
 def like3(request,noteid):

@@ -38,7 +38,7 @@ class Cart(models.Model):
     
     def has_brought(self,note):
         Shelf = apps.get_model('base','Shelf')
-        shelf = Shelf.objects.get(account=self.account)
+        shelf,created = Shelf.objects.get_or_create(account=self.account)
         return shelf.has_brought(note)
 
     def add_item(self,note,quantity=1):

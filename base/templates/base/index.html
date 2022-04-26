@@ -39,7 +39,7 @@
                 <a class="nav-link"><i class="fas fa-user-alt"></i>{{request.user.username}}</a>
                 <ul>
                     <li class="nav-item" >
-                        <a class="nav-link" href = "{% url 'profile' %}">Profile</a>
+                        <a class="nav-link" href = "{% url 'profile' username=request.user.username %}">Profile</a>
                     </li>
                     <li class="nav-item" >
                         <a class="nav-link" href="{% url 'addnote' %}">Create Note</a>
@@ -108,27 +108,118 @@
       <div style=>
         <div class="box-secimg01"></div>
         <div class="box-secpage01">
+          <p>CE Note is a website that compiles a summary of the course notes of the Faculty of Engineering. Notes are short and easy to understand.
+            To help students better understand their subjects, the CE community also has a web-based comments system to ask questions they don't understand.</p>
           <h1>What is CE NOTE ?</h1>
+         
         </div>
       </div>
       <div style=>
         <div class="box-secpage02">
           <h1>How Does It Work ?</h1>
+          <p>There are two types of systems in CE NOTE.
+          1.Visitors - Note visitors can view the notes in a free format. and premium.But with Premium, visitors have to pay in order to view every page.
+          2.Creator- Note Creator can create free notes. and premium, The creator will be paid to the credit card that is tied to the website.</p>
         </div>
         <div class="box-secimg02"></div>
       </div>
       <div style=>
       <div class="box-secpage03">
         <h1>Developed by SDP-G1-06</h1>
+        <div class="box-secminipage03"></div>
+        <section class="iq-features">
+          <div class="container">
+                  <div class="row align-items-center">
+                     <div class="col-lg-7 col-md-12 circle-bg">
+                        <div class="holderCircle">
+                           <div class="round"></div>
+                           <div class="dotCircle" stylesa="transform: rotate(252deg); transition: all 2s ease 0s;">
+                              <div class="itemDot itemDot1 active" data-tab="1" style="">
+                                 <img src="https://scontent.fbkk13-2.fna.fbcdn.net/v/t1.15752-9/278534166_698274074821846_7466534164476382194_n.png?_nc_cat=107&ccb=1-5&_nc_sid=ae9488&_nc_ohc=H5iUk_V0tZYAX-OCChK&tn=i2vMqc07wMbHNasU&_nc_ht=scontent.fbkk13-2.fna&oh=03_AVJj69fdgaqvWVuGADz3ggK8zCnbXq2dkdyeny2quxuM-g&oe=628D4F93" alt="ImageJethroBurnettThorburnMolo-Market">
+                                 <span class="forActive"></span>
+                              </div>
+                              <div class="itemDot itemDot2" data-tab="2" style="">
+                                 <img src="https://scontent.fbkk9-3.fna.fbcdn.net/v/t1.15752-9/278457511_3176367795973290_5665361216391192481_n.png?_nc_cat=105&ccb=1-5&_nc_sid=ae9488&_nc_ohc=GZQhRLGTwokAX8l4Ve6&_nc_ht=scontent.fbkk9-3.fna&oh=03_AVIDwTUqj43Ld936KLVLkWw0RiHIeb6eWnycd5OOKewJBg&oe=628DC94E" alt="heateher-min">
+                                 <span class="forActive"></span>
+                              </div>
+                              <div class="itemDot itemDot3" data-tab="3" style="">
+                                 <img src="https://scontent.fbkk8-4.fna.fbcdn.net/v/t1.15752-9/278652855_1028378794725738_2669044374466495474_n.png?_nc_cat=100&ccb=1-5&_nc_sid=ae9488&_nc_ohc=KRtedLpHs_MAX8N51VD&tn=i2vMqc07wMbHNasU&_nc_ht=scontent.fbkk8-4.fna&oh=03_AVJQ_pOOL0b7zYWyKdp4Zrp8m8NpHaqBdmKe0NlVmgtFWA&oe=628BFD15" alt="richard">
+                                 <span class="forActive"></span>
+                              </div>
+                              <div class="itemDot itemDot4 " data-tab="4" style="">
+                                 <img src="https://scontent.fbkk13-2.fna.fbcdn.net/v/t1.15752-9/278159959_517390583208910_7063370510356826503_n.png?_nc_cat=111&ccb=1-5&_nc_sid=ae9488&_nc_ohc=gfgKI9k3ecsAX9Qc-J1&_nc_ht=scontent.fbkk13-2.fna&oh=03_AVLZg2995Y2LI4nCv3UfKVUT4bzm5gQoHc69G-rjNTVsUA&oe=628B7EA7" alt="JSimone">
+                                 <span class="forActive"></span>
+                              </div>
+                              <div class="itemDot itemDot5" data-tab="5" style="">
+                                 <img src="https://scontent.fbkk12-3.fna.fbcdn.net/v/t1.15752-9/277931948_296450736001239_7910930354193770800_n.png?_nc_cat=102&ccb=1-5&_nc_sid=ae9488&_nc_ohc=g7zjKWpU9s0AX_SxMqE&_nc_oc=AQm5efGcA55ablQakvGP_yt3bQT9RjIzksIiBx36ff2hGb1PkxzuoV74EfhL1o9daEkBg2MXKiJ2huczUejTz5cx&_nc_ht=scontent.fbkk12-3.fna&oh=03_AVL2UpbBEUmBES7cAiKAQIznTHUNSo3NeuEhY8Usg_ZFNA&oe=628A89FF" alt="lola.">
+                                 <span class="forActive"></span>
+                              </div>
+                             <div class="itemDot itemDot6" data-tab="6" style="">
+                                 <img src="https://scontent.fbkk12-2.fna.fbcdn.net/v/t1.15752-9/277985591_390365586277810_339836083929576366_n.png?_nc_cat=104&ccb=1-5&_nc_sid=ae9488&_nc_ohc=Jc5Tx3ePoA8AX9irmO6&_nc_ht=scontent.fbkk12-2.fna&oh=03_AVJnl5O1b5mn7QyaJx2ZIXvDOQmUy7B2r5zI9jjG40gn5A&oe=628A4820" alt="richard">
+                                 <span class="forActive"></span>
+                              </div>
+                              
+                           </div>
+                           <div class="content-star"></div>
+                           <div class="contentCircle">
+                              <div class="CirItem title-box CirItem1 active">
+                                 <h5>63010151</h5>
+                                 <h3>Jirayut Senanolit</h3>
+                                 <h4>Frontend</h4>
+                                 
+                                 <i class="fa fa-clock-o"></i>
+                              </div>
+                              <div class="CirItem title-box CirItem2">
+                                 <h5>63010034</h5>
+                                 <h3>Krissada Sarawit</h3>
+                                 <h4>Backend</h4>
+
+                                 <i class="fa fa-comments"></i>
+                              </div>
+                              <div class="CirItem title-box CirItem3">
+                                 <h5>63010187</h5>
+                                 <h3>Chananchida Srithongdee</h3>
+                                 <h4>Frontend</h4>
+                                
+                                 <i class="fa fa-user"></i>
+                              </div>
+                              <div class="CirItem title-box CirItem4" >
+                                 <h5>63010202</h5>
+                                 <h3>Charinda Sonthidee</h3>
+                                 <h4>Frontend</h4>
+                                
+                                 <i class="fa fa-tags"></i>
+                              </div>
+                              <div class="CirItem title-box CirItem5">
+                                 <h5>63010124</h5>
+                                 <h3>Chakkapat Chuenthavorn</h3>
+                                 <h4>Backend</h4>
+                                
+                                 <i class="fa fa-upload"></i>
+                              </div>
+                             
+                              <div class="CirItem title-box CirItem6">
+                                 <h5>63010224</h5>
+                                 <h3>Chanwanit Nuchyoo</h3>
+                                 <h4>Backend</h4>
+                                
+                                 <i class="fa fa-briefcase"></i>
+                              </div>
+                           </div>
+                        </div>
+                      </div>
+                  </div>
+               </div>
+            </section>
       </div>
       </div>
     </div>
     
     <div class="prevNext">
-      <div><a href="#s4"></a><a href="#s2"></a></div>
-      <div><a href="#s1"></a><a href="#s3"></a></div>
-      <div><a href="#s2"></a><a href="#s4"></a></div>
-      <div><a href="#s3"></a><a href="#s1"></a></div>
+      <div><div class="img-left"></div><div class="img-right"></div><a href="#s4"></a><a href="#s2"></a></div>
+      <div><div class="img-left"></div><div class="img-right"></div><a href="#s1"></a><a href="#s3"></a></div>
+      <div><div class="img-left"></div><div class="img-right"></div><a href="#s2"></a><a href="#s4"></a></div>
+      <div><div class="img-left"></div><div class="img-right"></div><a href="#s3"></a><a href="#s1"></a></div>
     </div>
   
     <div class="bullets">
@@ -152,6 +243,66 @@
         </span>
 
     </span>
+</div>
+
+<script>
+  jQuery(document).ready( function ($) {
+ 
+  let i=2;
+  var radius = 200;
+  var fields = $('.itemDot');
+  var container = $('.dotCircle');
+  var width = container.width();
+  radius = width/1.48;
+   
+  var height = container.height();
+  var angle = 0, step = (2*Math.PI) / fields.length;
+  fields.each(function() {
+    var x = Math.round(width/2 + radius * Math.cos(angle) - $(this).width()/2);
+     var y = Math.round(height/2 + radius * Math.sin(angle) - $(this).height()/2);
+  
+    $(this).css({
+        left: x + 'px',
+        top: y + 'px'
+     });
+     angle += step;
+  });
+            
+    $('.itemDot').click(function() {
+    var dataTab= $(this).data("tab");
+      $('.itemDot').removeClass('active');
+    $(this).addClass('active');
+    $('.CirItem').removeClass('active');
+    $( '.CirItem'+ dataTab).addClass('active');
+    
+    i=dataTab;
+       
+    $('.dotCircle').css({
+      "transform":"rotate("+(360-(i-1)*36)+"deg)",
+      "transition":"2s"
+    });
+    $('.itemDot').css({
+      "transform":"rotate("+((i-1)*36)+"deg)",
+      "transition":"1s"
+    });
+  });
+            
+    setInterval(function() {
+    var dataTab= $('.itemDot.active').data("tab");
+    if(dataTab>6||i>6){
+      dataTab=1;
+      i=1;
+    }
+    $('.itemDot').removeClass('active');
+    $('[data-tab="'+i+'"]').addClass('active');
+    $('.CirItem').removeClass('active');
+    $( '.CirItem'+i).addClass('active');
+    i++;
+  
+   
+  }, 999999); 
+  });
+    </script>
 
 {% if request.user.is_authenticated %}
 <div>

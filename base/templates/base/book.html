@@ -37,7 +37,7 @@
                 <a class="nav-link"><i class="fas fa-user-alt"></i>{{request.user.username}}</a>
                 <ul>
                     <li class="nav-item" >
-                        <a class="nav-link" href = "{% url 'profile' %}">Profile</a>
+                        <a class="nav-link" href = "{% url 'profile' username=request.user.username %}">Profile</a>
                     </li>
                     <li class="nav-item" >
                         <a class="nav-link" href="{% url 'addnote' %}">Create Note</a>
@@ -53,7 +53,7 @@
             </li>
         </ul>
     </div>
-    <div class ="search-box" style=" justify-content: center; align-items: center;">
+    <div class ="search-box" style=" justify-content: center; align-items: center;" onMouseOver="this.style.opacity='0.8'"onMouseOut="this.style.opacity='1'">
         <form action="" method="POST">
         {% csrf_token %}
         <input class="search-txt" type = "text" name="search" placeholder="Type to search">
@@ -87,7 +87,7 @@
     <div class="box-rank">
         <div class="path"> 
             <div class="sort-bar-path">
-            <a href="{% url 'home' %}"><h1><u>Home</u><h1></a><h2><i class="fa-solid fa-arrow-right"></i></h2><h3>{{category_verbose}}</h3>  
+            <a href="{% url 'open' %}" style="position: relative; left: -50px;"><h1><u>Category</u><h1></a><h2><i class="fa-solid fa-arrow-right"></i></h2><h3>{{category_verbose}}</h3>  
             </div>
         </div>
         <div class="crown one"></div>
@@ -96,9 +96,14 @@
         <div class="box-peo">
             <div class = "line"></div>
             <div class="col-1">
-                <a href="{% url 'note_view' id=rank2.id %}"><div class="img-box"><img src="{{rank2.cover.url}}" width="250" height="270" style="border-radius: 10px;"></div></a>
-                <h2>{{rank2.title}}</h2>
-                <h1>by {{rank2.user.username}}</h1> 
+                <a href="{% if rank2 %}{% url 'note_view' id=rank2.id %}{% endif %}" onMouseOver="this.style.opacity='0.8'"onMouseOut="this.style.opacity='1'">
+                    <div class="img-box">{% if rank2 %}
+                        <img src="{{rank2.cover.url}}" width="250" height="270" style="border-radius: 10px; object-fit: cover;">{% endif %}</div></a>
+                    <a href="{% if rank2 %}{% url 'note_view' id=rank2.id %}{% endif %}" >
+                    <h2 class="underline-on-hover" style="color: yellow;">{{rank2.title}}</h2> 
+                    </a>
+                    <a href="{% if rank2 %}{% url 'profile' username=rank2.user.username %}{% endif %}">
+                        <h1 class="underline-on-hover">by {{rank2.user.username}}</h1> </a>
                 <div class = "small1">
                     <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
                     <h3>{{rank2.view_count}}</h3> 
@@ -111,9 +116,15 @@
                 <div class="rank2"></div>
             </div>
             <div class="col-2">
-                <a href="{% url 'note_view' id=rank1.id %}"><div class="img-box"><img src="{{rank1.cover.url}}" width="250" height="270" style="border-radius: 10px;"></div></a>
-                <h2>{{rank1.title}}</h2> 
-                <h1>by {{rank1.user.username}}</h1>
+                <a href="{% if rank1 %}{% url 'note_view' id=rank1.id %}{% endif %}" class="opacity-on-hover">
+                    <div class="img-box">{% if rank1 %}
+                        <img src="{{rank1.cover.url}}" width="250" height="270" style="border-radius: 10px; object-fit: cover;">{% endif %}</div></a>
+                
+                <a href="{% if rank1 %}{% url 'note_view' id=rank1.id %}{% endif %}" >
+                <h2 class="underline-on-hover" style="color: yellow;">{{rank1.title}}</h2> 
+                </a>
+                <a href="{% if rank1 %}{% url 'profile' username=rank1.user.username %}{% endif %}">
+                    <h1 class="underline-on-hover">by {{rank1.user.username}}</h1></a>
                 <div class = "small1">
                     <div class = "eye-product"><i class="fa-regular fa-eye"></i></div>
                     <h3>{{rank1.view_count}}</h3> 
@@ -125,10 +136,16 @@
                 <div class="rank1"></div>
             </div>
             <div class="col-3">
-                <a href="{% url 'note_view' id=rank3.id %}"><div class="img-box"><img src="{{rank3.cover.url}}" width="250" height="270" style="border-radius: 10px;"></div></a>
+                <a href="{% if rank3 %}{% url 'note_view' id=rank3.id %}{% endif %}" class="opacity-on-hover">
+                    <div class="img-box">{% if rank3 %}
+                    <img src="{{rank3.cover.url}}" width="250" height="270" style="border-radius: 10px; object-fit: cover;">{% endif %}</div></a>
                 <div id = "title-name">
-                    <h2>{{rank3.title}}</h2>
-                    <h1>by {{rank3.user.username}}</h1>
+                    <a href="{% if rank3 %}{% url 'note_view' id=rank3.id %}{% endif %}">
+                    <h2 class="underline-on-hover" style="color: yellow;">{{rank3.title}}</h2>
+                    </a>
+                    <a href="{% if rank3 %}{% url 'profile' username=rank3.user.username %}{% endif %}">
+                    <h1 class="underline-on-hover">by {{rank3.user.username}}</h1>
+                    </a>
                 </div> 
                 <div class="rank3"></div>
                 <div class = "small1">
@@ -149,23 +166,32 @@
             <div class="row" style="margin-top: 60px;">
             {% for n in page_object.object_list %}
             <div class='col-lg-3 mt-1 mb-3'>
-                <a href="{% url 'note_view' id=n.pk %}"><div class="img-box"><img src="{{n.cover.url}}" width="250" height="270" style="border-radius: 10px;"></div></a>
+                <a href="{% url 'note_view' id=n.pk %} " onMouseOver="this.style.opacity='0.7'"
+                onMouseOut="this.style.opacity='1'">
+                <div class="img-box" ><img src="{{n.cover.url}}" width="100%" height="270" style="border-radius: 10px; object-fit: cover;"></div></a>
                 <div class="product">
-                    <h4>
+                    <a href="{% url 'note_view' id=n.pk %}">
+                    <h4 class="underline-on-hover" onMouseOver="this.style.opacity='1'"onMouseOut="this.style.opacity='1'">
                             {{n.title}}  
                     </h4>
-                    <>
-                            โดย : {{n.user}}
+                    </a>
+                    <a href="{% url 'profile' username=n.user.username %}">
+                    <h3 class="underline-on-hover" style="color : black">
+                            {{n.user}}
+                    </h3>
+                    </a>
                     <div class="box-premium-sign">
                         {% if n.price != 0 %}
-                            <div class="premium-sign"><i class="fi fi-rr-crown"></i></div>
+                            <!-- <div class="premium-sign"><i class="fi fi-rr-crown"></i></div> -->
+                            <div class="premium-sign"><i class="fa-solid fa-dollar-sign"></i></div>
                         {%else%}
                             <div class="premium-sign"><p>FREE</p></div>
-                        {% endif %}   
+                        {% endif %}
                     </div>
-                    <div class = "eye-product"><a href=""><i class="fa-regular fa-eye"></i></a><small>{{n.view_count}}</small></div>
-                    <div class = "heart-product"><a href="{% url 'like1' noteid=n.id %}"><i class="{% if request.user in n.likes.all %}fa-solid fa-heart{% else %}fa-regular fa-heart{% endif %}"></i></a><small>{{n.likes.all.count}}</small></div>
-                    <div class = "chat-product"><a href=""><i class="fa-regular fa-comment-dots"></i></a><small>{{n.comment_count}}</small></div>
+                    <div class = "eye-product"><i class="fa-regular fa-eye"></i><small>{{n.view_count}}</small></div> 
+                    <!-- เราสร้างclass ไว้ใน css แล้ว แกเตรงนั้นได้เลย  ok-->
+                    <div class = "heart-product" ><a href="{% url 'like1' noteid=n.id %}" style="color: red;"><i class="{% if request.user in n.likes.all %}fa-solid fa-heart{% else %}fa-regular fa-heart{% endif %}"></i></a><small>{{n.likes.all.count}}</small></div>
+                    <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i><small>{{n.comment_count}}</small></div>
                     <!--<div class = "cart-product"><a href="{{ n.get_add_to_cart_url }}"><i class="fa-solid fa-cart-shopping"></i></a></div>-->
                 </div>
                 

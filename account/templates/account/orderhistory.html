@@ -29,7 +29,7 @@
                 <a class="nav-link"><i class="fas fa-user-alt"></i>{{request.user.username}}</a>
                 <ul>
                     {% comment %} <li class="nav-item" >
-                        <a class="nav-link" href = "{% url 'profile' %}">Profile</a>
+                        <a class="nav-link" href = "{% url 'profile' username=request.user.username %}">Profile</a>
                     </li> {% endcomment %}
                     <li class="nav-item" >
                         <a class="nav-link" href="{% url 'addnote' %}">Create Note</a>

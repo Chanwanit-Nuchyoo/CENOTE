@@ -54,7 +54,7 @@
                 <a class="nav-link"><i class="fas fa-user-alt"></i>{{request.user.username}}</a>
                 <ul>
                     <li class="nav-item" >
-                        <a class="nav-link" href = "{% url 'profile' %}">Profile</a>
+                        <a class="nav-link" href = "{% url 'profile' username=request.user.username %}">Profile</a>
                     </li>
                     <li class="nav-item" >
                         <a class="nav-link" href="{% url 'addnote' %}">Create Note</a>
@@ -78,18 +78,18 @@
                                         <div class="open-ALL"><h1>ALL</h1></div>
                                  </div>
                    </a>
-                    <a class="open"href="{% url 'cate' cate=2 %}">
+                    <a class="open"href="{% url 'cate' cate=3 %}">
                                  <div class="open-img">
                                          <div class="open-NW"><h2>NETWORK</h2></div>
                                  </div>
                     </a>
-                    <a class="open"href="{% url 'cate' cate=3 %}">
+                    <a class="open"href="{% url 'cate' cate=1 %}">
                                  <div class="open-img">
                                     <div class="open-SW"><h3>SOFTWARE</h3></div>
                                  </div>
                                       
                    </a>
-                    <a class="open"href="{% url 'cate' cate=1 %}">
+                    <a class="open"href="{% url 'cate' cate=2 %}">
                                  <div class="open-img">
                                        <div class="open-HW"><h3>HARDWARE</h3></div>
                                  </div>
@@ -97,5 +97,5 @@
                  
          </div>
     </div>
-    <nav class="tab-blue"></nav>
+<div style="height:200px; width: 100%;"></div>
 {% endblock %}

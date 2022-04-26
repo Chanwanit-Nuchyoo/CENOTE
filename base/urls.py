@@ -19,4 +19,5 @@ urlpatterns = [
     path('sort/<int:s>', views.sort,name='sort'),
     path('payment_success',views.paymentconfirm, name='success'),
     path('orderhistory/',views.order_history_view, name='order_history'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

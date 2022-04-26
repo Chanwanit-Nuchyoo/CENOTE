@@ -28,7 +28,7 @@
                 <a class="nav-link"><i class="fas fa-user-alt"></i>{{request.user.username}}</a>
                 <ul>
                     {% comment %} <li class="nav-item" >
-                        <a class="nav-link" href = "{% url 'profile' %}">Profile</a>
+                        <a class="nav-link" href = "{% url 'profile' username=request.user.username %}">Profile</a>
                     </li> {% endcomment %}
                     <li class="nav-item" >
                         <a class="nav-link" href="{% url 'addnote' %}">Create Note</a>
@@ -46,38 +46,40 @@
     </div>
 </nav>
 <div class = "mypage-header">
-    <button id = "profile-pic"><img src = {{ request.user.profile_image.url }}></button>
-    <p style = "margin: 20px; font-size: px;">
-        {{ request.user.username }}
+    <button id = "profile-pic" style="cursor: default;"><img src = {{ user.profile_image.url }}></button>
+    <p style = "margin: 20px; font-size: 50px; font-weight: bolder;">
+        {{ user.username }}
     </p>
-    <p style = "margin: 40px; color: black; font-size: 1.3em;">
-        {{request.user.info}}
+    <div style="display: flex; align-items: center; justify-content: center;">
+    <p style = "margin: 40px; color: black; font-size: 1.5em; width: 60%; text-align: center; cursor: default;">
+        {{user.info}}
     </p>
+    </div>
     <p>
-        <div class = "row">
-            <b>Likes {{request.user.like_count}}</b>
+        <div class = "row" style="cursor: default; font-size: 30px;">
+            <b >Likes {{user.like_count}}</b>
             <b style="margin-left: 5px; margin-right: 5px;">|</b>
-            <b>Views {{request.user.view_count}}</b>
+            <b >Views {{user.view_count}}</b>
         </div>
     </p>
-    <p style = "font-size:1.8em; color: orange; font-weight: bold; letter-spacing: 5px;" > CONTACT </p>
-    <p style = "font-size:1.5em; color: #FF5733 ; font-weight: bold; letter-spacing: 5px;" > EMAIL : {{request.user.contact_email}} </p>
+    <p style = "font-size:1.8em; color: orange; font-weight: bold; letter-spacing: 5px;cursor: default;" > CONTACT </p>
+    <p style = "font-size:1.5em; color: #FF5733 ; font-weight: bold; letter-spacing: 5px;cursor: default;" > EMAIL : {{user.contact_email}} </p>
     <div class = "row">
             <button id = "reddot-copy">
-                <a href = "#"> <img class = "reddot-pic" src={% static 'base/envelope.png' %}>
+                <img class = "reddot-pic" src={% static 'base/envelope.png' %}>
                     <article id="content-copy" style="color: rgba(0, 0, 0, 0.0); cursor: none; font-size: 0%;">
-                        {{request.user.contact_email}}
+                        {{user.contact_email}}
                     </article>
-                </a>
-                <h1 >Email copy</h1>
+                
+                <!-- <h1 >Email copy</h1> -->
             </button>
             
             <button id = "reddot">
-                <a href = "{% if request.user.github %}{{ request.user.github }}{% endif %}"> <img class = "reddot-pic" src={% static 'base/github.png' %}></a>
+                <a href = "{% if user.github %}{{ user.github }}{% endif %}"> <img class = "reddot-pic" src={% static 'base/github.png' %}></a>
                 <h2>GITHUB</h2>    
             </button>
             <button id = "reddot">
-                <a href = "{% if request.user.youtube %}{{ request.user.youtube }}{% endif %}"> <img class = "reddot-pic" src={% static 'base/youtube.png' %}></a>
+                <a href = "{% if user.youtube %}{{ user.youtube }}{% endif %}"> <img class = "reddot-pic" src={% static 'base/youtube.png' %}></a>
                 <h3>YOUTUBE</h3>    
             </button>
     </div> 
@@ -103,25 +105,28 @@
         </button>
         </a>
     </div>
-    <div class = "row">
+    <div class = "bottom">
     <!-- ลูปแต่ละ note จาก book view -->
         {% for n in notes %}
         <div class='col-lg-3 mt-1 mb-3'>
-            <a href="{% url 'note_view' id=n.pk %}"><div class="img-box"><img src="{{n.cover.url}}" width="250" height="270" style="border-radius: 10px;"></div></a>
+            <a href="{% url 'note_view' id=n.pk %}" onMouseOver="this.style.opacity='0.7'"
+            onMouseOut="this.style.opacity='1'"><div class="img-box"><img src="{{n.cover.url}}" width="250" height="270" style="border-radius: 10px;object-fit: cover;"></div></a>
             <div class="product">
-                <h4>
+                <a href="{% url 'note_view' id=n.pk %}">
+                <h4 class="underline-on-hover" onMouseOver="this.style.opacity='1'"onMouseOut="this.style.opacity='1'">
                         {{n.title}}  
-                </h4>
-                <h5>
-                        โดย : {{n.user.username}}
+                </h4></a>
+                    <h5 style="color : black; cursor:default">
+                        {{n.user.username}}
                 </h5>
                 <div class = "eye-product"><i class="fa-regular fa-eye"></i><small>{{n.view_count}}</small></div>
-                <a href="{% url 'like2' noteid=n.pk %}"><div class = "heart-product"><i class="{% if request.user in n.likes.all %}fa-solid fa-heart{% else %}fa-regular fa-heart{% endif %}"></i><small>{{n.likes.all.count}}</small></div></a>
+                <a href="{% url 'like2' noteid=n.pk %}"><div class = "heart-product"><i class="{% if request.user in n.likes.all %}fa-solid fa-heart{% else %}fa-regular fa-heart{% endif %}" style="color: red;"></i><small style="color: black;">{{n.likes.all.count}}</small></div></a>
                 <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i><small>{{n.comment_count}}</small></div>
+                {% if user.id == note.user.id %}
                 <div id = "pencil">
                     <a href = "{% url 'editnote' id=n.pk %}"><i class="fi fi-rr-edit"></i></a>
                 </div>
-                
+                {% endif %}
             </div>
             
         </div>

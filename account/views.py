@@ -91,9 +91,8 @@ def edit_profile_view(request):
     if request.method == 'POST':
         form = AccountEditForm(request.POST,request.FILES,instance=request.user)
         if form.is_valid():
-            print(request.FILES)
             form.save()
-            return redirect(reverse('profile'))
+            return redirect('profile',username=request.user.username)
         else:
             print("FORM IS NOT VALID")
             
@@ -108,8 +107,11 @@ def edit_profile_view(request):
     # return render(request,'account/editprofile.html',context)
 
 @login_required(login_url='/login')
-def profile(request):
-    notes = Note.objects.filter(user=request.user.id)
+def profile(request,username):
+    user = get_object_or_404(Account, username=username)
+    if not user:
+        return redirect('home')
+    notes = Note.objects.filter(user=user.id)
     profilesort = request.session.get('profilesort') or 0
     if profilesort == 0:
         notes = notes.order_by('-date_created')
@@ -120,10 +122,11 @@ def profile(request):
     context = {
         'notes':notes,
         'profilesort': profilesort,
+        'user':user,
     }
     return render(request, 'account/profile.html',context)
 
 @login_required(login_url='/login')
 def profilesort(request,sortid):
     request.session['profilesort'] = sortid
-    return redirect('profile')
+    return redirect('profile', username=request.user.username)
