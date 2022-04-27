@@ -1,6 +1,6 @@
 # What is CE NOTE?📚
 
-CE Note is a website that compiles a summary of the course notes of the Faculty of Engineering. Notes are short and easy to understand. To help students better understand their subjects, the CE community also has a web-based comments system to ask questions they don't understand. Please note that this is the demo project.
+CE Note is a website that offers a summary of the Faculty of Engineering's course notes. The notes are brief and easy to comprehend. The CE community also features a web-based comments system where students may ask questions about things they don't grasp. Please note that this is the demo project for Software Development Process (Y2/2) Computer Engineering KMITL.
 
 
 
