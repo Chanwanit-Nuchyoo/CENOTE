@@ -8,8 +8,8 @@ CE Note is a website that offers a summary of the Faculty of Engineering's cours
 
 There are two types of systems in CE NOTE. 
 
-1. Visitors - Note visitors can view the notes in a free and premium format.But with Premium, visitors have to pay in order to view every page.
-2. Creator- Note Creator can create free and premium notes, The creator will be paid to the credit card that is tied to the website.
+1. Visitors - The notes are available in both a free and a paid version for visitors to peruse. Premium, on the other hand, requires visitors to pay to see all pages.
+2. Creator- Note Creator may create both free and premium notes, and money will be sent to the creator's credit card linked to the website.
 
 
 
