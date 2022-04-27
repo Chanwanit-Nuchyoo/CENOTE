@@ -293,7 +293,7 @@ def like1(request,noteid):
     return redirect('book')
 
 @login_required(login_url='/login')
-def like2(request,noteid):
+def like2(request,noteid,username):
     note = get_object_or_404(Note,id=noteid)
     author = get_object_or_404(Account,id=note.user.id)
     user = note.likes.all()
@@ -307,7 +307,7 @@ def like2(request,noteid):
         author.like_count += 1
         author.save()
     note.save()
-    return redirect('profile',username=request.user.username)
+    return redirect('profile',username=username)
 
 @login_required(login_url='/login')
 def like3(request,noteid):

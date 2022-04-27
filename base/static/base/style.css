@@ -80,17 +80,29 @@ i {
     background-color: #000;
     color: #E6EEF9;
 }
-
+.nav-item h1{
+    position: absolute;
+    top:10px;
+    left:25px;
+    font-size: 1em;
+    color:white;
+}
 #logout-button {
-    background-color: #f52b21;
-    width: 143px;
-    color: #581845;
-}
-
-#navbarSupportedContent>ul>li:hover>ul #logout-button:hover {
-    color: #581845;
-    background-color: #F8574F;
-}
+    background-color: #6E62FF;
+    position:absolute;
+    width: 110px;
+    height: 2px;
+    border-radius:10px;
+    margin-bottom: 6px;
+    margin-left: 6px;
+    margin-top: 6px;
+    
+  }
+  
+  #navbarSupportedContent>ul>li:hover>ul #logout-button:hover {
+    background-color: #6E62FF;
+  }
+  
 
 #navbarSupportedContent>ul>li:hover>ul #pf-btn:hover {
     color: white;
@@ -269,8 +281,6 @@ i {
     justify-content: space-around;
     width: 100%;
     height: 100vh;
-    background: white;
-    background-size: cover;
     padding-top: 150px;
 }
 .header-open h1{
@@ -418,7 +428,7 @@ i {
 .header-book .path h1{
     position:absolute;
     top:-30px;
-    left:-250px;
+    left:-190px;
     color: #007bff;;
     font-size: 2em;
   
@@ -426,7 +436,7 @@ i {
 .header-book .path h2{
     position:absolute;
     top:-25px;
-    left:-155px;
+    left:-95px;
     color: rgb(0, 0, 0);
     font-size: 1.9em;
  
@@ -434,7 +444,7 @@ i {
 .header-book .path h3{
     position:absolute;
     top:-28px;
-    left:-120px;
+    left:-50px;
     color: rgb(0, 0, 0);
     font-size: 2em;
  
@@ -1777,7 +1787,10 @@ button {
     background-color: #6E62FF;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
-
+.edit-profile h1{
+    /* color: yellow; */
+    margin-left:120px;
+}
 .mypage-header p {
     font-size: 30px;
     color: #6E62FF;

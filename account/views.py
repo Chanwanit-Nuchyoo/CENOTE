@@ -127,6 +127,6 @@ def profile(request,username):
     return render(request, 'account/profile.html',context)
 
 @login_required(login_url='/login')
-def profilesort(request,sortid):
+def profilesort(request,sortid,username):
     request.session['profilesort'] = sortid
-    return redirect('profile', username=request.user.username)
+    return redirect('profile', username=username)

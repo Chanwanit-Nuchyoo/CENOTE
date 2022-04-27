@@ -27,4 +27,7 @@ class CommentForm(forms.ModelForm):
                 'TextMode':'MultiLine',
                 'style':'font-size:20px; border-radius:10px; resize: none; background-color: #444444; color: white; padding:5px',
             }),
+            'price': forms.Textarea(attrs={
+                'oninput':"this.value=this.value.replace(/[0-9]/g,'');"
+            }),
         }

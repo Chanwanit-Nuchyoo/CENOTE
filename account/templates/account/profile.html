@@ -27,9 +27,9 @@
                 {% else %}
                 <a class="nav-link"><i class="fas fa-user-alt"></i>{{request.user.username}}</a>
                 <ul>
-                    {% comment %} <li class="nav-item" >
+                    {% if user.id != request.user.id %} <li class="nav-item" >
                         <a class="nav-link" href = "{% url 'profile' username=request.user.username %}">Profile</a>
-                    </li> {% endcomment %}
+                    </li> {% endif %}
                     <li class="nav-item" >
                         <a class="nav-link" href="{% url 'addnote' %}">Create Note</a>
                     </li>
@@ -37,7 +37,7 @@
                         <a class="nav-link" href="{% url 'order_history' %}">Order History</a>
                     </li>
                     <li class="nav-item" >
-                        <a id = "logout-button" href="{% url 'logoutview' %}">Sign Out</a>
+                        <a id = "logout-button" href="{% url 'logoutview' %}"><h1>Sign Out</h1></a>
                     </li>
                 </ul> 
                 {% endif %}
@@ -71,7 +71,6 @@
                         {{user.contact_email}}
                     </article>
                 
-                <!-- <h1 >Email copy</h1> -->
             </button>
             
             <button id = "reddot">
@@ -83,22 +82,22 @@
                 <h3>YOUTUBE</h3>    
             </button>
     </div> 
-    <a href="{% url 'editprofile' %}"><button id = "edit-profile" style ="left: 0;"> EDIT PROFILE</button></a> 
+    {% if user.id == request.user.id %}<a href="{% url 'editprofile' %}"><button id = "edit-profile" style ="left: 0;"> EDIT PROFILE</button></a>{% endif %}
     <div class = "line"></div>
     <div class = "row">
-        <a href="{% url 'profilesort' sortid=0 %}">
+        <a href="{% url 'profilesort' sortid=0 username=user.username %}">
             <button class ="sort {% if profilesort == 0 %}active{% endif %}" >
                 <span><i class="fa-solid fa-clock-rotate-left"></i></span>
                 <span>Recent</span>
             </button>
         </a>
-        <a href="{% url 'profilesort' sortid=1 %}">
+        <a href="{% url 'profilesort' sortid=1 username=user.username %}">
         <button class ="sort {% if profilesort == 1 %}active{% endif %}">
                 <span><i class="fa-regular fa-eye"></i></span><span>View</span>
             
         </button>
         </a>
-        <a href="{% url 'profilesort' sortid=2 %}">
+        <a href="{% url 'profilesort' sortid=2 username=user.username%}">
         <button class ="sort {% if profilesort == 2 %}active{% endif %}">
             <span><i class="fa-regular fa-heart"></i></span>
                 <span>Like</span>
@@ -120,7 +119,7 @@
                         {{n.user.username}}
                 </h5>
                 <div class = "eye-product"><i class="fa-regular fa-eye"></i><small>{{n.view_count}}</small></div>
-                <a href="{% url 'like2' noteid=n.pk %}"><div class = "heart-product"><i class="{% if request.user in n.likes.all %}fa-solid fa-heart{% else %}fa-regular fa-heart{% endif %}" style="color: red;"></i><small style="color: black;">{{n.likes.all.count}}</small></div></a>
+                <a href="{% url 'like2' noteid=n.pk username=user.username%}"><div class = "heart-product"><i class="{% if request.user in n.likes.all %}fa-solid fa-heart{% else %}fa-regular fa-heart{% endif %}" style="color: red;"></i><small style="color: black;">{{n.likes.all.count}}</small></div></a>
                 <div class = "chat-product"><i class="fa-regular fa-comment-dots"></i><small>{{n.comment_count}}</small></div>
                 {% if user.id == note.user.id %}
                 <div id = "pencil">

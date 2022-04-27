@@ -32,7 +32,13 @@ i {
     padding:0;
     z-index:10;
 }
-
+.nav-item h1{
+  position: absolute;
+  top:10px;
+  left:25px;
+  font-size: 1em;
+  color:white;
+}
 #navbarSupportedContent {
     overflow: visible;
     position: relative;
@@ -83,14 +89,19 @@ i {
 }
 
 #logout-button {
-    background-color: #f52b21;
-    width: 143px;
-    color: #581845;
+  background-color: #6E62FF;
+  position:absolute;
+  width: 110px;
+  height: 2px;
+  border-radius:10px;
+  margin-bottom: 6px;
+  margin-left: 6px;
+  margin-top: 6px;
+  
 }
 
 #navbarSupportedContent>ul>li:hover>ul #logout-button:hover {
-    color: #581845;
-    background-color: #F8574F;
+  background-color: #6E62FF;
 }
 
 #navbarSupportedContent>ul>li:hover>ul #pf-btn:hover {
@@ -179,6 +190,7 @@ i {
 }
 .box-home{
     position: relative;
+    background-color: white;
     top:140px;
     left:-200px;
     width:800px;
@@ -186,6 +198,7 @@ i {
     border: 2px solid black;
     border-radius: 30px;
     box-shadow: 5px 5px 5px 5px #8E8E8E ;
+   
 }
 .imgLoader {
   position: fixed;
@@ -195,39 +208,39 @@ i {
 }
 @keyframes preLoad {
   0% {
-    background-image: url("http://localhost:8000/media/images/captain1/file_5natiF8XWlq.jpg");
+    background-image: url("http://localhost:8000/media/images/Captain/file_1bm2zXAkNJa.jpg");
   }
   10% {
-    background-image: url("http://localhost:8000/media/images/captain1/file_6mQQXtmxIGN.jpg");
+    background-image: url("http://localhost:8000/media/images/Captain/file_2DlGt4IGl7q.jpg");
   }
   20% {
-    background-image: url("http://localhost:8000/media/images/captain1/file_7DnLtTNFT5X.jpg");
+    background-image: url("http://localhost:8000/media/images/Captain/file_3J5Z4QgJtsF.jpg");
   }
   30% {
-    background-image: url("http://localhost:8000/media/images/captain1/file_89U5WW4lFdT.jpg");
+    background-image: url("http://localhost:8000/media/images/Captain/file_4CknqBrp6xm.jpg");
   }
   40% {
-    background-image: url("http://localhost:8000/media/images/captain1/file_9U2QpbmhCGn.jpg");
+    background-image: url("http://localhost:8000/media/images/Captain/file_5juCbM2BZvt.jpg");
   }
   100% {
     display: none;
   }
 }
 html, body {
-  height: 100%;
+
+  background-image: url(https://scontent.fbkk12-2.fna.fbcdn.net/v/t1.15752-9/279169280_1431086077349240_2891447538167566762_n.png?_nc_cat=105&ccb=1-5&_nc_sid=ae9488&_nc_ohc=GwP2_-4McpEAX_dTTsl&_nc_ht=scontent.fbkk12-2.fna&oh=03_AVK04fUxkNJ6oiZQdZKCaR5muy6g8hsRn1IfiRJbxgGnAA&oe=628E3BE0);
+  background-size:cover;
 }
 .container {
   position: relative;
   width: 420px;
-  border: #fff solid 2px;
-  border-radius: 4px;
   height: 420px;
 }
 .container p {
     color: rgb(0, 0, 0);
     position: absolute;
     top:3%;
-    left:13%;
+    left:15%;
     font-size: 3.5em;
     text-shadow: 3px 3px 3px rgb(118, 118, 247);
 }
@@ -236,8 +249,8 @@ section {
   top:999px;
   width: 100%;
   height: 100%;
- 
   top:500px;
+  z-index: -5;
 }
 section::after {
   position: absolute;
@@ -362,7 +375,7 @@ section::after {
   width:1200px;
   height: 600px;
   border: 2px solid black;
-  border-radius: 30px;
+
   box-shadow: 5px 5px 5px 5px #8E8E8E ;
   z-index:5;
 }
@@ -477,7 +490,7 @@ section::after {
 .box-secpage03 h1{
   position: absolute;
   top:5px;
-  left:350px;
+  left:520px;
   color: rgb(0, 0, 0);
   font-size: 2.5em;
   text-shadow: 3px 3px 3px rgb(118, 118, 247);
@@ -521,7 +534,6 @@ section::after {
   position: absolute;
   bottom: 20px;
   left: 50%;
-  z-index: 2;
   display: inline-block;
   -webkit-transform: translate(0, -50%);
   transform: translate(0, -50%);
@@ -1118,18 +1130,16 @@ section::after {
 }
 /*=============================================================== Slider ========================================== */
 *{box-sizing: border-box; -webkit-box-sizing: border-box; }
-html, body { height: 100%; }
-/* body { margin: 0; font: 16px/1.3 sans-serif; } */
-
-/*
-PURE RESPONSIVE CSS3 SLIDESHOW GALLERY by Roko C. buljan
-http://stackoverflow.com/a/34696029/383904
-*/
+html, body {
+   height: 100%;
+   }
 
 .CSSgal {
 	position: relative;
 	overflow: hidden;
 	height: 100%; /* Or set a fixed height */
+  background-color: white;
+
 }
 
 /* SLIDER */
@@ -1139,6 +1149,7 @@ http://stackoverflow.com/a/34696029/383904
 	white-space: nowrap;
 	font-size: 0;
 	transition: 0.8s;
+  background-color: white;
 }
 
 /* SLIDES */
@@ -1272,10 +1283,12 @@ http://stackoverflow.com/a/34696029/383904
 
 /* ============================================ SDP S01 G06 =============================================*/
 section.iq-features{
-  top:-10px;
+  top:-50px;
   left:-120px;
 	padding:100px 0px;
 	margin:50px 0 0;
+
+
   }
   .holderCircle {
 	  border-radius: 100%;
@@ -1284,7 +1297,7 @@ section.iq-features{
 	  position: absolute;
 	  left: 150px;
 	  top: 150px;
-	  width: 410px;
+	  width: 450px;
 	  height: 410px;
 	  border: 0;
 	  border-radius: 100%;
@@ -1361,7 +1374,7 @@ section.iq-features{
 	  right: 0;
 	  bottom: 0;
 	  display: none;
-	  background: rgba(255, 255, 255, 0.341);
+	  /* background: rgba(255, 255, 255, 0.341); */
   }
   .dotCircle .itemDot.active .forActive {
 	  display: block;

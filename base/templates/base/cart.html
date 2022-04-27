@@ -1,7 +1,13 @@
 {% extends 'main.html' %}
 {% load static %}
 {% load humanize %}
+{% block head %}
+
+  <title>Cart</title>
+
+{% endblock %}
 {% block content %}
+
 <nav class="navbar navbar-expand-custom navbar-mainbg">
     <a class="navbar-brand navbar-logo" href="{% url 'home' %}"><div class="Logoo"></div></a>
     <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,10 +41,10 @@
                         <a class="nav-link" href="{% url 'addnote' %}">Create Note</a>
                     </li>
                     <li class="nav-item" >
-                        <a class="nav-link" href="#">Order History</a>
+                        <a class="nav-link" href="{% url 'order_history' %}">Order History</a>
                     </li>
                     <li class="nav-item" >
-                        <a id = "logout-button" href="{% url 'logoutview' %}">Sign Out</a>
+                        <a id = "logout-button" href="{% url 'logoutview' %}"><h1>Sign Out</h1></a>
                     </li>
                 </ul> 
                 {% endif %}

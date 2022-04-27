@@ -48,7 +48,7 @@ class Note(models.Model):
     title               = models.CharField(max_length=20) 
     info                = models.TextField(max_length=100)
     user                = models.ForeignKey(Account,on_delete=models.CASCADE)
-    price               = models.IntegerField(validators=[MinValueValidator(0)])
+    price               = models.PositiveIntegerField(validators=[MinValueValidator(0)])
     category            = models.ForeignKey(Category,on_delete=models.CASCADE)
     cover               = models.ImageField(upload_to=cover_path,blank=True,null=True,default=default_cover)
     pdf_file            = models.FileField(upload_to=pdf_path)
