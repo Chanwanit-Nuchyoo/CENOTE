@@ -16,12 +16,12 @@ There are two types of systems in CE NOTE.
 ##  Features ✔
 
 - Login and Register
-- Editable account profile
+- Editable account profile after registering and logging in
 - My Page and Notecreator
 - Notes views
 - Note creating
 - Comment, Like and Ranking system
 - Note filtering by Date, Views and Likes
 - Note searching
-- Free note upload and premium
-- Cart and Order History system
+- Notes can be uploaded for free or for a fee
+- System for carts and order history
