@@ -1,6 +1,5 @@
 from distutils.log import info
 from email.policy import default
-from msilib import CreateRecord
 from multiprocessing import AuthenticationError
 from trace import CoverageResults
 from turtle import ondrag
